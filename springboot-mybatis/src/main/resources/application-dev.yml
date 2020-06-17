@@ -1,0 +1,36 @@
+server:
+  port: 8080
+
+spring:
+  ########-spring datasource-########
+  datasource:
+    #账号配置
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/myshop?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
+
+    #hikari数据库连接池
+    hikari:
+      #数据库连接超时时间,默认30秒，即30000
+      connection-timeout: 30000
+      #数据库连接测试
+      connection-test-query: select 1
+      #此属性控制池中连接的最长生命周期，值0表示无限生命周期，默认1800000即30分钟
+      max-lifetime: 1800000
+      #连接池最大连接数，默认是10
+      maximum-pool-size: 15
+      #最小空闲连接数量
+      minimum-idle: 5
+      #空闲连接存活最大时间，默认600000（10分钟）
+      idle-timeout: 18000
+      #数据库连接池名称
+      pool-name: MyHikariCP
+
+
+
+mybatis:
+  # 类型转换，相当于Mybatis.xml中的typeAliases
+  type-aliases-package: com.kapcb.ccc.domain
+  # 装在.xml sql映射文件
+  mapper-locations: classpath:mapper/*.xml
