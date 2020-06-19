@@ -1,0 +1,88 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kapcb.ccc.mapper.UserMapper">
+    <resultMap id="demo" type="User">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="phone" column="phone"/>
+        <result property="email" column="email"/>
+        <result property="created" column="created"/>
+        <result property="updated" column="updated"/>
+    </resultMap>
+
+    <select id="findAllUser" resultMap="demo">
+        SELECT * FROM tb_user LIMIT #{currentPage},#{pageSize}
+    </select>
+
+    <select id="findUserByList" resultMap="demo">
+        SELECT * FROM tb_user WHERE id IN
+        <foreach collection="array" item="id" index="index" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </select>
+
+    <select id="findUserByQuery" resultMap="demo">
+        SELECT * FROM tb_user
+        WHERE 1=1
+        <if test="username != null and username != ''">
+            and username LIKE CONCAT('%',#{username},'%')
+        </if>
+        <if test="email != null and email != ''">
+            and email LIKE CONCAT('%',#{email},'%')
+        </if>
+    </select>
+
+    <select id="findUserByQueryBatch" resultMap="demo">
+        SELECT * FROM tb_user
+        <where>
+            <if test="username != null and username != ''">
+                and username like concat('%',#{username},'%')
+            </if>
+            <if test="email != null and email != ''">
+                and email like concat('%',#{email},'%')
+            </if>
+        </where>
+    </select>
+
+    <insert id="addUser">
+        INSERT INTO
+        tb_user (
+            username,
+            password,
+            phone,
+            email,
+            created,
+            updated
+            )
+        VALUES(
+            #{username},
+            #{password},
+            #{phone},
+            #{email},
+            #{created},
+            #{updated}
+        )
+    </insert>
+
+    <delete id="deleteUser">
+        DELETE FROM tb_user WHERE id IN
+        <foreach collection="array" index="index" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <update id="updateUser">
+        UPDATE tb_user
+        <set>
+            <if test="username != null ">username = #{username},</if>
+            <if test="password != null ">password = #{password},</if>
+            <if test="phone != null">phone = #{phone},</if>
+            <if test="email != null">email = #{email},</if>
+            <if test="created != null">created = #{created},</if>
+            <if test="updated != null">updated = #{updated}</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+</mapper>

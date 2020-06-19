@@ -1,0 +1,42 @@
+logging:
+  level:
+    com.kapcb.ccc: debug
+
+server:
+  port: 8090
+
+spring:
+  profiles:
+    active: dev
+---
+server:
+  port: 8081
+spring:
+  profiles: dev
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/myshop?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+
+    #hikari数据库连接池
+    hikari:
+      #数据库连接池名称
+      pool-name: MyHikariCP
+      #最小空闲连接数量
+      minimum-idle: 5
+      #空闲连接存活最大时间，默认600000（10分钟）
+      idle-timeout: 18000
+      #此属性控制池中连接的最长生命周期，值0表示无限生命周期，默认1800000即30分钟
+      max-lifetime: 1800000
+      #连接池最大连接数，默认是10
+      maximum-pool-size: 15
+      #数据库连接超时时间,默认30秒，即30000
+      connection-timeout: 30000
+      #数据库连接测试
+      connection-test-query: SELECT 1
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.kapcb.ccc.domain
