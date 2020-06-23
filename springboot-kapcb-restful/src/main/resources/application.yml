@@ -1,0 +1,13 @@
+server:
+  servlet:
+    context-path: /kapcb
+
+system:
+  username: kapcb
+  password: 123456
+
+spring:
+  thymeleaf:
+    cache: false
+  messages:
+    basename: i18n.login
