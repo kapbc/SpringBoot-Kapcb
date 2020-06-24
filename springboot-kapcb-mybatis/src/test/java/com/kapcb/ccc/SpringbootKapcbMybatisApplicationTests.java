@@ -100,7 +100,7 @@ class SpringbootKapcbMybatisApplicationTests {
      * 测试删除
      */
     @Test
-    public void test(){
+    public void test() {
         String userIds = "14,16";
         String[] ids = userIds.split(",");
         this.userService.deleteUser(ids);

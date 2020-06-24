@@ -49,20 +49,20 @@
     <insert id="addUser">
         INSERT INTO
         tb_user (
-            username,
-            password,
-            phone,
-            email,
-            created,
-            updated
-            )
+        username,
+        password,
+        phone,
+        email,
+        created,
+        updated
+        )
         VALUES(
-            #{username},
-            #{password},
-            #{phone},
-            #{email},
-            #{created},
-            #{updated}
+        #{username},
+        #{password},
+        #{phone},
+        #{email},
+        #{created},
+        #{updated}
         )
     </insert>
 

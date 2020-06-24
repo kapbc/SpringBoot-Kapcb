@@ -4,7 +4,7 @@ package com.kapcb.ccc.common;
  * <a>Title:ResponseMessage</a>
  * <a>Author：<a>
  * <a>Description：<a>
- *
+ * <p>
  * 承载服务器返回给浏览器的消息
  *
  * @author ccc
@@ -15,11 +15,11 @@ public class ResponseMessage {
 
     private String responseMessage;
 
-    public ResponseMessage(String responseMessage){
+    public ResponseMessage(String responseMessage) {
         this.responseMessage = responseMessage;
     }
 
-    public String getResponseMessage(){
+    public String getResponseMessage() {
         return responseMessage;
     }
 }

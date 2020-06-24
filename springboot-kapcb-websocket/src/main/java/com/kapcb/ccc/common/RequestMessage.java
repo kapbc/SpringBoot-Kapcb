@@ -4,7 +4,7 @@ package com.kapcb.ccc.common;
  * <a>Title:RequestMessage</a>
  * <a>Author：<a>
  * <a>Description：<a>
- *
+ * <p>
  * 承载接受的消息
  *
  * @author ccc

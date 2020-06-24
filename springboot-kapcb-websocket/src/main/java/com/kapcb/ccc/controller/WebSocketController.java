@@ -21,11 +21,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class WebSocketController {
 
     /**
-     * @MessageMapping注解和我们之前使用的@RequestMapping类似
-     * @SendTo注解表示当服务器有消息需要推送的时候，会对订阅了@SendTo中路径的浏览器发送消息。
-     *
      * @param requestMessage RequestMessage
      * @return ResponseMessage
+     * @MessageMapping注解和我们之前使用的@RequestMapping类似
+     * @SendTo注解表示当服务器有消息需要推送的时候，会对订阅了@SendTo中路径的浏览器发送消息。
      */
     @MessageMapping("/hello")
     @SendTo("/topic/getResponse")

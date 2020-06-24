@@ -15,7 +15,7 @@ import org.springframework.stereotype.Controller;
 public class EmpController {
 
 
-    public String list(){
+    public String list() {
 
         // thymeleaf 会默认进行拼串 classpath:/templates/xxxxx.html
         return "emp.list";

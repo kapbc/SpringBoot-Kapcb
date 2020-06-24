@@ -43,7 +43,7 @@ public class LoginController {
                         HttpSession session) {
 
         if (name.equals(username) && pwd.equals(password)) {
-            session.setAttribute("users",username);
+            session.setAttribute("users", username);
             //防止表单重复提交，进行重定向
             return "redirect:/main.html";
         } else {

@@ -12,10 +12,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class SpringbootKapcbLogApplicationTests {
 
     //记录器
-    Logger logger  = LoggerFactory.getLogger(getClass());
+    Logger logger = LoggerFactory.getLogger(getClass());
 
     @Test
-    public void test(){
+    public void test() {
         /**
          * 日志的级别
          * 由低到高 trace —> debug —> info —> warn —> error

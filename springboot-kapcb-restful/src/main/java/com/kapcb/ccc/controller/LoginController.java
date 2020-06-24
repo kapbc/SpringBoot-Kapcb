@@ -27,15 +27,15 @@ public class LoginController {
     private String pwd;
 
     @PostMapping(path = "/login")
-    public String login(@RequestParam("username")String username,
-                        @RequestParam("password")String password,
-                        Map<String,Object> map,
-                        HttpSession session){
+    public String login(@RequestParam("username") String username,
+                        @RequestParam("password") String password,
+                        Map<String, Object> map,
+                        HttpSession session) {
         if (name.equals(username) && pwd.equals(password)) {
-            session.setAttribute("users",username);
+            session.setAttribute("users", username);
             return "redirect:main.html";
         } else {
-            map.put("msg","用户名或密码错误!请重写输入!");
+            map.put("msg", "用户名或密码错误!请重写输入!");
             return "login";
         }
     }

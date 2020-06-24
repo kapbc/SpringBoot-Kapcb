@@ -5,15 +5,18 @@
     <title>测试页面</title>
 </head>
 <body>
-<h1>测试成功！</h1><hr/>
+<h1>测试成功！</h1>
+<hr/>
 
 <div th:text="${demo}"></div>
 <div th:utext="${demo}"></div>
 
-<h4 th:text="user" th:each="user:${users}"></h4><hr/>
+<h4 th:text="user" th:each="user:${users}"></h4>
+<hr/>
 
 <h4>
-    <span th:text="user" th:each="user:${users}"></span><hr/>
+    <span th:text="user" th:each="user:${users}"></span>
+    <hr/>
     <span th:each="user:${users}">[[${user}]]</span>
 </h4>
 </body>
