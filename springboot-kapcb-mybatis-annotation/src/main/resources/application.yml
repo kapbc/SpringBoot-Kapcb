@@ -1,11 +1,4 @@
 spring:
-  profiles:
-    active: dev
-
----
-
-spring:
-  profiles: dev
   datasource:
     username: root
     password: 123456
@@ -23,11 +16,21 @@ spring:
     test-on-borrow: false
     test-while-idle: true
     pool-prepared-statements: true
+
     filters: stat,wall,log4j
     max-pool-prepared-statement-per-connection-size: 20
     use-global-data-source-stat: true
     connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
-mybatis:
-  type-aliases-package: com.kapcb.ccc.domain
-  mapper-locations: classpath:mapper/*.xml
+  # 国际化配置文件声明
+  messages:
+    basename: i18n.login
+  thymeleaf:
+    cache: false
+
+system:
+  login:
+    username: kapcb
+    password: kapcb
+
+
 
