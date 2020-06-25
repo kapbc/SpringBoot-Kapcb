@@ -3,8 +3,7 @@ package com.kapcb.ccc.service;
 import com.kapcb.ccc.domain.Dept;
 import com.kapcb.ccc.mapper.DeptMapper;
 import lombok.RequiredArgsConstructor;
-import org.springframework.cache.annotation.CachePut;
-import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +17,7 @@ import java.util.List;
  * @version 1.0.0
  * @date 2020/6/25 15:38
  */
+@CacheConfig(cacheNames = "dept")
 @Service
 @RequiredArgsConstructor
 public class DeptService {
@@ -49,7 +49,7 @@ public class DeptService {
      * @param id
      * @return
      */
-    @Cacheable(cacheNames = "dept")
+    @Cacheable
     public Dept getDept(Integer id) {
         System.out.println("查询" + id + "部门");
         Dept deptList = this.deptMapper.getById(id);
@@ -69,21 +69,50 @@ public class DeptService {
      * 3、更新 1 号部门的部门名称为 AA
      * 4、再来查询 1 号，结果为之前查询出的结果 aa
      * 说明：缓存中存放结果为 k-v的形式
-     * @CachePut：调用方法之后将方法返回值放入缓存之中
-     * 不同的是使用CachePut进行缓存时的 key：传入的dept对象 值：返回的dept对象
-     *  也就是说之前缓存的部门信息没有进行修改之后的更新
-     *  解决办法：进行key指定即可
-     *  1、key = "#dept.id"：使用传入的参数的id
-     *  2、key = "#result.id":因为返回的值时dept，所以 #result.id 等同于 #dept.id
-     *  注意 @Cacheable是不能使用"#result.id"进行指定的，因为@Cacheable是在方法执行之前而，@CachePut是先执行方法
+     *
      * @param dept Dept
      * @return Dept
+     * @CachePut：调用方法之后将方法返回值放入缓存之中 不同的是使用CachePut进行缓存时的 key：传入的dept对象 值：返回的dept对象
+     * 也就是说之前缓存的部门信息没有进行修改之后的更新
+     * 解决办法：进行key指定即可
+     * 1、key = "#dept.id"：使用传入的参数的id
+     * 2、key = "#result.id":因为返回的值时dept，所以 #result.id 等同于 #dept.id
+     * 注意 @Cacheable是不能使用"#result.id"进行指定的，因为@Cacheable是在方法执行之前而，@CachePut是先执行方法
      */
-    @CachePut(value = "dept",key = "#result.id")
+    @CachePut(key = "#result.id")
     public Dept updateDept(Dept dept) {
         System.out.println("跟新部门的方法被调用了");
         this.deptMapper.updateDept(dept);
         return dept;
+    }
+
+    /**
+     * allEntries = true 是否删除 key为dept的所有缓存,默认为false,如果指定allEntries = true，则不需要在指定key = "#id"
+     * <p>
+     * beforeInvocation = true 缓存的删除是否在方法执行之前,默认为false,代表在方法执行之后
+     * false：默认是在方法执行之后，如果方法中代码运行出现异常，缓存不会被清掉
+     * true：在方法执行之前清除缓存就会直接清除缓存，如果代码在运行的时候出现异常，缓存也会被清掉
+     *
+     * @param id Integer
+     */
+    @CacheEvict(key = "#id")
+    public void deleteDept(Integer id) {
+        System.out.println("删除方法被调用,删除的id：" + id);
+        //this.deptMapper.deleteDept(id);
+    }
+
+    @Caching(
+            cacheable = {@Cacheable(key = "#name")},
+            // put 在方法调用执行之后
+            put = {
+                    @CachePut(key = "#result.id"),
+                    @CachePut(key = "#result.deptName")
+            }
+    )
+    public Dept getDeptByName(String name) {
+        System.out.println("根据名称查找部门方法被调用");
+        Dept deptByName = this.deptMapper.getDeptByName(name);
+        return deptByName;
     }
 
 }

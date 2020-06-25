@@ -49,4 +49,13 @@ public interface DeptMapper {
      */
     @Delete("delete from tb_dept where id = #{id}")
     void deleteDept(Integer id);
+
+    /**
+     * 根据名称查询
+     *
+     * @param name String
+     * @return Dept
+     */
+    @Select("select * from tb_dept where dept_name = #{name}")
+    Dept getDeptByName(String name);
 }
