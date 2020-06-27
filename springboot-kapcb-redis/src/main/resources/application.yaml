@@ -1,0 +1,39 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/myshop?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
+    type: com.alibaba.druid.pool.DruidDataSource
+    # druid相关配置
+    initial-size: 5
+    max-active: 20
+    max-wait: 60000
+    time-between-eviction-runs-millis: 60000
+    min-evictable-idle-time-millis: 300000
+    validation-query: SELECT 1 from DUAL
+    test-on-return: false
+    test-on-borrow: false
+    test-while-idle: true
+    pool-prepared-statements: true
+    filters: stat,wall,log4j
+    max-pool-prepared-statement-per-connection-size: 20
+    use-global-data-source-stat: true
+    connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+  # redis相关配置
+  redis:
+    host: ${your.host}
+    password: ${your.password}
+    port: 6379
+logging:
+  level:
+    com.kapcb.ccc.mapper: debug
+
+system:
+    login:
+      username: kapcb
+      password: kapcb
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.kapcb.ccc.domain

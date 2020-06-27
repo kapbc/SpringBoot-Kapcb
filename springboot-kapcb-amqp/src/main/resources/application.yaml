@@ -1,0 +1,10 @@
+spring:
+  rabbitmq:
+    # 如果不写默认路径为localhost
+    host: ${your.host}
+    username: guest
+    password: guest
+    # 不写默认为5672端口
+    port: 5672
+    # 如果不写默认访问 / 路径
+    virtual-host: /
