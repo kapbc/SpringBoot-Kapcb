@@ -1,0 +1,7 @@
+spring:
+  elasticsearch:
+    rest:
+      uris:
+       - http://39.105.95.62:9200
+
+

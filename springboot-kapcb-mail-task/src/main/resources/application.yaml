@@ -1,0 +1,10 @@
+spring:
+  mail:
+    username: ccc
+    password: ccc
+    host: smtp.qq.com
+    properties:
+      mail:
+        smtp:
+          ssl:
+            enable: true
