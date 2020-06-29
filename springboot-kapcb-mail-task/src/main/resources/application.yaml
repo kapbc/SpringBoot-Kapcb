@@ -1,10 +1,8 @@
 spring:
   mail:
-    username: ccc
-    password: ccc
+    # username为邮箱账号
+    username: 2530628867@qq.com
+    # password为邮箱授权码
+    password: ${your.password}
+    # 连向哪个邮件服务器
     host: smtp.qq.com
-    properties:
-      mail:
-        smtp:
-          ssl:
-            enable: true
