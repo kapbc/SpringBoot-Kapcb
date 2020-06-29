@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+</head>
+<body>
+<h1 align="center">欢迎光临图书管理系统</h1>
+<h2 align="center">您好，如需查阅图书--<a th:href="@{/login}">请登录！</a></h2>
+<hr>
+
+<h3>普通秘籍</h3>
+<ul>
+    <li><a th:href="@{/level1/1}">罗汉拳</a></li>
+    <li><a th:href="@{/level1/2}">马步双提拳</a></li>
+    <li><a th:href="@{/level1/3}">天马流星拳</a></li>
+</ul>
+<hr>
+
+<h3>中级秘籍</h3>
+<ul>
+    <li><a th:href="@{/level2/1}">太极拳</a></li>
+    <li><a th:href="@{/level2/2}">七伤拳</a></li>
+    <li><a th:href="@{/level2/3}">梯云纵</a></li>
+</ul>
+<hr>
+
+<h3>高级秘籍</h3>
+<ul>
+    <li><a th:href="@{/level3/1}">葵花宝典</a></li>
+    <li><a th:href="@{/level3/2}">龟派气功</a></li>
+    <li><a th:href="@{/level3/3}">独孤九剑</a></li>
+</ul>
+<hr>
+
+</body>
+</html>
