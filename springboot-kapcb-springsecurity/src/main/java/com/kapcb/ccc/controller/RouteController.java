@@ -32,7 +32,7 @@ public class RouteController {
      *
      * @return login
      */
-    @GetMapping(path = "/login")
+    @GetMapping(path = "/userLogin")
     public String login() {
         return PREFIX + "login";
     }

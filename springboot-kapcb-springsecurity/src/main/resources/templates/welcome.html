@@ -1,37 +1,56 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title>Welcome</title>
 </head>
 <body>
 <h1 align="center">欢迎光临图书管理系统</h1>
-<h2 align="center">您好，如需查阅图书--<a th:href="@{/login}">请登录！</a></h2>
+<!--未认证情况下进行登陆提示-->
+<div sec:authorize="!isAuthenticated()">
+    <h2 align="center">您好，如需查阅图书--<a th:href="@{/userLogin}">请登录！</a></h2>
+</div>
+
+<!--如果登录了，则显示注销按钮，同时显示账号信息和权限-->
+<div sec:authorize="isAuthenticated()">
+    <h4>
+        <span sec:authentication="name"></span>，您好，您的角色有，<span sec:authentication="principal.authorities"></span>
+    </h4>
+    <form th:action="@{/logout}" th:method="post">
+        <input type="submit" value="注销">
+    </form>
+</div>
 <hr>
 
-<h3>普通秘籍</h3>
-<ul>
-    <li><a th:href="@{/level1/1}">罗汉拳</a></li>
-    <li><a th:href="@{/level1/2}">马步双提拳</a></li>
-    <li><a th:href="@{/level1/3}">天马流星拳</a></li>
-</ul>
-<hr>
+<!--如果有vip1权限则进行显示-->
+<div sec:authorize="hasRole('vip1')">
+    <h3>普通秘籍</h3>
+    <ul>
+        <li><a th:href="@{/level1/1}">罗汉拳</a></li>
+        <li><a th:href="@{/level1/2}">马步双提拳</a></li>
+        <li><a th:href="@{/level1/3}">天马流星拳</a></li>
+    </ul>
+</div>
 
-<h3>中级秘籍</h3>
-<ul>
-    <li><a th:href="@{/level2/1}">太极拳</a></li>
-    <li><a th:href="@{/level2/2}">七伤拳</a></li>
-    <li><a th:href="@{/level2/3}">梯云纵</a></li>
-</ul>
-<hr>
+<!--如果有vip2权限则进行显示-->
+<div sec:authorize="hasRole('vip2')">
+    <h3>中级秘籍</h3>
+    <ul>
+        <li><a th:href="@{/level2/1}">太极拳</a></li>
+        <li><a th:href="@{/level2/2}">七伤拳</a></li>
+        <li><a th:href="@{/level2/3}">梯云纵</a></li>
+    </ul>
+</div>
 
-<h3>高级秘籍</h3>
-<ul>
-    <li><a th:href="@{/level3/1}">葵花宝典</a></li>
-    <li><a th:href="@{/level3/2}">龟派气功</a></li>
-    <li><a th:href="@{/level3/3}">独孤九剑</a></li>
-</ul>
-<hr>
-
+<!--如果有vip3权限则进行显示-->
+<div sec:authorize="hasRole('vip3')">
+    <h3>高级秘籍</h3>
+    <ul>
+        <li><a th:href="@{/level3/1}">葵花宝典</a></li>
+        <li><a th:href="@{/level3/2}">龟派气功</a></li>
+        <li><a th:href="@{/level3/3}">独孤九剑</a></li>
+    </ul>
+</div>
 </body>
 </html>

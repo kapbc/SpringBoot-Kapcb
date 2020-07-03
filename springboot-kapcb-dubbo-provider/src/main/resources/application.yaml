@@ -1,0 +1,10 @@
+dubbo:
+  application:
+    name: springboot-kapcb-dubbo-provider
+  registry:
+    address: ${your.server.address}:2181
+    protocol: zookeeper
+  protocol:
+    name: dubbo
+    port: 20880
+

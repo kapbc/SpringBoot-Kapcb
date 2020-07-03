@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
@@ -7,5 +7,14 @@
 <body>
 <a onclick="javascript:history.back(-1)">返回上一页</a>
 <h1>登录页</h1>
+<form th:method="post" th:action="@{/userLogin}">
+    <label>用户名:</label>
+    <input type="text" name="user"><br/>
+    <label>密码:</label>
+    <input type="password" name="pwd"><br/>
+    <input type="checkbox" name="remember">记住我<br/>
+    <input type="submit" value="确定">
+    <input type="reset" value="重置">
+</form>
 </body>
 </html>

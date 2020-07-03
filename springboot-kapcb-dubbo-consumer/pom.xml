@@ -9,44 +9,28 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.kapcb</groupId>
-    <artifactId>springboot-kapcb-springsecurity</artifactId>
+    <artifactId>springboot-kapcb-dubbo-consumer</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>springboot-kapcb-springsecurity</name>
-    <description>springboot-kapcb-springsecurity</description>
+    <name>springboot-kapcb-dubbo-consumer</name>
+    <description>springboot-kapcb-dubbo-consumer</description>
 
     <properties>
         <java.version>1.8</java.version>
     </properties>
 
     <dependencies>
-        <!--thymeleaf模板引擎-->
+        <dependency>
+            <groupId>com.kapcb</groupId>
+            <artifactId>springboot-kapcb-dubbo-interface</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            <artifactId>spring-boot-starter</artifactId>
         </dependency>
-        <!--spring-web-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <!--spring-security-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
-        <!--thymeleaf-springsecurity5支持-->
-        <dependency>
-            <groupId>org.thymeleaf.extras</groupId>
-            <artifactId>thymeleaf-extras-springsecurity5</artifactId>
-            <version>3.0.4.RELEASE</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
         </dependency>
     </dependencies>
 
