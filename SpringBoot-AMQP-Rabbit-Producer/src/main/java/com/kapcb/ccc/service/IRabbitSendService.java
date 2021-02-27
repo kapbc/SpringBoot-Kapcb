@@ -1,6 +1,6 @@
 package com.kapcb.ccc.service;
 
-import org.springframework.amqp.core.Correlation;
+import org.springframework.amqp.rabbit.connection.CorrelationData;
 
 /**
  * <a>Title: IRabiitSendService </a>
@@ -26,13 +26,13 @@ public interface IRabbitSendService {
     /**
      * send direct message with correlation
      *
-     * @param exchange    String
-     * @param routingKey  String
-     * @param message     String
-     * @param correlation Correlation
+     * @param exchange        String
+     * @param routingKey      String
+     * @param message         String
+     * @param correlationData CorrelationData
      * @return boolean
      */
-    boolean sendDirectMessage(String exchange, String routingKey, Object message, Correlation correlation);
+    boolean sendDirectMessage(String exchange, String routingKey, Object message, CorrelationData correlationData);
 
     /**
      * send fanout message
@@ -47,13 +47,13 @@ public interface IRabbitSendService {
     /**
      * send fanout message with correlation
      *
-     * @param exchange    String
-     * @param routingKey  String
-     * @param message     String
-     * @param correlation Correlation
+     * @param exchange        String
+     * @param routingKey      String
+     * @param message         String
+     * @param correlationData CorrelationData
      * @return boolean
      */
-    boolean sendFanoutMessage(String exchange, String routingKey, Object message, Correlation correlation);
+    boolean sendFanoutMessage(String exchange, String routingKey, Object message, CorrelationData correlationData);
 
     /**
      * send topic message
@@ -68,11 +68,11 @@ public interface IRabbitSendService {
     /**
      * send topic message correlation
      *
-     * @param exchange    String
-     * @param routingKey  String
-     * @param message     String
-     * @param correlation Correlation
+     * @param exchange        String
+     * @param routingKey      String
+     * @param message         String
+     * @param correlationData CorrelationData
      * @return boolean
      */
-    boolean sendTopicMessage(String exchange, String routingKey, Object message, Correlation correlation);
+    boolean sendTopicMessage(String exchange, String routingKey, Object message, CorrelationData correlationData);
 }

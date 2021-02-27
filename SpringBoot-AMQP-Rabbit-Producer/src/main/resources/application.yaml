@@ -7,3 +7,7 @@ spring:
     password: 123456
     virtual-host: host
     host: 127.0.0.1
+    # 确认消息已发送到交换机(Exchange)
+    publisher-confirm-type: correlated
+    # 确认消息已发送到队列(Queue)
+    publisher-returns: true

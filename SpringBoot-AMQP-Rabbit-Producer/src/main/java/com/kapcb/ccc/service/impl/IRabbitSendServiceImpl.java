@@ -2,7 +2,7 @@ package com.kapcb.ccc.service.impl;
 
 import com.kapcb.ccc.service.IRabbitSendService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.amqp.core.Correlation;
+import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -29,31 +29,65 @@ public class IRabbitSendServiceImpl implements IRabbitSendService {
 
     @Override
     public boolean sendDirectMessage(String exchange, String routingKey, Object message) {
+        try {
+            rabbitTemplate.convertAndSend(exchange, routingKey, message);
+            return true;
+        } catch (Exception e) {
+            log.error("send direct message error, the exception message is : " + e.getMessage());
+        }
         return false;
     }
 
     @Override
-    public boolean sendDirectMessage(String exchange, String routingKey, Object message, Correlation correlation) {
+    public boolean sendDirectMessage(String exchange, String routingKey, Object message, CorrelationData correlationData) {
+        try {
+            rabbitTemplate.convertAndSend(exchange, routingKey, message, correlationData);
+        } catch (Exception e) {
+            log.error("send direct message error, the exception message is : " + e.getMessage());
+        }
         return false;
     }
 
     @Override
     public boolean sendFanoutMessage(String exchange, String routingKey, Object message) {
+        try {
+            rabbitTemplate.convertAndSend(exchange, routingKey, message);
+            return true;
+        } catch (Exception e) {
+            log.error("send fanout message error, the exception message is : " + e.getMessage());
+        }
         return false;
     }
 
     @Override
-    public boolean sendFanoutMessage(String exchange, String routingKey, Object message, Correlation correlation) {
+    public boolean sendFanoutMessage(String exchange, String routingKey, Object message, CorrelationData correlationData) {
+        try {
+            rabbitTemplate.convertAndSend(exchange, routingKey, message, correlationData);
+        } catch (Exception e) {
+            log.error("send fanout message error, the exception message is : " + e.getMessage());
+        }
         return false;
     }
 
     @Override
     public boolean sendTopicMessage(String exchange, String routingKey, Object message) {
+        try {
+            rabbitTemplate.convertAndSend(exchange, routingKey, message);
+            return true;
+        } catch (Exception e) {
+            log.error("send topic message error, the exception message is : " + e.getMessage());
+        }
         return false;
     }
 
     @Override
-    public boolean sendTopicMessage(String exchange, String routingKey, Object message, Correlation correlation) {
+    public boolean sendTopicMessage(String exchange, String routingKey, Object message, CorrelationData correlationData) {
+        try {
+            rabbitTemplate.convertAndSend(exchange, routingKey, message, correlationData);
+            return true;
+        } catch (Exception e) {
+            log.error("send topic message error, the exception message is : " + e.getMessage());
+        }
         return false;
     }
 }
