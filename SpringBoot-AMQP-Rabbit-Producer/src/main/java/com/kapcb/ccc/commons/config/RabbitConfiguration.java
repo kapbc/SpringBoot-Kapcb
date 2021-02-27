@@ -47,34 +47,51 @@ public class RabbitConfiguration {
     public RabbitTemplate createRabbitTemplate(ConnectionFactory connectionFactory) {
         RabbitTemplate rabbitTemplate = new RabbitTemplate();
         rabbitTemplate.setConnectionFactory(connectionFactory);
+
         /**
          * 设置开启Mandatory才能触发回调函数，无论推送消息结果如何都强制调用回调函数
+         * 触发setReturnCallback回调必须设置mandatory=true, 否则Exchange没有找到Queue就会丢弃掉消息, 而不会触发回调
          */
         rabbitTemplate.setMandatory(true);
+
+        /**
+         * producer ---> exchange 消息发送确认回调方法
+         * 如果消息没有到exchange,则confirm回调,ack=false
+         * 如果消息到达exchange,则confirm回调,ack=true
+         */
         rabbitTemplate.setConfirmCallback((correlationData, ack, cause) -> {
             log.info("RabbitConfirmCallback        correlationData : " + correlationData);
             log.info("RabbitConfirmCallback        ack : " + ack);
             log.info("RabbitConfirmCallback        cause : " + cause);
-
+            StringBuilder alertMessage = new StringBuilder();
+            alertMessage
+                    .append("the correlationId is : ")
+                    .append(correlationData.getId())
+                    .append(", the message is already send to exchange : ")
+                    .append(ack);
             if (ack) {
-                if (correlationData!=null){
-                    String id = correlationData.getId();
-                    SettableListenableFuture<CorrelationData.Confirm> future = correlationData.getFuture();
-                    Message returnedMessage = correlationData.getReturnedMessage();
-                    Class<? extends CorrelationData> aClass = correlationData.getClass();
-                    log.info("the correlationData's id is : " + id);
-                    log.info("the correlationData's future is : " + future);
-                    log.info("the correlationData's returnedMessage is : " + returnedMessage);
-                    log.info("the correlationData's aClass is : " + aClass);
-                }
+                String id = correlationData.getId();
+                SettableListenableFuture<CorrelationData.Confirm> future = correlationData.getFuture();
+                Message returnedMessage = correlationData.getReturnedMessage();
+                Class<? extends CorrelationData> aClass = correlationData.getClass();
+                log.info("the correlationData's id is : " + id);
+                log.info("the correlationData's future is : " + future);
+                log.info("the correlationData's returnedMessage is : " + returnedMessage);
+                log.info("the correlationData's aClass is : " + aClass);
             } else {
                 /**
                  * 失败进行具体的后续处理：重试 或者补偿等手段
                  */
                 log.info("send message to rabbitmq exchange error!");
+                alertMessage.append("send message to exchange fail, the reason is : ").append(cause);
             }
+            log.info("the producer send message to exchange ,the confirm callback message is : " + alertMessage.toString());
         });
 
+        /**
+         * 确保消息成功发送 confirm 模式 如果失败则可以按照自己逻辑处理保存到数据库失败发送表 可后续做补偿
+         * 确保消息成功消费 ack 手动应答  失败时按业务 选择从新投递或者丢弃
+         */
         rabbitTemplate.setReturnCallback((message, replyCode, replyText, exchange, routingKey) -> {
             log.info("RabbitReturnCallback        message : " + message);
             log.info("RabbitReturnCallback        replyCode : " + replyCode);

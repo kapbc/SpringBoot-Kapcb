@@ -27,10 +27,19 @@ public class IRabbitSendServiceImpl implements IRabbitSendService {
         this.rabbitTemplate = rabbitTemplate;
     }
 
+    /**
+     * convertSendAndReceive: 有序发送有序消费
+     * convertAndSend: 无序发送无序消费
+     *
+     * @param exchange   String
+     * @param routingKey String
+     * @param message    String
+     * @return boolean
+     */
     @Override
     public boolean sendDirectMessage(String exchange, String routingKey, Object message) {
         try {
-            rabbitTemplate.convertAndSend(exchange, routingKey, message);
+            rabbitTemplate.convertSendAndReceive(exchange, routingKey, message);
             return true;
         } catch (Exception e) {
             log.error("send direct message error, the exception message is : " + e.getMessage());
@@ -38,6 +47,16 @@ public class IRabbitSendServiceImpl implements IRabbitSendService {
         return false;
     }
 
+    /**
+     * 使用 convertAndSend 方法时的结果：输出时没有顺序，不需要等待，直接运行
+     * 使用 convertSendAndReceive 方法时的结果：输出有顺序 只有确定消费者接收到消息，才会发送下一条信息，每条消息之间会有等待间隔时间
+     *
+     * @param exchange        String
+     * @param routingKey      String
+     * @param message         String
+     * @param correlationData CorrelationData
+     * @return boolean
+     */
     @Override
     public boolean sendDirectMessage(String exchange, String routingKey, Object message, CorrelationData correlationData) {
         try {
