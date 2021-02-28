@@ -28,14 +28,23 @@ import java.util.Map;
 public class RabbitDirectReceiverOne {
 
     @RabbitHandler
-    @RabbitListener(queues = "")
-    public void process(Map<String, Object> message) {
+    @RabbitListener(queues = "directQueueOne")
+    public void process(@Payload Map<String, Object> message, Channel channel, @Headers Map<String, Object> headers) {
         log.info("the message from rabbit direct is : " + message);
+        log.info("the message channel is : " + channel);
+        log.info("the message headers is : " + headers);
+        try {
+            channel.basicAck((Long) headers.get(AmqpHeaders.DELIVERY_TAG), false);
+            log.info("the consumer have received the message!");
+        } catch (IOException e) {
+            log.info("the consumer received the message fail");
+            e.printStackTrace();
+        }
     }
 
-    @RabbitHandler
-    @RabbitListener(queues = "")
-    public void process(Message message,Channel channel) {
-
-    }
+//    @RabbitHandler
+//    @RabbitListener(queues = "")
+//    public void process(Message message,Channel channel) {
+//
+//    }
 }

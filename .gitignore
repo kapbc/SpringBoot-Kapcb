@@ -13,4 +13,5 @@ buildNumber.properties
 .idea
 **/target
 **/*.iml
+log
 

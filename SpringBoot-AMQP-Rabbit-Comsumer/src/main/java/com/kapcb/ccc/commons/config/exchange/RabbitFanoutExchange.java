@@ -6,8 +6,10 @@ import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.FanoutExchange;
 import org.springframework.amqp.core.Queue;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 /**
  * <a>Title: RabbitFanoutExchange </a>
@@ -20,30 +22,43 @@ import org.springframework.context.annotation.Configuration;
  */
 @Slf4j
 @Configuration
+@PropertySource(value = {"classpath:properties/rabbit.properties"}, ignoreResourceNotFound = true, encoding = "UTF-8")
 public class RabbitFanoutExchange {
+
+    @Value(value = "${rabbit.mq.fanout.exchange.one}")
+    private String fanoutExchangeOne;
+
+    @Value(value = "${rabbit.mq.fanout.queue.one}")
+    private String fanoutQueueOne;
+
+    @Value(value = "${rabbit.mq.fanout.queue.two}")
+    private String fanoutQueueTwo;
+
+    @Value(value = "${rabbit.mq.fanout.queue.Three}")
+    private String fanoutQueueThree;
 
     @Bean(value = "fanoutExchangeOne")
     public FanoutExchange fanoutExchangeOne() {
         log.info("begin to create rabbit exchange bean of fanoutExchangeOne...");
-        return new FanoutExchange("fanoutExchangeOne", true, false);
+        return new FanoutExchange(fanoutExchangeOne, true, false);
     }
 
     @Bean(value = "fanoutQueueOne")
     public Queue fanoutQueueOne() {
         log.info("begin to create rabbit queue bean of fanoutQueueOne...");
-        return new Queue("fanoutQueueOne", true, false, false);
+        return new Queue(fanoutQueueOne, true, false, false);
     }
 
     @Bean(value = "fanoutQueueTwo")
     public Queue fanoutQueueTwo() {
         log.info("begin to create rabbit queue bean of fanoutQueueTwo...");
-        return new Queue("fanoutQueueTwo", true, false, false);
+        return new Queue(fanoutQueueTwo, true, false, false);
     }
 
     @Bean(value = "fanoutQueueThree")
     public Queue fanoutQueueThree() {
         log.info("begin to create rabbit queue bean of fanoutQueueThree...");
-        return new Queue("fanoutQueueThree", true, false, false);
+        return new Queue(fanoutQueueThree, true, false, false);
     }
 
     @Bean

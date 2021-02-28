@@ -74,6 +74,7 @@ public class RabbitConfiguration {
                     log.info("the correlationData's future is : " + future);
                     log.info("the correlationData's returnedMessage is : " + returnedMessage);
                     log.info("the correlationData's aClass is : " + aClass);
+                    log.info("the rabbit exchange have received the message!");
                 }
             } else {
                 /**
@@ -86,6 +87,8 @@ public class RabbitConfiguration {
         });
 
         /**
+         * 当消息从交换机到队列失败时，该方法被调用。（若成功，则不调用）
+         * 需要注意的是：该方法调用后，MsgSendConfirmCallBack中的confirm方法也会被调用，且ack = true
          * 确保消息成功发送 confirm 模式 如果失败则可以按照自己逻辑处理保存到数据库失败发送表 可后续做补偿
          * 确保消息成功消费 ack 手动应答  失败时按业务 选择从新投递或者丢弃
          */
@@ -95,6 +98,7 @@ public class RabbitConfiguration {
             log.info("RabbitReturnCallback        replyText : " + replyText);
             log.info("RabbitReturnCallback        exchange : " + exchange);
             log.info("RabbitReturnCallback        routingKey : " + routingKey);
+            log.info("the message consumer have received the message!");
         });
 
         rabbitTemplate.setMessageConverter(messageConverter());
