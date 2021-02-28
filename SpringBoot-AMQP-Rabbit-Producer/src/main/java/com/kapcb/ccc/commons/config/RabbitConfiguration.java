@@ -43,7 +43,7 @@ public class RabbitConfiguration {
      * @return RabbitTemplate
      */
     @Bean(value = "rabbitTemplate")
-    @Scope(value = "pro")
+    @Scope(value = "prototype")
     public RabbitTemplate createRabbitTemplate(ConnectionFactory connectionFactory) {
         RabbitTemplate rabbitTemplate = new RabbitTemplate();
         rabbitTemplate.setConnectionFactory(connectionFactory);
@@ -64,28 +64,25 @@ public class RabbitConfiguration {
             log.info("RabbitConfirmCallback        ack : " + ack);
             log.info("RabbitConfirmCallback        cause : " + cause);
             StringBuilder alertMessage = new StringBuilder();
-            alertMessage
-                    .append("the correlationId is : ")
-                    .append(correlationData.getId())
-                    .append(", the message is already send to exchange : ")
-                    .append(ack);
             if (ack) {
-                String id = correlationData.getId();
-                SettableListenableFuture<CorrelationData.Confirm> future = correlationData.getFuture();
-                Message returnedMessage = correlationData.getReturnedMessage();
-                Class<? extends CorrelationData> aClass = correlationData.getClass();
-                log.info("the correlationData's id is : " + id);
-                log.info("the correlationData's future is : " + future);
-                log.info("the correlationData's returnedMessage is : " + returnedMessage);
-                log.info("the correlationData's aClass is : " + aClass);
+                if (correlationData != null) {
+                    String id = correlationData.getId();
+                    SettableListenableFuture<CorrelationData.Confirm> future = correlationData.getFuture();
+                    Message returnedMessage = correlationData.getReturnedMessage();
+                    Class<? extends CorrelationData> aClass = correlationData.getClass();
+                    log.info("the correlationData's id is : " + id);
+                    log.info("the correlationData's future is : " + future);
+                    log.info("the correlationData's returnedMessage is : " + returnedMessage);
+                    log.info("the correlationData's aClass is : " + aClass);
+                }
             } else {
                 /**
                  * 失败进行具体的后续处理：重试 或者补偿等手段
                  */
                 log.info("send message to rabbitmq exchange error!");
                 alertMessage.append("send message to exchange fail, the reason is : ").append(cause);
+                log.info("the producer send message to exchange ,the confirm callback message is : " + alertMessage.toString());
             }
-            log.info("the producer send message to exchange ,the confirm callback message is : " + alertMessage.toString());
         });
 
         /**

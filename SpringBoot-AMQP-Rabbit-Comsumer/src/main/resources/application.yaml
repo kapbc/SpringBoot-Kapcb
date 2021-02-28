@@ -1,2 +1,17 @@
 server:
   port: 8082
+spring:
+  rabbitmq:
+    port: 5672
+    username: admin
+    password: 123456
+    virtual-host: my_vhost
+    host: 192.168.80.131
+    # 确认消息已发送到交换机(Exchange)
+    publisher-confirm-type: correlated
+    # 确认消息已发送到队列(Queue)
+    publisher-returns: true
+    listener:
+      direct:
+        # 消息开启手动确认
+        acknowledge-mode: manual

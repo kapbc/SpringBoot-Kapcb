@@ -3,7 +3,7 @@ package com.kapcb.ccc.service;
 import org.springframework.amqp.rabbit.connection.CorrelationData;
 
 /**
- * <a>Title: IRabiitSendService </a>
+ * <a>Title: IRabbitSendService </a>
  * <a>Author: kapcb <a>
  * <a>Description: <a>
  *
