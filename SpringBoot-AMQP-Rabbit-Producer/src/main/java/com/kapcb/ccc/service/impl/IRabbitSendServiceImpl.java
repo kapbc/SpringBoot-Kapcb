@@ -7,6 +7,9 @@ import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Map;
+import java.util.UUID;
+
 /**
  * <a>Title: IRabbitSendServiceImpl </a>
  * <a>Author: kapcb <a>
@@ -39,7 +42,11 @@ public class IRabbitSendServiceImpl implements IRabbitSendService {
     @Override
     public boolean sendDirectMessage(String exchange, String routingKey, Object message) {
         try {
-            rabbitTemplate.convertSendAndReceive(exchange, routingKey, message);
+            String messageId = UUID.randomUUID().toString();
+            CorrelationData correlationData = new CorrelationData();
+            correlationData.setId(messageId);
+            log.info("the messageId is : " + messageId);
+            rabbitTemplate.convertSendAndReceive(exchange, routingKey, message, correlationData);
             return true;
         } catch (Exception e) {
             log.error("send direct message error, the exception message is : " + e.getMessage());
@@ -58,8 +65,11 @@ public class IRabbitSendServiceImpl implements IRabbitSendService {
      * @return boolean
      */
     @Override
-    public boolean sendDirectMessage(String exchange, String routingKey, Object message, CorrelationData correlationData) {
+    public boolean sendDirectMessage(String exchange, String routingKey, Map<String, Object> message, CorrelationData correlationData) {
         try {
+            String messageId = UUID.randomUUID().toString();
+            correlationData.setId(messageId);
+            log.info("the messageId is : " + messageId);
             rabbitTemplate.convertAndSend(exchange, routingKey, message, correlationData);
         } catch (Exception e) {
             log.error("send direct message error, the exception message is : " + e.getMessage());
@@ -70,6 +80,10 @@ public class IRabbitSendServiceImpl implements IRabbitSendService {
     @Override
     public boolean sendFanoutMessage(String exchange, String routingKey, Object message) {
         try {
+            String messageId = UUID.randomUUID().toString();
+            CorrelationData correlationData = new CorrelationData();
+            correlationData.setId(messageId);
+            log.info("the messageId is : " + messageId);
             rabbitTemplate.convertAndSend(exchange, routingKey, message);
             return true;
         } catch (Exception e) {
@@ -81,6 +95,9 @@ public class IRabbitSendServiceImpl implements IRabbitSendService {
     @Override
     public boolean sendFanoutMessage(String exchange, String routingKey, Object message, CorrelationData correlationData) {
         try {
+            String messageId = UUID.randomUUID().toString();
+            correlationData.setId(messageId);
+            log.info("the messageId is : " + messageId);
             rabbitTemplate.convertAndSend(exchange, routingKey, message, correlationData);
         } catch (Exception e) {
             log.error("send fanout message error, the exception message is : " + e.getMessage());
@@ -91,6 +108,10 @@ public class IRabbitSendServiceImpl implements IRabbitSendService {
     @Override
     public boolean sendTopicMessage(String exchange, String routingKey, Object message) {
         try {
+            String messageId = UUID.randomUUID().toString();
+            CorrelationData correlationData = new CorrelationData();
+            correlationData.setId(messageId);
+            log.info("the messageId is : " + messageId);
             rabbitTemplate.convertAndSend(exchange, routingKey, message);
             return true;
         } catch (Exception e) {
@@ -102,6 +123,9 @@ public class IRabbitSendServiceImpl implements IRabbitSendService {
     @Override
     public boolean sendTopicMessage(String exchange, String routingKey, Object message, CorrelationData correlationData) {
         try {
+            String messageId = UUID.randomUUID().toString();
+            correlationData.setId(messageId);
+            log.info("the messageId is : " + messageId);
             rabbitTemplate.convertAndSend(exchange, routingKey, message, correlationData);
             return true;
         } catch (Exception e) {

@@ -71,11 +71,11 @@ public class User implements Serializable {
     }
 
     public static class Builder {
-        private int age;
-        private Long userId;
-        private String email;
-        private String username;
-        private String password;
+        private int age = 0;
+        private Long userId = 0L;
+        private String email = "";
+        private String username = "";
+        private String password = "";
 
         public Builder() {
         }

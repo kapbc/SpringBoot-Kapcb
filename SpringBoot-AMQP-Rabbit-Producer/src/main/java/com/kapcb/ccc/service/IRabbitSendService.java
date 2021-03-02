@@ -2,6 +2,8 @@ package com.kapcb.ccc.service;
 
 import org.springframework.amqp.rabbit.connection.CorrelationData;
 
+import java.util.Map;
+
 /**
  * <a>Title: IRabbitSendService </a>
  * <a>Author: kapcb <a>
@@ -32,7 +34,7 @@ public interface IRabbitSendService {
      * @param correlationData CorrelationData
      * @return boolean
      */
-    boolean sendDirectMessage(String exchange, String routingKey, Object message, CorrelationData correlationData);
+    boolean sendDirectMessage(String exchange, String routingKey, Map<String, Object> message, CorrelationData correlationData);
 
     /**
      * send fanout message

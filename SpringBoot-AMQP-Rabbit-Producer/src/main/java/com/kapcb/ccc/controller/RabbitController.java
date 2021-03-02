@@ -1,5 +1,6 @@
 package com.kapcb.ccc.controller;
 
+import com.kapcb.ccc.commons.domain.User;
 import com.kapcb.ccc.service.IRabbitSendService;
 import com.kapcb.ccc.service.impl.IRabbitSendServiceImpl;
 import lombok.extern.slf4j.Slf4j;
@@ -87,5 +88,15 @@ public class RabbitController {
         log.info("the correlationData is : " + correlationData);
         rabbitSendService.sendDirectMessage(directExchangeOne, directRoutingKeyOne, messageMap, correlationData);
         return SUCCESS_RETURN_VALUE;
+    }
+
+    @GetMapping(value = "fanout/{name}", produces = "application/json;charset=UTF-8")
+    public String sendFanoutMessage(@PathVariable(value = "name") String name) {
+        log.info("the path variable name is : " + name);
+        log.info("begin to process send message to direct exchange!");
+        User kapcb = new User.Builder().userId(1L).age(12).username("kapcb").build();
+        log.info("the user is : " + kapcb);
+        rabbitSendService.sendFanoutMessage("businessExchange", null, kapcb);
+        return "success";
     }
 }
