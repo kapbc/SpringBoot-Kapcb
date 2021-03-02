@@ -1,14 +1,11 @@
 package com.kapcb.ccc.service.rabbit.direct;
 
+import com.kapcb.ccc.commons.utils.JsonUtil;
 import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.impl.AMQBasicProperties;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
-import org.springframework.amqp.support.AmqpHeaders;
-import org.springframework.messaging.handler.annotation.Headers;
-import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -29,16 +26,16 @@ public class RabbitDirectReceiverOne {
 
     @RabbitHandler
     @RabbitListener(queues = "directQueueOne")
-    public void process(@Payload Map<String, Object> message, Channel channel, @Headers Map<String, Object> headers) {
-        log.info("the message from rabbit direct is : " + message);
-        log.info("the message channel is : " + channel);
-        log.info("the message headers is : " + headers);
+    public void process(Message message, Channel channel) throws IOException {
+        log.info("the message from rabbit direct is : " + new String(message.getBody()));
         try {
-            channel.basicAck((Long) headers.get(AmqpHeaders.DELIVERY_TAG), false);
+            Map<String, Object> messageMap = JsonUtil.convertByteArrayToObject(message.getBody(), Map.class);
+            log.info("the message object is : " + messageMap);
+            channel.basicAck(message.getMessageProperties().getDeliveryTag(), false);
             log.info("the consumer have received the message!");
         } catch (IOException e) {
+            channel.basicNack(message.getMessageProperties().getDeliveryTag(), false, false);
             log.info("the consumer received the message fail");
-            e.printStackTrace();
         }
     }
 

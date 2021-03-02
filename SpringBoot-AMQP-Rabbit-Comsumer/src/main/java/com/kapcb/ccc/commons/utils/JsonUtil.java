@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.platform.commons.util.StringUtils;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -20,7 +21,7 @@ import java.util.Objects;
  *
  * @author kapcb
  * @version 1.0.0
- * @date 2021/2/27 13:33
+ * @date 2021/2/27 12:28
  */
 @Slf4j
 public class JsonUtil {
@@ -28,6 +29,7 @@ public class JsonUtil {
     private JsonUtil() {
     }
 
+    private static final String EMPTY_RETURN_VALUE = "{}";
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     static {
@@ -46,12 +48,32 @@ public class JsonUtil {
      */
     public static <T> String convertObjectToString(T object) {
         if (Objects.equals(null, object)) {
-            return null;
+            return EMPTY_RETURN_VALUE;
         }
         String convertResult = null;
         try {
             return object instanceof String ? (String) object : OBJECT_MAPPER.writeValueAsString(object);
         } catch (JsonProcessingException e) {
+            log.error("json process error, the exception is : " + e.getMessage());
+            return EMPTY_RETURN_VALUE;
+        }
+    }
+
+    /**
+     * convert amqp message to object bean
+     *
+     * @param bytes byte[]
+     * @param clazz Class<? extends T>
+     * @param <T>   <T>
+     * @return T
+     */
+    public static <T> T convertByteArrayToObject(byte[] bytes, Class<? extends T> clazz) {
+        if (Objects.equals(null, bytes)) {
+            return null;
+        }
+        try {
+            return Objects.equals(String.class, clazz) ? (T) new String(bytes) : OBJECT_MAPPER.readValue(bytes, clazz);
+        } catch (IOException e) {
             log.error("json process error, the exception is : " + e.getMessage());
             return null;
         }
@@ -141,7 +163,7 @@ public class JsonUtil {
         public JsonBuilder() {
         }
 
-        public JsonUtil.JsonBuilder put(String key, Object value) {
+        public JsonBuilder put(String key, Object value) {
             builderMap.put(key, value);
             return this;
         }

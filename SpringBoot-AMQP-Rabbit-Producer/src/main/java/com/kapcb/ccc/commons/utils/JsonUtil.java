@@ -29,6 +29,7 @@ public class JsonUtil {
     private JsonUtil() {
     }
 
+    private static final String EMPTY_RETURN_VALUE = "{}";
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     static {
@@ -47,17 +48,25 @@ public class JsonUtil {
      */
     public static <T> String convertObjectToString(T object) {
         if (Objects.equals(null, object)) {
-            return null;
+            return EMPTY_RETURN_VALUE;
         }
         String convertResult = null;
         try {
             return object instanceof String ? (String) object : OBJECT_MAPPER.writeValueAsString(object);
         } catch (JsonProcessingException e) {
             log.error("json process error, the exception is : " + e.getMessage());
-            return null;
+            return EMPTY_RETURN_VALUE;
         }
     }
 
+    /**
+     * convert amqp message to object bean
+     *
+     * @param bytes byte[]
+     * @param clazz Class<? extends T>
+     * @param <T>   <T>
+     * @return T
+     */
     public static <T> T convertByteArrayToObject(byte[] bytes, Class<? extends T> clazz) {
         if (Objects.equals(null, bytes)) {
             return null;
