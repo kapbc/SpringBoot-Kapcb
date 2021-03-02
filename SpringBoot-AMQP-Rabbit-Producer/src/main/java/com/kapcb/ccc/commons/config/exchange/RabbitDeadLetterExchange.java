@@ -72,6 +72,13 @@ public class RabbitDeadLetterExchange {
         return BindingBuilder.bind(queue).to(fanoutExchange);
     }
 
+    @Bean
+    public Binding deadLetterQueueBindingOne(@Qualifier(value = "deadLetterQueueOne") Queue queue, @Qualifier(value = "businessExchange") FanoutExchange fanoutExchange) {
+        return BindingBuilder.bind(queue).to(fanoutExchange);
+    }
 
-
+    @Bean
+    public Binding deadLetterQueueBindingTwo(@Qualifier(value = "deadLetterQueueTwo") Queue queue, @Qualifier(value = "deadLetterExchange") FanoutExchange fanoutExchange) {
+        return BindingBuilder.bind(queue).to(fanoutExchange);
+    }
 }

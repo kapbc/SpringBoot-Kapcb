@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.platform.commons.util.StringUtils;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -52,6 +53,18 @@ public class JsonUtil {
         try {
             return object instanceof String ? (String) object : OBJECT_MAPPER.writeValueAsString(object);
         } catch (JsonProcessingException e) {
+            log.error("json process error, the exception is : " + e.getMessage());
+            return null;
+        }
+    }
+
+    public static <T> T convertByteArrayToObject(byte[] bytes, Class<? extends T> clazz) {
+        if (Objects.equals(null, bytes)) {
+            return null;
+        }
+        try {
+            return Objects.equals(String.class, clazz) ? (T) new String(bytes) : OBJECT_MAPPER.readValue(bytes, clazz);
+        } catch (IOException e) {
             log.error("json process error, the exception is : " + e.getMessage());
             return null;
         }
