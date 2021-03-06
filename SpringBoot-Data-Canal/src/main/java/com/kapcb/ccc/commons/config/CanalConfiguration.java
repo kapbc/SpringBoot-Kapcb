@@ -1,6 +1,10 @@
 package com.kapcb.ccc.commons.config;
 
+import com.alibaba.otter.canal.client.CanalConnector;
+import com.kapcb.ccc.commons.properties.CanalProperties;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -15,5 +19,11 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 @Configuration
 public class CanalConfiguration {
+
+    @Bean
+    @ConditionalOnBean(name = "canalProperties")
+    public CanalConnector canalConnector(CanalProperties canalProperties) {
+
+    }
 
 }
