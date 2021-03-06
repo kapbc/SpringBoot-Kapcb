@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.core.RedisTemplate;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -322,7 +323,7 @@ public class RedisService {
             return redisTemplate.opsForSet().members(key);
         } catch (Exception e) {
             log.error(e.getMessage(), e);
-            return null;
+            return Collections.emptySet();
         }
     }
 
@@ -423,7 +424,7 @@ public class RedisService {
             return redisTemplate.opsForList().range(key, start, end);
         } catch (Exception e) {
             log.error(e.getMessage(), e);
-            return null;
+            return Collections.emptyList();
         }
     }
 
