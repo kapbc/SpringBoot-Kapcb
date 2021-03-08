@@ -8,7 +8,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
  * <a>Title: CanalApplication </a>
  * <a>Author: kapcb <a>
  * <a>Description: <a>
- *
+ * https://gitee.com/hf-hf/mail-micro-service
  * @author kapcb
  * @version 1.0.0
  * @date 2021/3/6 9:24
