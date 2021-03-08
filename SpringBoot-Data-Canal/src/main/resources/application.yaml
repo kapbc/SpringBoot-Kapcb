@@ -29,3 +29,9 @@ spring:
     max-pool-prepared-statement-per-connection-size: 20
     use-global-data-source-stat: true
     connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+canal:
+  client:
+    instances:
+      test:
+        host: 
+        port: 11111
