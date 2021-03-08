@@ -15,7 +15,7 @@ import java.net.InetSocketAddress;
  * <a>Title: CanalConfiguration </a>
  * <a>Author: kapcb <a>
  * <a>Description: <a>
- *
+ * https://blog.csdn.net/leilei1366615/article/details/108819651
  * @author kapcb
  * @version 1.0.0
  * @date 2021/3/6 9:35
