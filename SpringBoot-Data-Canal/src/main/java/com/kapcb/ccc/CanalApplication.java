@@ -13,6 +13,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
  * @version 1.0.0
  * @date 2021/3/6 9:24
  */
+@EnableCanalClient
 @SpringBootApplication
 public class CanalApplication {
 
