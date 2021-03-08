@@ -115,6 +115,7 @@
          
              <build>
         <plugins>
+                 <!--pom包不需要这个-->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
@@ -134,6 +135,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
+                                 <!--如果是pom包，写NONE即可，如果是jar包就写启动类的路径即可-->
                             <mainClass>com.globalsources.order.OrderApplication</mainClass>
                         </manifest>
                     </archive>
