@@ -1,0 +1,31 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: SpringBoot-Data-Canal
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://192.168.80.131:3306/study?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 进行数据源的指定
+    type: com.alibaba.druid.pool.DruidDataSource
+
+    initial-size: 5
+    max-active: 20
+    max-wait: 60000
+    time-between-eviction-runs-millis: 60000
+    min-evictable-idle-time-millis: 300000
+    validation-query: SELECT 1 from DUAL
+    test-on-return: false
+    test-on-borrow: true
+    test-while-idle: true
+    pool-prepared-statements: true
+
+    #配置监控统计拦截的filters，stat:监控统计、log4j：日志记录、wall：防御sql注入
+    #如果运行时报错  java.lang.ClassNotFoundException: org.apache.log4j.Priority
+    #则导入 log4j 依赖即可，Maven 地址： https://mvnrepository.com/artifact/log4j/log4j
+    filters: stat,wall,log4j
+    max-pool-prepared-statement-per-connection-size: 20
+    use-global-data-source-stat: true
+    connection-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
