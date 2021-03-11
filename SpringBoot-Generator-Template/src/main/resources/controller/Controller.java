@@ -16,6 +16,7 @@ import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -36,6 +38,7 @@ import java.util.List;
  * @date 2021/3/3-17:25
  */
 @Slf4j
+@Validated
 @CrossOrigin
 @RefreshScope
 @RestController
@@ -50,7 +53,7 @@ public class ${Table}Controller {
 
     /***
      * ${Table}分页条件搜索实现
-     * @param ${table}
+     * @param ${table} ${table}
      * @param page:当前页
      * @param size:每页显示多少条
      * @return Result<PageInfo>
@@ -63,7 +66,7 @@ public class ${Table}Controller {
     })
     </#if>
     @PostMapping(value = "/search/{page}/{size}" )
-    public Result<PageInfo> findPage(@RequestBody(required = false) <#if swagger==true>@ApiParam(name = "${Table}对象",value = "传入JSON数据",required = false)</#if> ${Table} ${table}, @PathVariable  int page, @PathVariable  int size){
+    public Result<PageInfo> findPage(@RequestBody(required = false) <#if swagger==true>@ApiParam(name = "${Table}对象",value = "传入JSON数据",required = false)</#if> @Valid ${Table} ${table}, @PathVariable  int page, @PathVariable  int size){
         log.info("come into ${Table}Controller's findPage method");
         PageInfo<${Table}> pageInfo = ${table}Service.findPage(${table}, page, size);
         return new Result(true,StatusCode.OK,"查询成功",pageInfo);
@@ -98,7 +101,7 @@ public class ${Table}Controller {
     @ApiOperation(value = "${Table}条件查询",notes = "条件查询${Table}方法详情",tags = {"${Table}Controller"})
     </#if>
     @PostMapping(value = "/search" )
-    public Result<List<${Table}>> findList(@RequestBody(required = false) <#if swagger==true>@ApiParam(name = "${Table}对象",value = "传入JSON数据",required = false)</#if> ${Table} ${table}){
+    public Result<List<${Table}>> findList(@RequestBody(required = false) <#if swagger==true>@ApiParam(name = "${Table}对象",value = "传入JSON数据",required = false)</#if> @Valid ${Table} ${table}){
         log.info("come into ${Table}Controller's findList method");
         List<${Table}> list = ${table}Service.findList(${table});
         return new Result<>(true,StatusCode.OK,"查询成功",list);
@@ -131,7 +134,7 @@ public class ${Table}Controller {
     @ApiImplicitParam(paramType = "path", name = "id", value = "主键ID", required = true, dataType = "${keyType}")
     </#if>
     @PutMapping(value="/{id}")
-    public Result update(@RequestBody <#if swagger==true>@ApiParam(name = "${Table}对象",value = "传入JSON数据",required = false)</#if> ${Table} ${table},@PathVariable ${keyType} id){
+    public Result update(@RequestBody <#if swagger==true>@ApiParam(name = "${Table}对象",value = "传入JSON数据",required = false)</#if> @Valid ${Table} ${table},@PathVariable ${keyType} id){
         log.info("come into ${Table}Controller's update method");
         //设置主键值
         ${table}.${keySetMethod}(id);
@@ -149,7 +152,7 @@ public class ${Table}Controller {
     @ApiOperation(value = "${Table}添加",notes = "添加${Table}方法详情",tags = {"${Table}Controller"})
     </#if>
     @PostMapping
-    public Result add(@RequestBody  <#if swagger==true>@ApiParam(name = "${Table}对象",value = "传入JSON数据",required = true)</#if> ${Table} ${table}){
+    public Result add(@RequestBody  <#if swagger==true>@ApiParam(name = "${Table}对象",value = "传入JSON数据",required = true)</#if> @Valid ${Table} ${table}){
         log.info("come into ${Table}Controller's add method");
         ${table}Service.add(${table});
         return new Result(true,StatusCode.OK,"添加成功");
@@ -176,7 +179,7 @@ public class ${Table}Controller {
      * @return Result<List<${Table}>>
      */
     <#if swagger==true>
-    @ApiOperation(value = "查询所有${Table}",notes = "查询所${Table}有方法详情",tags = {"${Table}Controller"})
+    @ApiOperation(value = "查询所有${Table}",notes = "查询所有${Table}方法详情",tags = {"${Table}Controller"})
     </#if>
     @GetMapping
     public Result<List<${Table}>> findAll(){
