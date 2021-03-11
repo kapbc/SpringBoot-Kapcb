@@ -3,12 +3,19 @@ package com.kapcb.ccc.utils;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.sql.Blob;
+import java.sql.Clob;
+import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.TimeZone;
 
 /**
  * <a>Title: StringToolUtil </a>
@@ -67,18 +74,50 @@ public class StringToolUtil {
             return "";
         } else if (object instanceof Date) {
             return dateToString((Date) object);
-        }else if (object instanceof Double){
+        } else if (object instanceof Double) {
             return doubleToString(((Double) object).doubleValue(), 6);
-        }else {
+        } else {
             try {
-
+                String value = ReadXlobStr(object);
+                if (value != null) {
+                    return value;
+                }
+            } catch (Exception e) {
+                return e.getMessage();
             }
+            return object.toString();
         }
     }
 
     public static String dateToString(Date date) {
         log.info("the date is : " + date);
+        return asString(date, YEAR_MONTH_DAY_HOUR_MINUTE_PATTERN);
+    }
 
+    public static String asString(Date date, String format) {
+        return asString(date, format, TimeZone.getDefault().getID());
+    }
+
+    public static String asString(Date date, String format, String timeZone) {
+        String strDate = "";
+        if (date != null) {
+            DateFormat df = getDateFormat(format, timeZone);
+            synchronized (df) {
+                strDate = df.format(date);
+            }
+        }
+
+        return strDate;
+    }
+
+    private static DateFormat getDateFormat(String format, String timeZone) {
+        DateFormat df = FORMATTER_MAP.get(format + "_" + timeZone);
+        if (df == null) {
+            df = new SimpleDateFormat(format);
+            df.setTimeZone(TimeZone.getTimeZone(timeZone));
+            FORMATTER_MAP.put(format + "_" + timeZone, df);
+        }
+        return df;
     }
 
     private static NumberFormat getDoubleFormat(boolean showGroup, int maxFractionDigits) {
@@ -93,11 +132,25 @@ public class StringToolUtil {
         return numberFormat;
     }
 
-    public static String ReadXlobString(Object xlob){
+    public static String ReadXlobStr(Object xlob) throws SQLException, IOException {
         StringBuffer result = new StringBuffer();
-        BufferedReader reader=null;
-        xlob instanceof 
+        BufferedReader reader = null;
+        if (xlob instanceof Blob) {
+            reader = new BufferedReader(new InputStreamReader(((Blob) xlob).getBinaryStream()));
+        } else {
+            if (!(xlob instanceof Clob)) {
+                return null;
+            }
+
+            reader = new BufferedReader(((Clob) xlob).getCharacterStream());
+        }
+
+        if (reader != null) {
+            for (String line = reader.readLine(); line != null; line = reader.readLine()) {
+                result.append(line).append("\n");
+            }
+        }
+
+        return result.toString();
     }
-
-
 }

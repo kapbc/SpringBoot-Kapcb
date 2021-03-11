@@ -66,7 +66,7 @@ public class ${Table}Controller {
     })
     </#if>
     @PostMapping(value = "/search/{page}/{size}" )
-    public Result<PageInfo> findPage(@RequestBody(required = false) <#if swagger==true>@ApiParam(name = "${Table}对象",value = "传入JSON数据",required = false)</#if> @Valid ${Table} ${table}, @PathVariable  int page, @PathVariable  int size){
+    public Result<PageInfo> findPage(@RequestBody(required = false) <#if swagger==true>@ApiParam(name = "${Table}对象",value = "传入JSON数据",required = false)</#if> ${Table} ${table}, @PathVariable  int page, @PathVariable  int size){
         log.info("come into ${Table}Controller's findPage method");
         PageInfo<${Table}> pageInfo = ${table}Service.findPage(${table}, page, size);
         return new Result(true,StatusCode.OK,"查询成功",pageInfo);
@@ -101,7 +101,7 @@ public class ${Table}Controller {
     @ApiOperation(value = "${Table}条件查询",notes = "条件查询${Table}方法详情",tags = {"${Table}Controller"})
     </#if>
     @PostMapping(value = "/search" )
-    public Result<List<${Table}>> findList(@RequestBody(required = false) <#if swagger==true>@ApiParam(name = "${Table}对象",value = "传入JSON数据",required = false)</#if> @Valid ${Table} ${table}){
+    public Result<List<${Table}>> findList(@RequestBody(required = false) <#if swagger==true>@ApiParam(name = "${Table}对象",value = "传入JSON数据",required = false)</#if> ${Table} ${table}){
         log.info("come into ${Table}Controller's findList method");
         List<${Table}> list = ${table}Service.findList(${table});
         return new Result<>(true,StatusCode.OK,"查询成功",list);

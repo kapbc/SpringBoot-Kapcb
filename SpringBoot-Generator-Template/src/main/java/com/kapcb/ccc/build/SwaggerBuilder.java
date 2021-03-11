@@ -17,7 +17,7 @@ public class SwaggerBuilder {
      */
     public static void builder(Map<String,Object> modelMap){
         //swagger的文件名字
-        modelMap.put("Table","swagger");
+        modelMap.put("Table", "template/swagger");
 
         //生成ServiceImpl层文件
         BuilderFactory.builder(modelMap,
