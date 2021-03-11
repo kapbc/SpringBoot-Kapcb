@@ -10,8 +10,20 @@
 
     <description>Code Generator-Template</description>
 
-    <dependencies>
+  <dependencies>
+        <!--驱动包-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.22</version>
+        </dependency>
 
+        <!--模板工具类-->
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+            <version>2.3.23</version>
+        </dependency>
     </dependencies>
 
 
