@@ -22,7 +22,7 @@ public class PojoBuilder {
                 "/template/pojo",
                 "Pojo.java",
                 TemplateBuilder.PACKAGE_POJO,
-                ".java");
+                "Pojo.java");
     }
 
 }
