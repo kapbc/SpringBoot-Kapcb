@@ -53,6 +53,7 @@ public class ${Table}Controller {
 
     /***
      * ${Table}分页条件搜索实现
+     
      * @param ${table} ${table}
      * @param page:当前页
      * @param size:每页显示多少条
@@ -74,6 +75,7 @@ public class ${Table}Controller {
 
     /***
      * ${Table}分页搜索实现
+     
      * @param page:当前页
      * @param size:每页显示多少条
      * @return Result<PageInfo>
@@ -94,6 +96,7 @@ public class ${Table}Controller {
 
     /***
      * 多条件搜索品牌数据
+     
      * @param ${table} ${table}
      * @return Result<List<${Table}>>
      */
@@ -125,6 +128,7 @@ public class ${Table}Controller {
 
     /***
      * 修改${Table}数据
+     
      * @param ${table} ${table}
      * @param id id
      * @return Result
@@ -145,6 +149,7 @@ public class ${Table}Controller {
 
     /***
      * 新增${Table}数据
+     
      * @param ${table} ${table}
      * @return Result
      */
@@ -176,6 +181,7 @@ public class ${Table}Controller {
 
     /***
      * 查询${Table}全部数据
+     
      * @return Result<List<${Table}>>
      */
     <#if swagger==true>
