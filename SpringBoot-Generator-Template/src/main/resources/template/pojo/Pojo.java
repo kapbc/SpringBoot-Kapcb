@@ -33,7 +33,7 @@ import ${set};
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = false)
 @Table(name="${TableName}")
-public class ${Table} implements Serializable{
+public class ${Table}Pojo implements Serializable{
 
 <#list models as model>
 	/**
