@@ -20,7 +20,7 @@ import java.util.List;
  * @date 2021/3/3-17:25
  */
 @Slf4j
-@Service(value = "${table}ServiceImpl")
+@Service(value = "${table}Service")
 public class ${Table}ServiceImpl implements ${Table}Service {
 
     @Autowired
