@@ -111,7 +111,7 @@ public class MailSendAspect {
                  * 暴力访问
                  */
                 field.setAccessible(true);
-                Objects.equals(null,column)? StringToolUtil.
+                String object = Objects.equals(null, column) ? StringToolUtil.asString(args[i]) : StringToolUtil.asString(args[i], column.length());
             }
             super.run();
         }
