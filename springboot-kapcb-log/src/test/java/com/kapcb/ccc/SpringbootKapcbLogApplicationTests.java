@@ -14,6 +14,7 @@ public class SpringbootKapcbLogApplicationTests {
     //记录器
     Logger logger = LoggerFactory.getLogger(getClass());
 
+    
     @Test
     public void test() {
         /**
@@ -33,4 +34,5 @@ public class SpringbootKapcbLogApplicationTests {
         logger.warn("warn：警告日志");
         logger.error("error：捕获异常");
     }
+    
 }
