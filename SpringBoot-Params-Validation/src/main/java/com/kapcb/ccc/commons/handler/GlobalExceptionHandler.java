@@ -1,5 +1,7 @@
 package com.kapcb.ccc.commons.handler;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * <a>Title: GlobalExceptionHandler </a>
  * <a>Author: kapcb <a>
@@ -9,6 +11,8 @@ package com.kapcb.ccc.commons.handler;
  * @version 1.0.0
  * @date 2021/3/14 14:23
  */
-
+@Slf4j
 public class GlobalExceptionHandler {
+
+    
 }
