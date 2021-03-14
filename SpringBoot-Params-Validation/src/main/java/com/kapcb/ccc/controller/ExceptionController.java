@@ -1,6 +1,6 @@
 package com.kapcb.ccc.controller;
 
-import com.kapcb.ccc.commons.handler.GlobalExceptionHandler;
+import com.kapcb.ccc.commons.handler.BaseExceptionHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
@@ -18,5 +18,5 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 @Slf4j
 @ControllerAdvice
 @Order(value = Ordered.HIGHEST_PRECEDENCE)
-public class ExceptionController extends GlobalExceptionHandler {
+public class ExceptionController extends BaseExceptionHandler {
 }
