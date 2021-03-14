@@ -1,6 +1,5 @@
 package com.kapcb.ccc.commons.entity;
 
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,7 +10,7 @@ import java.util.Map;
  *
  * @author kapcb
  * @version 1.0.0
- * @date 2021/3/14 14:33
+ * @date 2021/3/14 15:49
  */
 public class ResultInfo extends HashMap<String, Object> {
 
@@ -80,3 +79,4 @@ public class ResultInfo extends HashMap<String, Object> {
         }
     }
 }
+

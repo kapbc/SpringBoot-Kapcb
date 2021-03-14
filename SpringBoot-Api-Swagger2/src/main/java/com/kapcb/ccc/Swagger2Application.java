@@ -1,5 +1,8 @@
 package com.kapcb.ccc;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 /**
  * <a>Title: Swagger2Application </a>
  * <a>Author: kapcb <a>
@@ -10,5 +13,9 @@ package com.kapcb.ccc;
  * @version 1.0.0
  * @date 2021/3/14 14:59
  */
+@SpringBootApplication
 public class Swagger2Application {
+    public static void main(String[] args) {
+        SpringApplication.run(Swagger2Application.class, args);
+    }
 }

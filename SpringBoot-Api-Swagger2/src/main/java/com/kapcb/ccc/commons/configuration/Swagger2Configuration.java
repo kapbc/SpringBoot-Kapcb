@@ -27,6 +27,7 @@ public class Swagger2Configuration {
 
     @Bean
     public Docket createRestApi() {
+        log.info("begin to create Rest Api by Swagger2");
         return new Docket(DocumentationType.SWAGGER_2)
                 .pathMapping("/")
                 .select()
