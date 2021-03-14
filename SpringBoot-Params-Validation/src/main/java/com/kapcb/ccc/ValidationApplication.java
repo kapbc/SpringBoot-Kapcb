@@ -7,6 +7,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * <a>Title: ValidationApplication </a>
  * <a>Author: kapcb <a>
  * <a>Description: <a>
+ * <p>
+ * https://blog.csdn.net/panchang199266/article/details/83050053?ops_request_misc=&request_id=&biz_id=102&utm_term=SpringBoot%E6%95%B4%E5%90%88%E6%A0%A1%E9%AA%8C%E6%A1%86%E6%9E%B6validation&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-6-83050053.pc_search_result_hbase_insert
+ * <p>
  * https://blog.csdn.net/mzh_cn/article/details/80637015?ops_request_misc=&request_id=&biz_id=102&utm_term=SpringBoot%E6%95%B4%E5%90%88%E6%A0%A1%E9%AA%8C%E6%A1%86%E6%9E%B6validation&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-7-80637015.pc_search_result_hbase_insert
  *
  * @author kapcb
