@@ -40,6 +40,15 @@ public class SwaggerRestApiController {
         this.swaggerRestService = swaggerRestService;
     }
 
+    /**
+     * http://localhost:8080/swagger-ui.html
+     * <p>
+     * Integer类型的参数只能使用int
+     * paramType = "path" 表示从路径参数中获取参数
+     *
+     * @param id Long
+     * @return Map<String, Object>
+     */
     @PostMapping("test/{id}")
     @ApiOperation(value = "swagger", notes = "测试Swagger2的Rest风格的Api", tags = {"SwaggerRestApiController"})
     @ApiImplicitParam(paramType = "path", name = "id", value = "测试的Id", required = true, dataType = "Long")
