@@ -4,6 +4,7 @@ package com.kapcb.ccc;
  * <a>Title: EmailApplication </a>
  * <a>Author: kapcb <a>
  * <a>Description: <a>
+ * https://gitee.com/hf-hf/mail-micro-service
  *
  * @author kapcb
  * @version 1.0.0
