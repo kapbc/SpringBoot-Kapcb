@@ -27,9 +27,9 @@ public @interface ListSize {
 
     int size() default 10;
 
-    Class<?>[] groups() default {};
+    Class<?>[] groups() default { };
 
-    Class<? extends Payload>[] payload() default {};
+    Class<? extends Payload>[] payload() default { };
 
     String message() default "";
 }

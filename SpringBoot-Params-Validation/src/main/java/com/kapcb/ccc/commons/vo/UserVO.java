@@ -1,5 +1,6 @@
 package com.kapcb.ccc.commons.vo;
 
+import com.kapcb.ccc.commons.annotation.ListSize;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.Range;
@@ -9,6 +10,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * <a>Title: UserVO </a>
@@ -42,4 +44,7 @@ public class UserVO implements Serializable {
     @Length(min = 6, max = 11, message = "手机号码长度不正确")
     @NotBlank
     private String phone;
+
+    @ListSize(size = 5)
+    private List<String> contentList;
 }
