@@ -38,6 +38,7 @@ public class ListSizeValidator implements ConstraintValidator<ListSize, List> {
             log.info("the validator is pass!");
             return true;
         }
+
         /**
          * 自定义校验错误信息
          */
