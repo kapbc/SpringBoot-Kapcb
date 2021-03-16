@@ -49,5 +49,6 @@ public class ListSizeValidator implements ConstraintValidator<ListSize, List> {
         ConstraintValidatorContext.ConstraintViolationBuilder constraintViolationBuilder = context.buildConstraintViolationWithTemplate(message.toString());
         constraintViolationBuilder.addConstraintViolation();
         return false;
+
     }
 }
