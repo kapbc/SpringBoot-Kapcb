@@ -3,6 +3,7 @@ package com.kapcb.ccc.commons.validation;
 import com.kapcb.ccc.commons.annotation.ListSize;
 import com.kapcb.ccc.commons.vo.UserVO;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -18,7 +19,8 @@ import java.util.List;
  * @date 2021/3/15 21:27
  */
 @Slf4j
-public class ListSizeValidator implements ConstraintValidator<ListSize, List<UserVO>> {
+@Component
+public class ListSizeValidator implements ConstraintValidator<ListSize, List> {
 
     private Integer size;
 
@@ -30,7 +32,7 @@ public class ListSizeValidator implements ConstraintValidator<ListSize, List<Use
     }
 
     @Override
-    public boolean isValid(List<UserVO> list, ConstraintValidatorContext context) {
+    public boolean isValid(List list, ConstraintValidatorContext context) {
         log.info("the list size is : " + list.size());
         if (list.size() < this.size) {
             log.info("the validator is pass!");
