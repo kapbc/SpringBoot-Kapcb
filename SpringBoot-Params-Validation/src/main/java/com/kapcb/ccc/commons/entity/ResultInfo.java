@@ -1,6 +1,9 @@
 package com.kapcb.ccc.commons.entity;
 
 
+import lombok.Data;
+
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,7 +16,8 @@ import java.util.Map;
  * @version 1.0.0
  * @date 2021/3/14 14:33
  */
-public class ResultInfo extends HashMap<String, Object> {
+@Data
+public class ResultInfo extends HashMap<String, Object> implements Serializable {
 
     private static final String RETURN_CODE = "code";
     private static final String RETURN_DATA = "data";
@@ -47,7 +51,7 @@ public class ResultInfo extends HashMap<String, Object> {
         return super.get(key);
     }
 
-    public static class Builder {
+    public static class Builder implements Serializable{
         private static final int INITIAL_CAPACITY = 6;
 
         private final Map<String, Object> returnMessage = new HashMap<>(INITIAL_CAPACITY);

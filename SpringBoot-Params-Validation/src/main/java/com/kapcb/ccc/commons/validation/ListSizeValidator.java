@@ -42,8 +42,8 @@ public class ListSizeValidator implements ConstraintValidator<ListSize, List> {
          * 自定义校验错误信息
          */
         StringBuilder message = new StringBuilder();
-        message.append("the list size must range between [0 ~ " + this.size + "]");
-        log.info("the message is : " + message.toString());
+        message.append(" the list size must range between [0 ~ " + this.size + "]");
+        log.info(" the message is : " + message.toString());
         context.disableDefaultConstraintViolation();
         ConstraintValidatorContext.ConstraintViolationBuilder constraintViolationBuilder = context.buildConstraintViolationWithTemplate(message.toString());
         constraintViolationBuilder.addConstraintViolation();
