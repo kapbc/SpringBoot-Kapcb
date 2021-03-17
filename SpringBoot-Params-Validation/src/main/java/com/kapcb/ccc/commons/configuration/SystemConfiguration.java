@@ -15,4 +15,17 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 @Configuration
 public class SystemConfiguration {
+  
+      @Bean
+    public MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter() {
+        log.info("begin to create MappingJackson2HttpMessageConverter");
+        MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter = new MappingJackson2HttpMessageConverter();
+        ObjectMapper objectMapper = new ObjectMapper();
+        mappingJackson2HttpMessageConverter.setObjectMapper(objectMapper);
+        List<MediaType> mediaTypes = new ArrayList<>();
+        mediaTypes.add(MediaType.APPLICATION_JSON_UTF8);
+        mappingJackson2HttpMessageConverter.setSupportedMediaTypes(mediaTypes);
+        return mappingJackson2HttpMessageConverter;
+    }
+  
 }
