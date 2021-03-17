@@ -25,6 +25,7 @@ public class MobileValidator implements ConstraintValidator<Mobile, String> {
     public void initialize(Mobile constraintAnnotation) {
     }
 
+
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
         try {
