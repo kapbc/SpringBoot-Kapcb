@@ -1,7 +1,14 @@
 package com.kapcb.ccc.commons.configuration;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.MediaType;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <a>Title: SystemConfiguration </a>
