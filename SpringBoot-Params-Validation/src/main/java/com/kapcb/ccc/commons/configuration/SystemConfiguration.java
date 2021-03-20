@@ -7,8 +7,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 
-import java.nio.charset.StandardCharsets;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,17 +22,17 @@ import java.util.List;
 @Slf4j
 @Configuration
 public class SystemConfiguration {
-
-    @Bean
+  
+      @Bean
     public MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter() {
+        log.info("begin to create MappingJackson2HttpMessageConverter");
         MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter = new MappingJackson2HttpMessageConverter();
         ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd"));
         mappingJackson2HttpMessageConverter.setObjectMapper(objectMapper);
         List<MediaType> mediaTypes = new ArrayList<>();
-        mediaTypes.add(MediaType.APPLICATION_JSON);
+        mediaTypes.add(MediaType.APPLICATION_JSON_UTF8);
         mappingJackson2HttpMessageConverter.setSupportedMediaTypes(mediaTypes);
-        mappingJackson2HttpMessageConverter.setDefaultCharset(StandardCharsets.UTF_8);
         return mappingJackson2HttpMessageConverter;
     }
+  
 }
