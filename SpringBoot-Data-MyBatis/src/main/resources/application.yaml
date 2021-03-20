@@ -1,0 +1,24 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: SpringBoot-Data-MyBatis
+  profiles:
+    active: dev
+
+---
+spring:
+  profiles: dev
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/myshop?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
+
+
+mybatis:
+  type-aliases-package: com.kapcb.ccc.domain
+  configuration:
+    log-impl: org.apache.ibatis.logging.log4j2.Log4j2Impl
+  mapper-locations: classpath:mapper/*.xml
