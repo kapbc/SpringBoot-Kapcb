@@ -13,11 +13,9 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>springboot-kapcb-config-yaml</name>
     <description>springboot-kapcb-config-yaml</description>
-
     <properties>
         <java.version>1.8</java.version>
     </properties>
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
