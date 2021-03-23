@@ -31,7 +31,5 @@ public class ItemPojo {
     private String cid;
     private Integer status;
     private Date created;
-
     private Date updated;
-
 }
