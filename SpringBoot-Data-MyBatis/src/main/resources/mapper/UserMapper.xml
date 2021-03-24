@@ -2,5 +2,171 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.kapcb.ccc.mapper.UserMapper">
 
+    <insert id="insertUser" parameterType="com.kapcb.ccc.pojo.UserPojo" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO tb_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test=" != null and  != ''">  ,</if>
+            <if test=" != null and  != ''">  ,</if>
+            <if test=" != null and  != ''">  ,</if>
+            <if test=" != null and  != ''">  ,</if>
+            <if test=" != null and  != ''">  ,</if>
+            <if test=" != null and  != ''">  ,</if>
+            <if test=" != null and  != ''">  ,</if>
+            <if test=" != null and  != ''">  ,</if>
+            <if test=" != null and  != ''">  ,</if>
+            <if test=" != null and  != ''">  ,</if>
+            <if test=" != null and  != ''">  ,</if>
+        </trim>
+        VALUES
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test=" != null and  != ''">  ,</if>
+            <if test=" != null and  != ''">  ,</if>
+            <if test=" != null and  != ''">  ,</if>
+            <if test=" != null and  != ''">  ,</if>
+            <if test=" != null and  != ''">  ,</if>
+            <if test=" != null and  != ''">  ,</if>
+            <if test=" != null and  != ''">  ,</if>
+            <if test=" != null and  != ''">  ,</if>
+            <if test=" != null and  != ''">  ,</if>
+            <if test=" != null and  != ''">  ,</if>
+            <if test=" != null and  != ''">  ,</if>
+        </trim>
+    </insert>
 
+    <insert id="insertUserByAnnotation" parameterType="com.kapcb.ccc.pojo.UserPojo" useGeneratedKeys="true" keyProperty="bean.id">
+        INSERT INTO tb_user
+        <if test="bean != null">
+            <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test=" != null and  != ''">  ,</if>
+                <if test=" != null and  != ''">  ,</if>
+                <if test=" != null and  != ''">  ,</if>
+                <if test=" != null and  != ''">  ,</if>
+                <if test=" != null and  != ''">  ,</if>
+                <if test=" != null and  != ''">  ,</if>
+                <if test=" != null and  != ''">  ,</if>
+                <if test=" != null and  != ''">  ,</if>
+                <if test=" != null and  != ''">  ,</if>
+                <if test=" != null and  != ''">  ,</if>
+                <if test=" != null and  != ''">  ,</if>
+            </trim>
+            VALUES
+            <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test=" != null and  != ''">  ,</if>
+                <if test=" != null and  != ''">  ,</if>
+                <if test=" != null and  != ''">  ,</if>
+                <if test=" != null and  != ''">  ,</if>
+                <if test=" != null and  != ''">  ,</if>
+                <if test=" != null and  != ''">  ,</if>
+                <if test=" != null and  != ''">  ,</if>
+                <if test=" != null and  != ''">  ,</if>
+                <if test=" != null and  != ''">  ,</if>
+                <if test=" != null and  != ''">  ,</if>
+                <if test=" != null and  != ''">  ,</if>
+            </trim>
+        </if>
+    </insert>
+
+    <update id="logicDeleteUser">
+        UPDATE tb_user
+        SET
+    </update>
+
+    <update id="logicBatchDeleteUser" parameterType="java.util.List">
+        UPDATE tb_user AS a
+        SET
+        WHERE a.id IN
+        <foreach collection="idList" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </update>
+
+    <delete id="deleteUser">
+        DELETE
+    </delete>
+
+    <delete id="batchDelete" parameterType="java.util.List">
+        DELETE
+
+        WHERE id IN
+        <foreach collection="idList" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+
+    <update id="updateUser" parameterType="com.kapcb.ccc.pojo.UserPojo">
+        UPDATE tb_user
+        <if test="bean != null">
+            <set>
+                <if test="bean. != null and bean. != ''">  ,</if>
+                <if test="bean. != null and bean. != ''">  ,</if>
+                <if test="bean. != null and bean. != ''">  ,</if>
+                <if test="bean. != null and bean. != ''">  ,</if>
+                <if test="bean. != null and bean. != ''">  ,</if>
+                <if test="bean. != null and bean. != ''">  ,</if>
+                <if test="bean. != null and bean. != ''">  ,</if>
+                <if test="bean. != null and bean. != ''">  ,</if>
+                <if test="bean. != null and bean. != ''">  ,</if>
+                <if test="bean. != null and bean. != ''">  ,</if>
+            </set>
+            WHERE
+        </if>
+    </update>
+
+    <select id="getUser" resultMap="">
+
+    </select>
+
+    <select id="" resultMap="">
+
+    </select>
+
+    <resultMap id="getUserResultMap" type="">
+        <id property="" column=""/>
+        <result property="" column=""/>
+        <result property="" column=""/>
+        <result property="" column=""/>
+        <result property="" column=""/>
+        <result property="" column=""/>
+        <result property="" column=""/>
+        <association property="" javaType="">
+            <id property="" column=""/>
+            <result property="" column=""/>
+            <result property="" column=""/>
+            <result property="" column=""/>
+            <result property="" column=""/>
+            <result property="" column=""/>
+        </association>
+        <association property="" javaType="">
+            <id property="" column=""/>
+            <result property="" column=""/>
+            <result property="" column=""/>
+            <result property="" column=""/>
+            <result property="" column=""/>
+            <result property="" column=""/>
+        </association>
+    </resultMap>
+
+    <sql id="userColumns">
+
+    </sql>
+
+    <resultMap id="userResultMap" type="com.kapcb.ccc.pojo.UserPojo">
+        <id property="" column=""/>
+        <result property="" column=""/>
+        <result property="" column=""/>
+        <result property="" column=""/>
+        <result property="" column=""/>
+        <result property="" column=""/>
+        <result property="" column=""/>
+        <result property="" column=""/>
+        <result property="" column=""/>
+        <result property="" column=""/>
+        <result property="" column=""/>
+        <result property="" column=""/>
+        <result property="" column=""/>
+        <result property="" column=""/>
+        <result property="" column=""/>
+        <result property="" column=""/>
+        <result property="" column=""/>
+    </resultMap>
 </mapper>

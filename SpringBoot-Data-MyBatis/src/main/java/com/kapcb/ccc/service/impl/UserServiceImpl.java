@@ -49,6 +49,16 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
+    public boolean insertUserByAnnotation(UserVO userVO) {
+        UserPojo userPojo = new UserPojo();
+        BeanUtils.copyProperties(userVO, userPojo);
+        int impactColumns = this.userMapper.insertUserByAnnotation(userPojo);
+        log.info("insert user impact columns is : " + impactColumns);
+        return impactColumns > 0;
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class)
     public boolean logicDeleteUser(Long id) {
         int impactColumns = this.userMapper.logicDeleteUser(id);
         log.info("logic delete user impact columns is : " + impactColumns);

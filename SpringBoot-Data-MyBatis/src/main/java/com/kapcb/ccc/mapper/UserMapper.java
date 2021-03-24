@@ -1,7 +1,7 @@
 package com.kapcb.ccc.mapper;
 
 import com.kapcb.ccc.pojo.UserPojo;
-import com.kapcb.ccc.vo.UserVO;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -18,17 +18,68 @@ import java.util.List;
 @Repository
 public interface UserMapper {
 
+    /**
+     * insert User {@link UserPojo}
+     *
+     * @param userPojo {@link UserPojo}
+     * @return int
+     */
     int insertUser(UserPojo userPojo);
 
-    int logicDeleteUser(Long id);
+    /**
+     * insert User {@link UserPojo}
+     *
+     * @param userPojo {@link UserPojo}
+     * @return int
+     */
+    int insertUserByAnnotation(@Param("bean") UserPojo userPojo);
 
-    int logicBatchDeleteUser(List<Long> id);
+    /**
+     * logic delete user {@link UserPojo}
+     *
+     * @param id Long
+     * @return int
+     */
+    int logicDeleteUser(@Param("id") Long id);
 
-    int deleteUser(Long id);
+    /**
+     * logic batch delete
+     *
+     * @param idList List<Long>
+     * @return int
+     */
+    int logicBatchDeleteUser(@Param("idList") List<Long> idList);
 
-    int batchDelete(List<Long> id);
+    /**
+     * delete user {@link UserPojo}
+     *
+     * @param id Long
+     * @return int
+     */
+    int deleteUser(@Param("id") Long id);
 
-    int updateUser(UserPojo userPojo, Long id);
+    /**
+     * batch delete
+     *
+     * @param idList List<id>
+     * @return int
+     */
+    int batchDelete(@Param("idList") List<Long> idList);
 
-    UserPojo getUser(Long id);
+    /**
+     * update user {@link UserPojo}
+     *
+     * @param userPojo {@link UserPojo}
+     * @param id       Long
+     * @return int
+     */
+    int updateUser(@Param("bean") UserPojo userPojo, @Param("id") Long id);
+
+    /**
+     * get user {@link UserPojo}
+     *
+     * @param id Long
+     * @return {@link UserPojo}
+     */
+    UserPojo getUser(@Param("id") Long id);
 }
