@@ -80,4 +80,13 @@ public interface UserService {
      * @return {@link UserPojo}
      */
     UserPojo getUser(Long id);
+
+    /**
+     * get user vo list
+     *
+     * @param page Integer
+     * @param size Integer
+     * @return List<UserVO>
+     */
+    List<UserVO> getUserVOList(Integer page, Integer size);
 }

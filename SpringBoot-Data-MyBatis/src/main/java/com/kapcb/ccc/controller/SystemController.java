@@ -1,8 +1,13 @@
 package com.kapcb.ccc.controller;
 
+import com.kapcb.ccc.service.UserService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.annotation.Resource;
 
 /**
  * <a>Title: SystemController </a>
@@ -17,4 +22,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/")
 public class SystemController {
+
+    private final UserService userService;
+
+    @Autowired
+    public SystemController(@Qualifier("userService") UserService userService) {
+        this.userService = userService;
+    }
+
+    @RequestMapping(value = "userInfo")
+    public void getUserList(){
+        log.info("prepare to load user list");
+    }
+
+
 }

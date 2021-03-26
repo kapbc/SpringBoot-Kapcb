@@ -1,5 +1,6 @@
 package com.kapcb.ccc.service.impl;
 
+import com.github.pagehelper.PageInfo;
 import com.kapcb.ccc.mapper.UserMapper;
 import com.kapcb.ccc.pojo.UserPojo;
 import com.kapcb.ccc.service.UserService;
@@ -26,7 +27,7 @@ import java.util.Optional;
  * @date 2021/3/23 22:05
  */
 @Slf4j
-@Service
+@Service("userService")
 @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.REPEATABLE_READ, readOnly = false)
 public class UserServiceImpl implements UserService {
 
@@ -106,5 +107,17 @@ public class UserServiceImpl implements UserService {
         UserPojo user = this.userMapper.getUser(id);
         log.info("the user is : " + user);
         return Optional.ofNullable(user).orElseGet(UserPojo::new);
+    }
+
+    public List<UserPojo> getUserPojoList(){
+        PageInfo<Object> objectPageInfo = new PageInfo<>();
+        List<UserPojo> userPojoList = this.userMapper.getUserPojoList();
+        return userPojoList;
+    }
+
+    @Override
+    public List<UserVO> getUserVOList(Integer page, Integer size) {
+        List<UserPojo> userPojoList = getUserPojoList();
+        return null;
     }
 }

@@ -82,4 +82,11 @@ public interface UserMapper {
      * @return {@link UserPojo}
      */
     UserPojo getUser(@Param("id") Long id);
+
+    /**
+     * get user pojo
+     *
+     * @return List<UserPojo>
+     */
+    List<UserPojo> getUserPojoList();
 }
