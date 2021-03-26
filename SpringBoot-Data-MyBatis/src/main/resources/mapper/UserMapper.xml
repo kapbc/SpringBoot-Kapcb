@@ -169,4 +169,5 @@
         <result property="" column=""/>
         <result property="" column=""/>
     </resultMap>
+    
 </mapper>
