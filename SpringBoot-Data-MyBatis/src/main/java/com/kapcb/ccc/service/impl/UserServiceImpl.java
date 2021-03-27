@@ -1,5 +1,6 @@
 package com.kapcb.ccc.service.impl;
 
+import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.kapcb.ccc.mapper.UserMapper;
 import com.kapcb.ccc.pojo.UserPojo;
@@ -110,14 +111,17 @@ public class UserServiceImpl implements UserService {
     }
 
     public List<UserPojo> getUserPojoList(){
+
         PageInfo<Object> objectPageInfo = new PageInfo<>();
         List<UserPojo> userPojoList = this.userMapper.getUserPojoList();
         return userPojoList;
     }
 
     @Override
-    public List<UserVO> getUserVOList(Integer page, Integer size) {
-        List<UserPojo> userPojoList = getUserPojoList();
-        return null;
+    public PageInfo<UserPojo> getUserVOList(Integer page, Integer size) {
+        PageHelper.startPage(page,size);
+        List<UserPojo> userPojoList = this.userMapper.getUserPojoList();
+        PageInfo<UserPojo> userPojoPageInfo = new PageInfo<>(userPojoList);
+        return userPojoPageInfo;
     }
 }

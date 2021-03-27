@@ -1,5 +1,6 @@
 package com.kapcb.ccc.service;
 
+import com.github.pagehelper.PageInfo;
 import com.kapcb.ccc.pojo.UserPojo;
 import com.kapcb.ccc.vo.UserVO;
 
@@ -88,5 +89,5 @@ public interface UserService {
      * @param size Integer
      * @return List<UserVO>
      */
-    List<UserVO> getUserVOList(Integer page, Integer size);
+    PageInfo<UserPojo> getUserVOList(Integer page, Integer size);
 }
