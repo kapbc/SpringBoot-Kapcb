@@ -47,7 +47,7 @@ public interface UserService {
      * @param id List<Long>
      * @return boolean
      */
-    boolean logicBatchDeleteUser(List<Long> id);
+    boolean logicBatchDeleteUser(List<String> id);
 
     /**
      * delete user {@link UserPojo}
@@ -63,7 +63,7 @@ public interface UserService {
      * @param id List<id>
      * @return boolean
      */
-    boolean batchDelete(List<Long> id);
+    boolean batchDelete(List<String> id);
 
     /**
      * update user {@link UserPojo}

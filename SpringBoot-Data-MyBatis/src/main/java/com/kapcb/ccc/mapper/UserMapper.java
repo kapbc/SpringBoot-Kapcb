@@ -48,7 +48,7 @@ public interface UserMapper {
      * @param idList List<Long>
      * @return int
      */
-    int logicBatchDeleteUser(@Param("idList") List<Long> idList);
+    int logicBatchDeleteUser(@Param("idList") List<String> idList);
 
     /**
      * delete user {@link UserPojo}
@@ -64,7 +64,7 @@ public interface UserMapper {
      * @param idList List<id>
      * @return int
      */
-    int batchDelete(@Param("idList") List<Long> idList);
+    int batchDelete(@Param("idList") List<String> idList);
 
     /**
      * update user {@link UserPojo}

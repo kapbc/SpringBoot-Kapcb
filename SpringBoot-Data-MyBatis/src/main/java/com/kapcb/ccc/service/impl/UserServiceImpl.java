@@ -69,7 +69,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public boolean logicBatchDeleteUser(List<Long> id) {
+    public boolean logicBatchDeleteUser(List<String> id) {
         int impactColumns = this.userMapper.logicBatchDeleteUser(id);
         log.info("logic delete user impact columns is : " + impactColumns);
         return impactColumns > 0;
@@ -85,7 +85,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public boolean batchDelete(List<Long> idList) {
+    public boolean batchDelete(List<String> idList) {
         int impactColumns = this.userMapper.batchDelete(idList);
         log.info("delete user impact columns is : " + impactColumns);
         return impactColumns > 0;
