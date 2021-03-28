@@ -17,7 +17,10 @@ spring:
     url: jdbc:mysql://localhost:3306/myshop?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=GMT%2b8
 
 mybatis:
+  # 以domain报下的实体类名称进行取别名
   type-aliases-package: com.kapcb.ccc.domain
   configuration:
+    # MyBatis 打印sql配置
     log-impl: org.apache.ibatis.logging.log4j2.Log4j2Impl
+    # mapper.xml文件的位置， classpath:与mapper/*.xml不要有空格
   mapper-locations: classpath:mapper/*.xml

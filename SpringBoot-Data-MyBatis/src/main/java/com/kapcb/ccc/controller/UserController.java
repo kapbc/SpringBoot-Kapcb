@@ -33,8 +33,8 @@ import java.util.Map;
  * @date 2021/3/27 11:53
  */
 @Slf4j
-@RequestMapping
 @RestController
+@RequestMapping("user")
 public class UserController {
 
     private final UserService userService;
