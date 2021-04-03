@@ -1,5 +1,10 @@
 package com.kapcb.ccc.commons.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.io.Serializable;
 
 /**
@@ -11,6 +16,10 @@ import java.io.Serializable;
  * @version 1.0.0
  * @date 2021/2/27 12:37
  */
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class User implements Serializable {
 
     private int age;
@@ -18,9 +27,6 @@ public class User implements Serializable {
     private String email;
     private String username;
     private String password;
-
-    public User() {
-    }
 
     public User(Builder builder) {
         this.age = builder.age;
