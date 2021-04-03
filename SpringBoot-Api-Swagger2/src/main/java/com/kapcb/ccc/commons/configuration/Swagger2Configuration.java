@@ -25,6 +25,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 public class Swagger2Configuration {
 
+
     @Bean
     public Docket createRestApi() {
         log.info("begin to create Rest Api by Swagger2");

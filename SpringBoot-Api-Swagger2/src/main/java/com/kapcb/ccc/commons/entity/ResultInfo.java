@@ -79,4 +79,3 @@ public class ResultInfo extends HashMap<String, Object> {
         }
     }
 }
-
