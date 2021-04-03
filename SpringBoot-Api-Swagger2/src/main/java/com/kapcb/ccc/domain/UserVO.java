@@ -30,9 +30,6 @@ public class UserVO implements Serializable {
     private String address;
     private Date birthday;
 
-    public UserVO() {
-    }
-
     public UserVO(Builder builder) {
         this.id = builder.id;
         this.age = builder.age;
