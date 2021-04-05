@@ -54,5 +54,6 @@ public class TemplateUtil {
         template.process(dataModel, out);
         // 关闭流。
         out.close();
+        
     }
 }
