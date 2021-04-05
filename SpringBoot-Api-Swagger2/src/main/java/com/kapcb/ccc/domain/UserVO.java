@@ -40,7 +40,6 @@ public class UserVO implements Serializable {
     }
 
     public static class Builder {
-
         private Long id = 1L;
         private Integer age = 0;
         private String username = "";
