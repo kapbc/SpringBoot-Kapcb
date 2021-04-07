@@ -13,6 +13,7 @@
     <groupId>com.kapcb</groupId>
     <artifactId>springboot-kapcb-config-yaml</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+         
     <name>springboot-kapcb-config-yaml</name>
     <description>springboot-kapcb-config-yaml</description>
          
