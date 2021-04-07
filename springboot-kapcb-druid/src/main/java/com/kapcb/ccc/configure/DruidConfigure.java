@@ -27,7 +27,9 @@ import java.util.Map;
 @Configuration
 public class DruidConfigure {
 
+    
     private static final int INITIAL_CAPACITY = 2;
+    
 
     /**
      * 自己在容器中创建一个数据源
@@ -42,6 +44,7 @@ public class DruidConfigure {
         return new DruidDataSource();
     }
 
+    
     /**
      * 配置 druid 的监控
      * 配置管理后台的servlet
@@ -64,6 +67,7 @@ public class DruidConfigure {
         return registrationBean;
     }
 
+    
     /**
      * 配置有一个监控的filter
      *
@@ -81,4 +85,5 @@ public class DruidConfigure {
 
         return registrationBean;
     }
+    
 }
