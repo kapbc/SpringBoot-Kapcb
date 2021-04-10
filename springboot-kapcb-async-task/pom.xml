@@ -13,7 +13,7 @@
     <groupId>com.kapcb</groupId>
     <artifactId>springboot-kapcb-async-task</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    
+
     <name>springboot-kapcb-async-task</name>
     <description>springboot-kapcb-async-task</description>
 
