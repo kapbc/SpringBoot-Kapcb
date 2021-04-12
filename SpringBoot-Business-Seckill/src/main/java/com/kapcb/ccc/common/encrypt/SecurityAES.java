@@ -20,6 +20,7 @@ import org.apache.commons.codec.binary.Base64;
  *
  */
 public class SecurityAES {
+	
 	private final static String encoding = "UTF-8"; 
 	private static String PASSWORD = "qwedcxza";
 	
@@ -42,6 +43,7 @@ public class SecurityAES {
 		encryptResultStr = ebotongEncrypto(encryptResultStr);
 		return encryptResultStr;
 	}
+	
 	/**
 	 * AES解密
 	 * @Author	张志朋
@@ -60,6 +62,7 @@ public class SecurityAES {
 		byte[] decryptResult = decrypt(decryptFrom);
 		return new String(decryptResult);
 	}
+	
 	/**
 	 * 加密字符串
 	 * @Author	张志朋
@@ -85,6 +88,7 @@ public class SecurityAES {
 		//base64加密超过一定长度会自动换行 需要去除换行符
 		return result.replaceAll("\r\n", "").replaceAll("\r", "").replaceAll("\n", "");
 	}
+	
 	/**
 	 * 解密字符串
 	 * @Author	张志朋
@@ -106,6 +110,7 @@ public class SecurityAES {
 			return str;
 		}
 	}
+	
 	/**
 	 * 加密  
 	 * @Author	张志朋
@@ -147,6 +152,7 @@ public class SecurityAES {
 		}   
 		return null;   
 	}  
+	
 	/**
 	 * 解密
 	 * @Author	张志朋
@@ -185,6 +191,8 @@ public class SecurityAES {
 		}   
 		return null;   
 	}  
+	
+	
 	/**
 	 * 将二进制转换成16进制  
 	 * @Author	张志朋
@@ -206,6 +214,8 @@ public class SecurityAES {
 		}   
 		return sb.toString();   
 	}  
+	
+	
 	/**
 	 * 将16进制转换为二进制  
 	 * @Author	张志朋
