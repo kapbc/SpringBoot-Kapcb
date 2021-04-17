@@ -47,7 +47,7 @@ public class AlgorithmVs {
         System.out.println("冒泡排序耗费的时间：" + (end - start));
         display(list);
     }
-    
+
     /**
      * 测试直接插入排序耗费的时间
      */

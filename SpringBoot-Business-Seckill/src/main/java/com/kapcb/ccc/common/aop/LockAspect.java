@@ -24,6 +24,7 @@ import org.springframework.stereotype.Component;
 @Order(1)
 //order越小越是最先执行，但更重要的是最先执行的最后结束。order默认值是2147483647
 public class LockAspect {
+
 	/**
      * 思考：为什么不用synchronized
      * service 默认是单例的，并发下lock只有一个实例

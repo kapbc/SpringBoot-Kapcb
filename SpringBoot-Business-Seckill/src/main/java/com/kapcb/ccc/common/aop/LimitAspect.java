@@ -66,5 +66,6 @@ public class LimitAspect {
 			throw new RrException("小同志，你访问的太频繁了");
 		}
 		return obj;
-    } 
+    }
+
 }

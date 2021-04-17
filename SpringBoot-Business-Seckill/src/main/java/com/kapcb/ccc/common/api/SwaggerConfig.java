@@ -14,11 +14,13 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 public class SwaggerConfig {
+
 	@Bean
 	public Docket userApi() {
 		return new Docket(DocumentationType.SWAGGER_2).groupName("秒杀案例").apiInfo(apiInfo()).select()
 				.apis(RequestHandlerSelectors.basePackage("com.itstyle.seckill.web")).paths(PathSelectors.any()).build();
 	}
+
 	// 预览地址:swagger-ui.html
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder().title("Spring 中使用Swagger2构建文档").termsOfServiceUrl("https://blog.52itstyle.com")

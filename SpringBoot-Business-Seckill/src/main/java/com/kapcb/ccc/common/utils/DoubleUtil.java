@@ -10,7 +10,9 @@ import java.math.RoundingMode;
  * 以下是摘抄的BigDecimal方法:
  */
 public class DoubleUtil implements Serializable {
+
     private static final long serialVersionUID = -3345205828566485102L;
+    
     // 默认除法运算精度
     private static final Integer DEF_DIV_SCALE = 2;
 
