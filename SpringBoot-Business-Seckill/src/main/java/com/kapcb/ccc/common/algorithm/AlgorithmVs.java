@@ -47,6 +47,7 @@ public class AlgorithmVs {
         System.out.println("冒泡排序耗费的时间：" + (end - start));
         display(list);
     }
+    
     /**
      * 测试直接插入排序耗费的时间
      */
@@ -63,6 +64,7 @@ public class AlgorithmVs {
         System.out.println("直接插入排序耗费的时间：" + (end - start));
         display(list);
     }
+
     /**
      * 测试堆排序排序耗费的时间
      */
@@ -77,6 +79,7 @@ public class AlgorithmVs {
         System.out.println("堆排序排序耗费的时间：" + (end - start));
         display(list);
     }
+
     /**
      * 测试归并排序排序排序耗费的时间
      */
@@ -91,6 +94,7 @@ public class AlgorithmVs {
         System.out.println("归并排序排序耗费的时间：" + (end - start));
         display(list);
     }
+
     /**
      * 测试希尔排序耗费的时间
      */
@@ -107,6 +111,7 @@ public class AlgorithmVs {
         System.out.println("希尔排序耗费的时间：" + (end - start));
         display(list);
     }
+
     /**
      * 快速排序耗费的时间
      */
@@ -123,6 +128,7 @@ public class AlgorithmVs {
         System.out.println("快速排序耗费的时间：" + (end - start));
         display(list);
     }
+
     /**
      * 直接选择排序耗费的时间
      */
@@ -137,6 +143,7 @@ public class AlgorithmVs {
         System.out.println("直接排序耗费的时间：" + (end - start));
         display(list);
     }
+
     /**
      * 遍历打印前10个数
      */
