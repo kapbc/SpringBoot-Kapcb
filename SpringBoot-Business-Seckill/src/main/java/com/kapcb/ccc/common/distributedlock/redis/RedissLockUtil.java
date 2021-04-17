@@ -11,6 +11,7 @@ import java.util.concurrent.TimeUnit;
  * @author 科帮网 By https://blog.52itstyle.com
  */
 public class RedissLockUtil {
+
     private static RedissonClient redissonClient;
     
     public void setRedissonClient(RedissonClient locker) {

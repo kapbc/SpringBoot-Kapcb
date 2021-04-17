@@ -14,6 +14,7 @@ import org.redisson.api.RedissonClient;
  * @author 科帮网 By https://blog.52itstyle.com
  */
 public class RedissLockDemo {
+
     /**
      * 可重入锁（Reentrant Lock） 
      * Redisson的分布式可重入锁RLock Java对象实现了java.util.concurrent.locks.Lock接口，同时还支持自动过期解锁
@@ -37,6 +38,8 @@ public class RedissLockDemo {
 			lock.unlock();
 		}
 	}
+
+
     /**
      * Redisson同时还为分布式锁提供了异步执行的相关方法
      * @param redisson
@@ -58,6 +61,8 @@ public class RedissLockDemo {
 			lock.unlock();
 		}
 	}
+
+
 	/**
 	 * 公平锁（Fair Lock）
 	 * Redisson分布式可重入公平锁也是实现了java.util.concurrent.locks.Lock接口的一种RLock对象。
@@ -86,7 +91,9 @@ public class RedissLockDemo {
 //	    fairLock.lockAsync();  
 //	    fairLock.lockAsync(10, TimeUnit.SECONDS);  
 //	    Future<Boolean> res = fairLock.tryLockAsync(100, 10, TimeUnit.SECONDS);  
-	} 
+	}
+
+
 	/**
 	 * 联锁（MultiLock）
 	 * Redisson的RedissonMultiLock对象可以将多个RLock对象关联为一个联锁，每个RLock对象实例可以来自于不同的Redisson实例
@@ -112,7 +119,9 @@ public class RedissLockDemo {
 	    } finally {  
 	        lock.unlock();  
 	    }  
-	}  
+	}
+
+
 	/**
 	 *  红锁（RedLock）
 	 *  Redisson的RedissonRedLock对象实现了Redlock介绍的加锁算法。该对象也可以用来将多个RLock对象关联为一个红锁，每个RLock对象实例可以来自于不同的Redisson实例
