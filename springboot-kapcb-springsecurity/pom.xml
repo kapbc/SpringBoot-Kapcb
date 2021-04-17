@@ -12,11 +12,14 @@
 
     <groupId>com.kapcb</groupId>
     <artifactId>springboot-kapcb-springsecurity</artifactId>
+<<<<<<< HEAD
 
+=======
+   
+>>>>>>> 831258f9833f93c4d991bcb1eee50a21b8d9d660
     <version>0.0.1-SNAPSHOT</version>
     <name>springboot-kapcb-springsecurity</name>
     <description>springboot-kapcb-springsecurity</description>
-
     <properties>
         <java.version>1.8</java.version>
     </properties>

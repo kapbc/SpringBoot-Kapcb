@@ -31,6 +31,7 @@ public class EncrypSHA {
 		byte[] resultBytes = md5.digest();
 		return resultBytes;
 	}
+	
 	public String eccryptSHA2(String msg) throws NoSuchAlgorithmException, InvalidKeyException{
     	Mac sha256_HMAC = Mac.getInstance("HmacSHA256");
 	    SecretKeySpec secret_key = new SecretKeySpec(secret.getBytes(), "HmacSHA256");
@@ -38,6 +39,7 @@ public class EncrypSHA {
 	    String hash = Base64.encodeBase64String(sha256_HMAC.doFinal(msg.getBytes()));
 	    return hash;
 	}
+	
 	/**
 	 * @param args
 	 * @throws NoSuchAlgorithmException 
