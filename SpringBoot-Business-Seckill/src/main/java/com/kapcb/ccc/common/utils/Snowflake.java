@@ -152,5 +152,5 @@ public class Snowflake {
         long id = idWorker.nextId();
         System.out.println(id);
     }
-    
+
 }
