@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 public class RedPackage {
+
     public static void main(String[] args) {
         List<Integer> amountList = RedPackage(10000, 5);
         for (Integer amount : amountList) {
@@ -29,4 +30,5 @@ public class RedPackage {
         amountList.add(restAmount);
         return amountList;
     }
+
 }

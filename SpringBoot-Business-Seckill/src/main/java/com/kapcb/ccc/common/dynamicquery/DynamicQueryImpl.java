@@ -48,6 +48,8 @@ public class DynamicQueryImpl implements DynamicQuery {
 			em.remove(em.getReference(entityClass, id));
 		}
 	}
+
+
 	private Query createNativeQuery(String sql, Object... params) {
 		Query q = em.createNativeQuery(sql);
 		if (params != null && params.length > 0) {

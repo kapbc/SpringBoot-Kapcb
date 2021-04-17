@@ -7,6 +7,7 @@ import org.springframework.web.client.RestTemplate;
 
 @Service
 public class HttpClient {
+
     public String client(String url, HttpMethod method, MultiValueMap<String, String> params){
         RestTemplate client = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
@@ -17,4 +18,5 @@ public class HttpClient {
         ResponseEntity<String> response = client.exchange(url, HttpMethod.POST, requestEntity, String.class);
         return response.getBody();
     }
+
 }

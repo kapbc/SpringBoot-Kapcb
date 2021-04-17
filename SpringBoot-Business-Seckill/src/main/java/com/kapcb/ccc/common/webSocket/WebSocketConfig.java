@@ -9,7 +9,8 @@ import org.springframework.web.socket.server.standard.ServerEndpointExporter;
  * 创建时间	2018年5月29日
  */
 @Configuration  
-public class WebSocketConfig {  
+public class WebSocketConfig {
+
     @Bean  
     public ServerEndpointExporter serverEndpointExporter() {  
         return new ServerEndpointExporter();  
