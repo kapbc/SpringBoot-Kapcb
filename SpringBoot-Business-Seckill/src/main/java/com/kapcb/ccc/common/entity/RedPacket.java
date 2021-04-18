@@ -29,7 +29,7 @@ public class RedPacket implements Serializable {
     private int uid;//创建用户
 
     private Timestamp createTime;//创建时间
-    
+
     @Version
     private int version;
 
