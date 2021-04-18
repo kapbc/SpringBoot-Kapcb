@@ -8,6 +8,7 @@ public class MD5Util {
 	// MD5加码。32位
 	public static String MD5(String inStr) {
 		MessageDigest md5 = null;
+
 		try {
 			md5 = MessageDigest.getInstance("MD5");
 		} catch (Exception e) {
@@ -15,6 +16,7 @@ public class MD5Util {
 			e.printStackTrace();
 			return "";
 		}
+
 		char[] charArray = inStr.toCharArray();
 		byte[] byteArray = new byte[charArray.length];
 

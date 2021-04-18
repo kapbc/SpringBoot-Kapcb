@@ -68,4 +68,5 @@ public class LockDemo {
     public static synchronized void sync(int i){
     	num2 ++;
     }
+
 }

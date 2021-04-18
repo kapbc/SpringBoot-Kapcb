@@ -30,5 +30,4 @@ public class RedPackage {
         amountList.add(restAmount);
         return amountList;
     }
-
 }

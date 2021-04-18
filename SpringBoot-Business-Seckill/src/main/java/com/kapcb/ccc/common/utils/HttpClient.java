@@ -18,5 +18,4 @@ public class HttpClient {
         ResponseEntity<String> response = client.exchange(url, HttpMethod.POST, requestEntity, String.class);
         return response.getBody();
     }
-
 }

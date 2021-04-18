@@ -237,10 +237,12 @@ public class SecurityAES {
 		}   
 		return result;   
 	}
+
 	public static void main(String[] args) {
 		String str = encryptAES("1234567890");
 		System.out.println(str);
 		str = decrypt(str);
 		System.out.println(str);
 	}
+
 }
