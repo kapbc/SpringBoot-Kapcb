@@ -10,11 +10,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;
-/**
- * 缓存工具类
- * 创建者 科帮网
- * 创建时间	2018年4月8日
- */
+
+
+
 @Component
 public class RedisUtil {
 	

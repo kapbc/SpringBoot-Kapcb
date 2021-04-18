@@ -2,10 +2,9 @@ package com.itstyle.seckill.common.lock;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
-/**
- * 案例测试
- * @author 科帮网
- */
+
+
+
 public class LockDemo {
 	
 	private static Lock lock = new ReentrantLock();
@@ -68,5 +67,4 @@ public class LockDemo {
     public static synchronized void sync(int i){
     	num2 ++;
     }
-
 }
