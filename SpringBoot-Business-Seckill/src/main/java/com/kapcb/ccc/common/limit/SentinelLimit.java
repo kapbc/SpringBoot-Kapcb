@@ -21,6 +21,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class SentinelLimit {
 
     private static int corePoolSize = Runtime.getRuntime().availableProcessors();
+
     //创建线程池  调整队列数 拒绝服务
     private static ThreadPoolExecutor executor  = new ThreadPoolExecutor(corePoolSize, corePoolSize+1, 10l, TimeUnit.SECONDS,
             new LinkedBlockingQueue<>(1000));
@@ -65,6 +66,5 @@ public class SentinelLimit {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
     }
 }

@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.concurrent.CountDownLatch;
+
+
 /**
  * Nginx 限流压测
  * src/mian/resources/nginx
@@ -33,6 +35,8 @@ public class NginxLimit {
 	        System.out.println(count);
 	       // System.in.read();
 	}
+
+
 	//发送GET请求
 	public static String sendGet(String url) {
 	        String result = "";
