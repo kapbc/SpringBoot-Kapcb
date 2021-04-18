@@ -1,4 +1,6 @@
 package com.itstyle.seckill.common.exception;
+
+
 /**
  *  自定义异常
  */
@@ -47,6 +49,4 @@ public class RrException extends RuntimeException {
 	public void setCode(int code) {
 		this.code = code;
 	}
-	
-	
 }
