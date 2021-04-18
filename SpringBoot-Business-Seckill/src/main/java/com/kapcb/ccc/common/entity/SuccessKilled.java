@@ -7,9 +7,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
 @Entity
 @Table(name = "success_killed")
 public class SuccessKilled implements Serializable{
+
 	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name = "seckill_id", nullable = false)

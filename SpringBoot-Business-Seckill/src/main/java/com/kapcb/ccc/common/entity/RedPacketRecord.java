@@ -17,12 +17,16 @@ public class RedPacketRecord implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private Long id;
+
     @Column
     private Long redPacketId;
+
     @Column
     private Integer money;
+
     @Column
     private Integer uid;
+
     @Column
     private Timestamp createTime;//创建时间
 

@@ -2,10 +2,10 @@ package com.itstyle.seckill.common.entity;
 
 import java.util.HashMap;
 import java.util.Map;
+
+
 /**
  * 页面响应entity
- * 创建者 张志朋
- * 创建时间	2018年3月8日
  */
 public class Result extends HashMap<String, Object> {
 

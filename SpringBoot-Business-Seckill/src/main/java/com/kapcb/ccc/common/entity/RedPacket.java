@@ -17,12 +17,19 @@ public class RedPacket implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
     private long id;
+
     private long redPacketId;//红包id
+
     private int totalAmount;//红包总金额，单位分
+
     private int totalPacket;//红包总个数
+
     private int type;//类型
+
     private int uid;//创建用户
+
     private Timestamp createTime;//创建时间
+    
     @Version
     private int version;
 
