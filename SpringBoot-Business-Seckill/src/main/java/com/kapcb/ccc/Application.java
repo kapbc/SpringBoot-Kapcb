@@ -29,5 +29,5 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 		LOGGER.info("项目启动");
 	}
-	
+
 }
