@@ -18,6 +18,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @EnableAsync
 @SpringBootApplication
 public class Application {
+
 	private final static Logger LOGGER = LoggerFactory.getLogger(Application.class);
 	/**
 	 * 1. 数据库乐观锁；2. 基于Redis的分布式锁；3. 基于ZooKeeper的分布式锁
@@ -28,4 +29,5 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 		LOGGER.info("项目启动");
 	}
+	
 }
