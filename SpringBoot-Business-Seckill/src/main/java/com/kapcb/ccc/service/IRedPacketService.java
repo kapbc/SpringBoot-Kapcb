@@ -11,7 +11,7 @@ public interface IRedPacketService {
      * @return
      */
     RedPacket get(long redPacketId);
-    
+
 	/**
 	 * 抢红包业务实现
 	 * @param redPacketId
