@@ -12,10 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.itstyle.seckill.common.entity.Result;
 import com.itstyle.seckill.service.ICreateHtmlService;
+
+
+
 @Api(tags ="生成静态商品页")
 @RestController
 @RequestMapping("/createHtml")
 public class CreateHtmlController {
+
 	private final static Logger LOGGER = LoggerFactory.getLogger(CreateHtmlController.class);
 	
 	@Autowired
