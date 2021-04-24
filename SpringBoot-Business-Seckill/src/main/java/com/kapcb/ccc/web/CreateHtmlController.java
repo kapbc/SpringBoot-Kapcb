@@ -25,10 +25,11 @@ public class CreateHtmlController {
 	@Autowired
 	private ICreateHtmlService createHtmlService;
 	
-	@ApiOperation(value="生成静态商品页",nickname="科帮网")
 	@PostMapping("/start")
+	@ApiOperation(value="生成静态商品页",nickname="科帮网")
 	public Result start(){
 		LOGGER.info("生成秒杀活动静态页");
 		return createHtmlService.createAllHtml();
 	}
+	
 }
