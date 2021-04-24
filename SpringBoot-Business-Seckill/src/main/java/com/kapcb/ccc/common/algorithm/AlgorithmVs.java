@@ -1,5 +1,4 @@
-package com.itstyle.seckill.common.algorithm;
-
+package com.kapcb.ccc.common.algorithm;
 
 /**
  * 排序 VS
@@ -28,7 +27,7 @@ public class AlgorithmVs {
 
         // 快速排序
         long start = System.currentTimeMillis();
-        QuickSort.quickSort(list, 0, list.length - 1);
+        com.itstyle.seckill.common.algorithm.QuickSort.quickSort(list, 0, list.length - 1);
         long end = System.currentTimeMillis();
         System.out.println("快速排序耗费的时间：" + (end - start));
         display(list);
@@ -45,7 +44,7 @@ public class AlgorithmVs {
 
         // 冒泡排序
         long start = System.currentTimeMillis();
-        BubbleSort.bubbleSort(list);
+        com.itstyle.seckill.common.algorithm.BubbleSort.bubbleSort(list);
         long end = System.currentTimeMillis();
         System.out.println("冒泡排序耗费的时间：" + (end - start));
         display(list);
@@ -62,7 +61,7 @@ public class AlgorithmVs {
 
         // 直接插入排序
         long start = System.currentTimeMillis();
-        InsertSort.insertSort(list);
+        com.itstyle.seckill.common.algorithm.InsertSort.insertSort(list);
         long end = System.currentTimeMillis();
         System.out.println("直接插入排序耗费的时间：" + (end - start));
         display(list);
@@ -77,7 +76,7 @@ public class AlgorithmVs {
             list[i] = (int) (Math.random() * 100000);
         }
         long start = System.currentTimeMillis();
-        HeapSort.heapSort(list);
+        com.itstyle.seckill.common.algorithm.HeapSort.heapSort(list);
         long end = System.currentTimeMillis();
         System.out.println("堆排序排序耗费的时间：" + (end - start));
         display(list);
@@ -92,7 +91,7 @@ public class AlgorithmVs {
             list[i] = (int) (Math.random() * 100000);
         }
         long start = System.currentTimeMillis();
-        MergeSort.mergeSort(list, new int[list.length], 0, list.length - 1);
+        com.itstyle.seckill.common.algorithm.MergeSort.mergeSort(list, new int[list.length], 0, list.length - 1);
         long end = System.currentTimeMillis();
         System.out.println("归并排序排序耗费的时间：" + (end - start));
         display(list);
@@ -109,7 +108,7 @@ public class AlgorithmVs {
 
         // 希尔排序
         long start = System.currentTimeMillis();
-        ShellSort.shellSort(list);
+        com.itstyle.seckill.common.algorithm.ShellSort.shellSort(list);
         long end = System.currentTimeMillis();
         System.out.println("希尔排序耗费的时间：" + (end - start));
         display(list);
@@ -126,7 +125,7 @@ public class AlgorithmVs {
 
         // 希尔排序
         long start = System.currentTimeMillis();
-        QuickSort.quickSort(list,0, list.length - 1);
+        com.itstyle.seckill.common.algorithm.QuickSort.quickSort(list,0, list.length - 1);
         long end = System.currentTimeMillis();
         System.out.println("快速排序耗费的时间：" + (end - start));
         display(list);
@@ -141,7 +140,7 @@ public class AlgorithmVs {
             list[i] = (int) (Math.random() * 100000);
         }
         long start = System.currentTimeMillis();
-        SelectionSort.selectionSort(list);
+        com.itstyle.seckill.common.algorithm.SelectionSort.selectionSort(list);
         long end = System.currentTimeMillis();
         System.out.println("直接排序耗费的时间：" + (end - start));
         display(list);

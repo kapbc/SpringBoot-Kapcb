@@ -1,5 +1,4 @@
-package com.itstyle.seckill.common.algorithm;
-
+package com.kapcb.ccc.common.algorithm;
 
 /**
  * 归并排序

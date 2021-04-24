@@ -1,5 +1,4 @@
-package com.itstyle.seckill.common.algorithm;
-
+package com.kapcb.ccc.common.algorithm;
 
 /**
  * 直接插入排序

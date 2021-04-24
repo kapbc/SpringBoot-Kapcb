@@ -53,7 +53,7 @@
 		<dependency>
 		    <groupId>org.springframework.boot</groupId>
 		    <artifactId>spring-boot-starter-redis</artifactId>
-		    <version>1.4.7.RELEASE</version>
+			<version>1.4.7.RELEASE</version>
 		</dependency>
 		<!-- freemarker 模版 生成静态页 -->
 		<dependency>
@@ -66,16 +66,16 @@
              <artifactId>spring-session</artifactId>
         </dependency>
         <!-- 构建Restful API -->  
-        <dependency>  
-            <groupId>io.springfox</groupId>  
-            <artifactId>springfox-swagger2</artifactId>  
-            <version>2.7.0</version>  
-        </dependency>  
-        <dependency>  
-            <groupId>io.springfox</groupId>  
-            <artifactId>springfox-swagger-ui</artifactId>  
-            <version>2.7.0</version>  
-        </dependency> 
+	  <dependency>
+		  <groupId>io.springfox</groupId>
+		  <artifactId>springfox-swagger2</artifactId>
+		  <version>2.9.2</version>
+	  </dependency>
+	  <dependency>
+		  <groupId>io.springfox</groupId>
+		  <artifactId>springfox-swagger-ui</artifactId>
+		  <version>2.9.2</version>
+	  </dependency>
         <!-- Redisson 实现分布式锁 --> 
         <dependency>
 		   <groupId>org.redisson</groupId>
