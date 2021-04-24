@@ -3,13 +3,12 @@ package com.kapcb.ccc.component;
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.event.AnalysisEventListener;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +25,8 @@ import java.util.List;
 @Component
 public class FileLoadComponent {
 
+
+    @Async
     public void initialLoadData() {
 
         List<String> keywordList = new ArrayList<>();
