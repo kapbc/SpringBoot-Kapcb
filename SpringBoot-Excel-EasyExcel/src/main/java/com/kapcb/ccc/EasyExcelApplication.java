@@ -20,6 +20,7 @@ public class EasyExcelApplication {
 
     public static void main(String[] args) {
         new SpringApplicationBuilder()
+                .sources(EasyExcelApplication.class)
                 .web(WebApplicationType.SERVLET)
                 .run(args);
     }
