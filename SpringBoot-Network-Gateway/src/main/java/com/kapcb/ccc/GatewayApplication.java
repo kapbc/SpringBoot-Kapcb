@@ -17,7 +17,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 public class GatewayApplication {
 
     public static void main(String[] args) {
-        new SpringApplicationBuilder()
+        new SpringApplicationBuilder(GatewayApplication.class)
                 .web(WebApplicationType.SERVLET)
                 .run(args);
     }
