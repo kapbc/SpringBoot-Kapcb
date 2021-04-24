@@ -20,6 +20,7 @@ public class XxlJobApplication {
 
     public static void main(String[] args) {
         new SpringApplicationBuilder()
+                .sources(XxlJobApplication.class)
                 .web(WebApplicationType.SERVLET)
                 .run(args);
     }
