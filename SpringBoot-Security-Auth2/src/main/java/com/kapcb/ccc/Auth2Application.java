@@ -18,6 +18,7 @@ public class Auth2Application {
 
     public static void main(String[] args) {
         new SpringApplicationBuilder()
+                .sources(Auth2Application.class)
                 .web(WebApplicationType.SERVLET)
                 .run(args);
     }
