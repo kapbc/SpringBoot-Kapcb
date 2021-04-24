@@ -33,9 +33,10 @@ public class RedPacketController {
 	private final static Logger LOGGER = LoggerFactory.getLogger(RedPacketController.class);
 
 	private static int corePoolSize = Runtime.getRuntime().availableProcessors();
-    /**
-     * 创建线程池  调整队列数 拒绝服务
-     */
+	
+	    /**
+	     * 创建线程池  调整队列数 拒绝服务
+	     */
 	private static ThreadPoolExecutor executor  = new ThreadPoolExecutor(corePoolSize, corePoolSize+1, 10l, TimeUnit.SECONDS,
 			new LinkedBlockingQueue<>(1000));
 
@@ -56,18 +57,22 @@ public class RedPacketController {
 	public Result start(long redPacketId){
 		int skillNum = 100;
 		final CountDownLatch latch = new CountDownLatch(skillNum);
+		
 		/**
 		 * 初始化红包数据，抢红包拦截
 		 */
 		redisUtil.cacheValue(redPacketId+"-num",10);
+		
         /**
          * 初始化剩余人数，拆红包拦截
          */
         redisUtil.cacheValue(redPacketId+"-restPeople",10);
+		
         /**
          * 初始化红包金额，单位为分
          */
 		redisUtil.cacheValue(redPacketId+"-money",20000);
+		
         /**
          * 模拟100个用户抢10个红包
          */
@@ -158,6 +163,7 @@ public class RedPacketController {
         }
         return Result.ok();
     }
+	
     /**
      * 有人没抢 红包发多了
      * 红包进入延迟队列
