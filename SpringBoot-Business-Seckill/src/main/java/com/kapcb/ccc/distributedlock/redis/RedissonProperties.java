@@ -2,6 +2,7 @@ package com.itstyle.seckill.distributedlock.redis;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
+
 @ConfigurationProperties(prefix = "redisson")
 public class RedissonProperties {
 
