@@ -6,9 +6,10 @@ import org.redisson.api.RedissonClient;
 
 import java.util.concurrent.TimeUnit;
 
+
 /**
  * redis分布式锁帮助类
- * @author 科帮网 By https://blog.52itstyle.com
+ *
  */
 public class RedissLockUtil {
     private static RedissonClient redissonClient;
@@ -110,6 +111,7 @@ public class RedissLockUtil {
         RMapCache<String, Integer> mapCache = redissonClient.getMapCache("skill");
         mapCache.putIfAbsent(key,count,3,TimeUnit.DAYS);
     }
+	
     /**
      * 递增
      * @param key
