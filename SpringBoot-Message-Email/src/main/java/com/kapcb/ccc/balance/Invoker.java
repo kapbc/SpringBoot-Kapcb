@@ -2,10 +2,10 @@ package com.kapcb.ccc.balance;
 
 /**
  * <a>Title: Invoker </a>
- * <a>Author: Mike Chen <a>
+ * <a>Author: kapcb <a>
  * <a>Description：<a>
  *
- * @author Mike Chen
+ * @author kapcb
  * @date 2021/3/8-19:04
  */
 public interface Invoker {
