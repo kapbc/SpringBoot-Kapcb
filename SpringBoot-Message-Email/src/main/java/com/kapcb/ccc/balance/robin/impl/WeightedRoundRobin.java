@@ -8,10 +8,10 @@ import java.util.Map;
 
 /**
  * <a>Title: WeightedRoundRobin </a>
- * <a>Author: Mike Chen <a>
+ * <a>Author: kapcb <a>
  * <a>Description：<a>
  *
- * @author Mike Chen
+ * @author kapcb
  * @date 2021/3/8-19:13
  */
 @Slf4j
