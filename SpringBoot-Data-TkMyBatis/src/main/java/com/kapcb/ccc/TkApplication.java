@@ -14,9 +14,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 public class TkApplication {
-
-    public static void main(String[] args) {
-        SpringApplication.run(TkApplication.class, args);
+    
+        public static void main(String[] args) {
+        new SpringApplicationBuilder(TkApplication.class)
+                .bannerMode(Banner.Mode.OFF)
+                .web(WebApplicationType.SERVLET)
+                .run(args);
     }
 
 }
