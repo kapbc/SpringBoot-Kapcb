@@ -68,6 +68,4 @@ public class DruidConfigure {
         registrationBean.setUrlPatterns(Arrays.asList(COLLECTION_URL));
         return registrationBean;
     }
-
-
 }

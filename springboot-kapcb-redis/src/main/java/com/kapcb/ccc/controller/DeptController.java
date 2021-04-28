@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @version 1.0.0
  * @date 2020/6/26 11:36
  */
+@RequestMapping
 @RestController
 @RequiredArgsConstructor
 public class DeptController {
