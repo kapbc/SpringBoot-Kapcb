@@ -78,6 +78,6 @@
             <artifactId>hikari-spring-boot-starter</artifactId>
             <version>1.3-RELEASE</version>
         </dependency>
-    </dependencies>
 
+    </dependencies>
 </project>
