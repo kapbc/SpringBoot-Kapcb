@@ -22,4 +22,5 @@ public class Auth2Application {
                 .web(WebApplicationType.SERVLET)
                 .run(args);
     }
+    
 }
