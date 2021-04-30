@@ -98,7 +98,7 @@ public class RabbitConfiguration {
             log.info("RabbitReturnCallback        replyText : " + replyText);
             log.info("RabbitReturnCallback        exchange : " + exchange);
             log.info("RabbitReturnCallback        routingKey : " + routingKey);
-            log.info("the message consumer have received the message!");
+            log.info("the message consumer haven't received the message!");
         });
 
         rabbitTemplate.setMessageConverter(messageConverter());
