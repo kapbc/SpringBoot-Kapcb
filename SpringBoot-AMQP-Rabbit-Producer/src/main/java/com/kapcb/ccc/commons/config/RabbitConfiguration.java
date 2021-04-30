@@ -78,6 +78,7 @@ public class RabbitConfiguration {
                 }
             } else {
                 /**
+                 * 消费者消息接收失败
                  * 失败进行具体的后续处理：重试 或者补偿等手段
                  */
                 log.info("send message to rabbitmq exchange error!");
