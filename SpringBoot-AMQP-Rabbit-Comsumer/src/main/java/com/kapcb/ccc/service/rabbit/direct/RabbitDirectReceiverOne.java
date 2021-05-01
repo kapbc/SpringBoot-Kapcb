@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.Map;
 
 /**
- * <a>Title: RabbitDirectRecevier </a>
+ * <a>Title: RabbitDirectReceiverOne </a>
  * <a>Author: kapcb <a>
  * <a>Description: <a>
  *

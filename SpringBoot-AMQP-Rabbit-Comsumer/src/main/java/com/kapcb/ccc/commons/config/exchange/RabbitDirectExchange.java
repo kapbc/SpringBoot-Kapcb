@@ -78,5 +78,4 @@ public class RabbitDirectExchange {
         log.info("begin to binding directQueueTwo to directExchangeTwo...");
         return BindingBuilder.bind(directQueueTwo).to(directExchangeTwo).with(directRoutingKeyTwo);
     }
-
 }

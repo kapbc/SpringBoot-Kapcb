@@ -1,7 +1,7 @@
 package com.kapcb.ccc.service.rabbit.direct;
 
 /**
- * <a>Title: RabbitDirectRecevier </a>
+ * <a>Title: RabbitDirectReceiverTwo </a>
  * <a>Author: kapcb <a>
  * <a>Description: <a>
  *

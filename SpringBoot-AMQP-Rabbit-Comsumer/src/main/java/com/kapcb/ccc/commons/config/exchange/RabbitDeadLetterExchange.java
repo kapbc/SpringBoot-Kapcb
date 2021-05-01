@@ -17,6 +17,8 @@ import java.util.Map;
  * <a>Title: RabbitDeadLetterExchange </a>
  * <a>Author: kapcb <a>
  * <a>Description: <a>
+ * <p>
+ * 死信队列
  *
  * @author kapcb
  * @version 1.0.0
