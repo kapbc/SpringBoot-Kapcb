@@ -21,5 +21,4 @@ public class TkApplication {
                 .web(WebApplicationType.SERVLET)
                 .run(args);
     }
-
 }
