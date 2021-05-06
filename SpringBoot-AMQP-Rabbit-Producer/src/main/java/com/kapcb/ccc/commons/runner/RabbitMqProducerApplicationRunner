@@ -14,8 +14,8 @@ import java.time.format.DateTimeFormatter;
 
 /**
  * <a>Title: ApplicationRunner </a>
- * <a>Author: Mike Chen <a>
- * <a>Description: Application Runner <a>
+ * <a>Author: Kapcb <a>
+ * <a>Description: RabbitMq Producer Application Runner <a>
  *
  * @author Kapcb
  * @date 2021/4/19-20:22
