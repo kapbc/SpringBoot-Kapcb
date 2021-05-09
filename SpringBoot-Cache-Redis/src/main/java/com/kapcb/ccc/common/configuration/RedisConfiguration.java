@@ -1,4 +1,4 @@
-package com.kapcb.ccc.common.Configuration;
+package com.kapcb.ccc.common.configuration;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
