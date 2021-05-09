@@ -1,7 +1,10 @@
 package com.kapcb.ccc.common.Configuration;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
+import org.springframework.data.redis.core.RedisTemplate;
 
 /**
  * <a>Title: SpringBoot-Kapcb </a>
@@ -16,5 +19,13 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RedisConfiguration {
 
-    
+    public RedisTemplate<String,Object> redisTemplate(LettuceConnectionFactory lettuceConnectionFactory){
+        RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
+        redisTemplate.setConnectionFactory(lettuceConnectionFactory);
+        ObjectMapper objectMapper = new ObjectMapper();
+
+
+
+        return redisTemplate;
+    }
 }
