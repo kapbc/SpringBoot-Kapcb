@@ -7,7 +7,11 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.databind.jsontype.BasicPolymorphicTypeValidator;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.kapcb.ccc.common.service.RedisService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
@@ -29,8 +33,9 @@ import org.springframework.data.redis.serializer.RedisSerializer;
 public class RedisConfiguration {
 
     @Bean(value = "redisTemplate")
-//    @ConditionalOnMissingBean(value = RedisConfiguration.class)
+    @ConditionalOnMissingBean(name = "redisService")
     public RedisTemplate<String, Object> redisTemplate(LettuceConnectionFactory lettuceConnectionFactory) {
+        log.info("begin to create redisTemplate and load into Spring Application Context...");
         // 关闭共享连接, 用于动态切换Redis数据库
         lettuceConnectionFactory.setShareNativeConnection(false);
         RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
@@ -43,7 +48,7 @@ public class RedisConfiguration {
         objectMapper.setVisibility(PropertyAccessor.ALL, JsonAutoDetect.Visibility.ANY);
         // 指定序列化输入的类型，类必须是非final修饰的，final修饰的类，比如String,Integer等会跑出异常
         // 序列化时将对象全类名一起保存下来
-        objectMapper.activateDefaultTyping(polymorphicTypeValidator,ObjectMapper.DefaultTyping.NON_FINAL);
+        objectMapper.activateDefaultTyping(polymorphicTypeValidator, ObjectMapper.DefaultTyping.NON_FINAL);
         objectMapper.registerModule(new Jdk8Module());
         // 时间Module
         objectMapper.registerModule(new JavaTimeModule());
@@ -61,11 +66,12 @@ public class RedisConfiguration {
         redisTemplate.setConnectionFactory(lettuceConnectionFactory);
         redisTemplate.afterPropertiesSet();
 
-//     @Bean
-//     @ConditionalOnBean(name = "redisTemplate")
-//     public RedisService redisService(@Qualifier("redisTemplate") RedisTemplate<String, Object> redisTemplate) {
-//         return new RedisService(redisTemplate);
-//     }
         return redisTemplate;
+    }
+
+    @Bean
+    @ConditionalOnBean(name = "redisTemplate")
+    public RedisService redisService(@Qualifier("redisTemplate") RedisTemplate<String, Object> redisTemplate) {
+        return new RedisService(redisTemplate);
     }
 }

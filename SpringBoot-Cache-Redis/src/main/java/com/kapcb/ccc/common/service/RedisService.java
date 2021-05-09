@@ -24,4 +24,6 @@ public class RedisService {
     public RedisService(@Qualifier("redisTemplate") RedisTemplate<String, Object> redisTemplate) {
         this.redisTemplate = redisTemplate;
     }
+
+
 }
