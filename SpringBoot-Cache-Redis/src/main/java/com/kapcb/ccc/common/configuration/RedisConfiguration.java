@@ -73,6 +73,5 @@ public class RedisConfiguration {
     @ConditionalOnBean(name = "redisTemplate")
     public RedisService redisService(@Qualifier("redisTemplate") RedisTemplate<String, Object> redisTemplate) {
         return new RedisService(redisTemplate);
-        
     }
 }
