@@ -1,20 +1,4 @@
-package com.itstyle.seckill.web;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
-
-import javax.jms.Destination;
-
-import org.apache.activemq.command.ActiveMQQueue;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+package com.kapcb.ccc.web;
 
 import com.itstyle.seckill.common.entity.Result;
 import com.itstyle.seckill.common.redis.RedisUtil;
@@ -23,6 +7,20 @@ import com.itstyle.seckill.queue.kafka.KafkaSender;
 import com.itstyle.seckill.queue.redis.RedisSender;
 import com.itstyle.seckill.service.ISeckillDistributedService;
 import com.itstyle.seckill.service.ISeckillService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.apache.activemq.command.ActiveMQQueue;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import javax.jms.Destination;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 @Api(tags ="分布式秒杀")
 @RestController
 @RequestMapping("/seckillDistributed")

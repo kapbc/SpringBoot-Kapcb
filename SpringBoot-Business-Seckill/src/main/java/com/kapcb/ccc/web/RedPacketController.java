@@ -1,5 +1,4 @@
-package com.itstyle.seckill.web;
-
+package com.kapcb.ccc.web;
 
 import com.itstyle.seckill.common.entity.Result;
 import com.itstyle.seckill.common.redis.RedisUtil;

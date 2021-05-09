@@ -1,4 +1,4 @@
-package com.itstyle.seckill.web;
+package com.kapcb.ccc.web;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

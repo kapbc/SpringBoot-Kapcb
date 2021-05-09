@@ -1,4 +1,4 @@
-package com.itstyle.seckill.web;
+package com.kapcb.ccc.web;
 
 import com.itstyle.seckill.common.redis.RedisUtil;
 import io.swagger.annotations.Api;
@@ -25,7 +25,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.itstyle.seckill.common.entity.Result;
 import com.itstyle.seckill.common.entity.Seckill;
 import com.itstyle.seckill.common.utils.HttpClient;
-import com.itstyle.seckill.common.utils.IPUtils;
 import com.itstyle.seckill.queue.activemq.ActiveMQSender;
 import com.itstyle.seckill.service.ISeckillService;
 

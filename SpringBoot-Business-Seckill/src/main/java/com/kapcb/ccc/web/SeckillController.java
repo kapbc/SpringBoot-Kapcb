@@ -1,6 +1,5 @@
-package com.itstyle.seckill.web;
+package com.kapcb.ccc.web;
 
-import com.itstyle.seckill.common.enums.SeckillStatEnum;
 import com.itstyle.seckill.common.exception.RrException;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
