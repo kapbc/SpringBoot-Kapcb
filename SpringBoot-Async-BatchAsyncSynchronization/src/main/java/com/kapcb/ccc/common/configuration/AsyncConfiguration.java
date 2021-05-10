@@ -11,7 +11,7 @@ import java.util.concurrent.ThreadPoolExecutor;
  * <a>Title: SpringBoot-Kapcb </a>
  * <a>Author: Kapcb <a>
  * <a>Description: Async Configuration <a>
- * 
+ *  https://blog.csdn.net/lw1124052197/article/details/81980272?utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-2.vipsorttest&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-2.vipsorttest
  * @author Kapcb
  * @version 1.0.0
  * @date 2021/5/10 22:20
