@@ -1,11 +1,13 @@
 package com.kapcb.ccc.common.service;
 
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.lang.NonNull;
+import org.springframework.lang.Nullable;
 
 import java.util.Arrays;
 import java.util.List;
@@ -39,6 +41,7 @@ public class RedisService {
      *
      * @param redis databases index
      */
+    @SneakyThrows(Exception.class)
     private synchronized void select(int index) {
         if (Objects.nonNull(index) && (index >= 0) && (index <= 15)) {
             LettuceConnectionFactory connectionFactory = (LettuceConnectionFactory) redisTemplate.getConnectionFactory();
@@ -59,8 +62,11 @@ public class RedisService {
      * @param time Long
      * @return Boolean
      */
-    public Boolean expire(String key, Long time) {
+    public Boolean expire(@NonNull String key, @NonNull Long time, boolean selectIndex, @Nullable int index) {
         try {
+            if (selectIndex) {
+                select(index);
+            }
             if (time > 0) {
                 redisTemplate.expire(key, time, TimeUnit.SECONDS);
             }
@@ -79,7 +85,11 @@ public class RedisService {
      * @param key String
      * @return Long
      */
-    public Long getExpire(String key) {
+    @SneakyThrows
+    public Long getExpire(@NonNull String key, boolean selectIndex, @Nullable int index) {
+        if (selectIndex) {
+            select(index);
+        }
         return redisTemplate.getExpire(Objects.requireNonNull(key), TimeUnit.SECONDS);
     }
 
@@ -89,8 +99,11 @@ public class RedisService {
      * @param key String
      * @return Boolean
      */
-    public Boolean hasKey(String key) {
+    public Boolean hasKey(@NonNull String key, boolean selectIndex, @Nullable int index) {
         try {
+            if (selectIndex) {
+                select(index);
+            }
             return redisTemplate.hasKey(key);
         } catch (Exception e) {
             log.error("redis judgement has key error, the exception is : " + e.getMessage());
