@@ -138,7 +138,11 @@ public class RedisService {
      * @param key String
      * @return Object
      */
-    public Object get(@NonNull String key) {
+    @SneakyThrows
+    public Object get(boolean selectIndex, @Nullable int index, @NonNull String key) {
+        if (selectIndex) {
+            select(index);
+        }
         return redisTemplate.opsForValue().get(key);
     }
 
@@ -149,8 +153,11 @@ public class RedisService {
      * @param value Object
      * @return Boolean
      */
-    public Boolean set(String key, Object value) {
+    public Boolean set(String key, Object value, boolean selectIndex, @Nullable int index) {
         try {
+            if (selectIndex) {
+                select(index);
+            }
             redisTemplate.opsForValue().set(key, value);
             return true;
         } catch (Exception e) {
@@ -172,7 +179,7 @@ public class RedisService {
             if (time > 0) {
                 redisTemplate.opsForValue().set(key, value, time, TimeUnit.SECONDS);
             } else {
-                this.set(key, value);
+//                this.set(key, value);
             }
             return true;
         } catch (Exception e) {
@@ -261,7 +268,7 @@ public class RedisService {
         try {
             redisTemplate.opsForHash().put(key, item, value);
             if (time > 0) {
-                this.expire(key, time);
+//                this.expire(key, time);
             }
             return true;
         } catch (Exception e) {
@@ -299,7 +306,7 @@ public class RedisService {
         try {
             redisTemplate.opsForHash().putAll(key, value);
             if (time > 0) {
-                this.expire(key, time);
+//                this.expire(key, time);
             }
             return true;
         } catch (Exception e) {
@@ -428,7 +435,7 @@ public class RedisService {
         try {
             Long count = redisTemplate.opsForSet().add(key, values);
             if (time > 0) {
-                this.expire(key, time);
+//                this.expire(key, time);
             }
             return count;
         } catch (Exception e) {
@@ -545,7 +552,7 @@ public class RedisService {
         try {
             redisTemplate.opsForList().rightPush(key, value);
             if (time > 0) {
-                this.expire(key, time);
+//                this.expire(key, time);
             }
             return true;
         } catch (Exception e) {
@@ -583,7 +590,7 @@ public class RedisService {
         try {
             redisTemplate.opsForList().rightPushAll(key, value);
             if (time > 0) {
-                this.expire(key, time);
+//                this.expire(key, time);
             }
             return true;
         } catch (Exception e) {
