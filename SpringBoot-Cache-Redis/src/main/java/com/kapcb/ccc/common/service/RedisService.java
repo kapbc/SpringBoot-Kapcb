@@ -116,8 +116,12 @@ public class RedisService {
      *
      * @param key String... 可以是一个值或者多个值
      */
-    public void delete(String... key) {
-        if (key != null && key.length > 0) {
+    @SneakyThrows
+    public void delete(boolean selectIndex, @Nullable int index, @Nullable String... key) {
+        if (selectIndex) {
+            select(index);
+        }
+        if (Objects.nonNull(key) && key.length > 0) {
             if (key.length == 1) {
                 redisTemplate.delete(key[0]);
                 log.warn("delete key : " + key[0] + " in redis success");
