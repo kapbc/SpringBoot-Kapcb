@@ -12,9 +12,6 @@
     <groupId>com.kapcb</groupId>
     <artifactId>springboot-kapcb-mybatis-annotation</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-         
-    <name>springboot-kapcb-mybatis-annotation</name>
-    <description>springboot-kapcb-mybatis-annotation</description>
 
     <properties>
         <java.version>1.8</java.version>
