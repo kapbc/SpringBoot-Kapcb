@@ -37,7 +37,7 @@ public class TestDrivenDevelopment {
         int size = data.size();
         int count = 1000;
         int totalPage = size / count;
-        
+
         CountDownLatch countDownLatch = new CountDownLatch(size);
         for (int i = 1; i <= totalPage; i++) {
             int startNum = (i - 1) * count;
