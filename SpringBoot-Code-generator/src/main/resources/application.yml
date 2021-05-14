@@ -7,7 +7,7 @@ spring:
     type: com.alibaba.druid.pool.DruidDataSource
     #MySQL配置
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://szdocker.qa.globalsources.com:3306/supplier_center?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    url: jdbc:mysql:xxx.xxx.xxx.xxx:3306/xxxx?useUnicode=true&characterEncoding=UTF-8&useSSL=false
     username: root
     password: bac123
     #oracle配置
