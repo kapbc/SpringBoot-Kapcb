@@ -41,6 +41,7 @@ public class CountDownLatchDemo {
      * 混合型任务  = 视机器配置和复杂度自测而定
      */
     private static int corePoolSize = Runtime.getRuntime().availableProcessors();
+
     /**
      * public ThreadPoolExecutor(int corePoolSize,int maximumPoolSize,long keepAliveTime,
      * TimeUnit unit,BlockingQueue<Runnable> workQueue)
