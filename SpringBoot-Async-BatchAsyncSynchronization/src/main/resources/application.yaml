@@ -32,3 +32,19 @@ mybatis-plus:
       logic-not-delete-value: 0
       # 删除之后
       logic-delete-value: 1
+
+user:
+  task:
+    core:
+      poolSize: 5
+    max:
+      poolSize: 10
+    queue:
+      capacity: 1000
+    keep:
+      alive:
+        seconds: 30
+    thread:
+      name:
+        prefix: user-task-thread-
+

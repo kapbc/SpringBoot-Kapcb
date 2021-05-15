@@ -29,7 +29,7 @@ public class UserTaskConfiguration {
     @Value("${user.task.queue.capacity}")
     private int queueCapacity;
 
-    @Value("${keep.alive.seconds}")
+    @Value("${user.task.keep.alive.seconds}")
     private int keepAliveSeconds;
 
     @Value("${user.task.thread.name.prefix}")

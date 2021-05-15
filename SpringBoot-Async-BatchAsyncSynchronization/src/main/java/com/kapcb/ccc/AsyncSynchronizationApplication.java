@@ -1,8 +1,10 @@
 package com.kapcb.ccc;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.context.annotation.ComponentScan;
 
 /**
  * <a>Title: SpringBoot-Kapcb </a>
@@ -14,6 +16,8 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
  * @date 2021/5/10 22:16
  */
 @SpringBootApplication
+@MapperScan(basePackages = {"com.kapcb.ccc.mapper"})
+@ComponentScan(basePackages = {"com.kapcb.ccc.mapper"})
 public class AsyncSynchronizationApplication {
 
     public static void main(String[] args) {
