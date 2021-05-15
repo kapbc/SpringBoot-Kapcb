@@ -28,7 +28,7 @@ import java.util.concurrent.TimeUnit;
  * @date 2021/5/12 22:33
  */
 @RestController
-@RequestMapping(value = "task")
+@RequestMapping(value = "test")
 public class TaskController {
 
     @RequestMapping(value = "test1", method = RequestMethod.GET)
