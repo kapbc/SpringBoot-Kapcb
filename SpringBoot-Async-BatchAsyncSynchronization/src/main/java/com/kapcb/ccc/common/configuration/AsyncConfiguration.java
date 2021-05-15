@@ -42,5 +42,6 @@ public class AsyncConfiguration {
         executor.setWaitForTasksToCompleteOnShutdown(true);
         executor.initialize();
         return executor;
+
     }
 }
