@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.kapcb.ccc.model.po.UserPO;
 
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
 
 /**
  * <a>Title: SpringBoot-Kapcb </a>
@@ -16,5 +17,6 @@ import java.util.List;
  */
 public interface IUserService extends IService<UserPO> {
 
-    Boolean insertUser(List<UserPO> userPoList);
+    void executeSync(List<UserPO> subUserList, CountDownLatch countDownLatch);
+
 }

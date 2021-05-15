@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
 
 /**
  * <a>Title: SpringBoot-Kapcb </a>
@@ -23,16 +24,15 @@ public class IUserServiceImpl extends ServiceImpl<UserMapper, UserPO> implements
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public Boolean insertUser(List<UserPO> userPoList) {
+    public void executeSync(List<UserPO> subUserList, CountDownLatch countDownLatch) {
         Long userId = null;
         try {
-            for (UserPO userPO : userPoList) {
+            for (UserPO userPO : subUserList) {
                 userId = userPO.getUserId();
                 this.baseMapper.insert(userPO);
             }
         } catch (Exception e) {
             log.error("batch sync user error, the user id is : " + userId);
         }
-        return true;
     }
 }

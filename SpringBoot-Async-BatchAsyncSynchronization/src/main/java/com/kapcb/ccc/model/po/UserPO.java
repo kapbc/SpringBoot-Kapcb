@@ -3,6 +3,7 @@ package com.kapcb.ccc.model.po;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -20,6 +21,7 @@ import java.io.Serializable;
  */
 @Slf4j
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @TableName("user")
