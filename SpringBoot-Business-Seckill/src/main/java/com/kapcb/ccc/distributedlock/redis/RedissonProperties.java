@@ -1,4 +1,4 @@
-package com.itstyle.seckill.distributedlock.redis;
+package com.kapcb.ccc.distributedlock.redis;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

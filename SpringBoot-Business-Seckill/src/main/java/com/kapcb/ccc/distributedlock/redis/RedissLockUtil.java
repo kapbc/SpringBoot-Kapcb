@@ -1,4 +1,4 @@
-package com.itstyle.seckill.distributedlock.redis;
+package com.kapcb.ccc.distributedlock.redis;
 
 import org.redisson.api.RLock;
 import org.redisson.api.RMapCache;

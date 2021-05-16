@@ -1,6 +1,4 @@
-package com.itstyle.seckill.distributedlock.zookeeper;
-
-import java.util.concurrent.TimeUnit;
+package com.kapcb.ccc.distributedlock.zookeeper;
 
 import org.apache.curator.RetryPolicy;
 import org.apache.curator.framework.CuratorFramework;
@@ -8,10 +6,8 @@ import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.framework.recipes.locks.InterProcessMutex;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 
-/**
- * zookeeper 分布式锁
- * @author 科帮网 By https://blog.52itstyle.com
- */
+import java.util.concurrent.TimeUnit;
+
 public class ZkLockUtil{
 	
 	private static String address = "192.168.1.180:2181";
