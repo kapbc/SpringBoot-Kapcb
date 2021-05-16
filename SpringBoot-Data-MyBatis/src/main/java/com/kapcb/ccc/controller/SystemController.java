@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.Resource;
-
 /**
  * <a>Title: SystemController </a>
  * <a>Author: kapcb <a>
@@ -34,6 +32,4 @@ public class SystemController {
     public void getUserList(){
         log.info("prepare to load user list");
     }
-
-
 }
