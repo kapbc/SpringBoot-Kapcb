@@ -30,7 +30,13 @@ public class UserTaskController {
 
     private final IUserService userService;
 
-    @GetMapping("user/{count}")
+    @GetMapping("test")
+    public String testController(){
+        log.info("come into user task controller");
+        return "success";
+    }
+
+    @GetMapping("{count}")
     public String batchSync(@PathVariable(value = "count") Integer count) {
         log.info("the batch sync count is : " + count);
         List<UserPO> batchAsyncData = getBatchAsyncData();
@@ -77,6 +83,4 @@ public class UserTaskController {
         }
         return userList;
     }
-
-
 }
