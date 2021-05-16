@@ -23,6 +23,8 @@ import java.util.Date;
 @AllArgsConstructor
 public class UserVO implements Serializable {
 
+    private static final long serialVersionUID = 3069595928498826934L;
+
     private Long id;
     private Integer age;
     private String username;

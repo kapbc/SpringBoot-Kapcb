@@ -32,6 +32,9 @@ public class SwaggerRestDAO {
 
     static {
         USER_VO_MAP.put(DATA_SOURCE_NAME, new ArrayList<UserVO>() {
+
+            private static final long serialVersionUID = -8077655037686385384L;
+
             {
                 add(new UserVO.Builder().id(18L).age(18).username("kapcb").email("eircccallroot@yhea.net").address("深圳市南山区深圳湾壹号").birthday(new Date()).build());
                 add(new UserVO.Builder().id(22L).age(19).username("kapcb").email("eircccallroot@yhea.net").address("深圳市南山区深圳湾壹号").birthday(new Date()).build());

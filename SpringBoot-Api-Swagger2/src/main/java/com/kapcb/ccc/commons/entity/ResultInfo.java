@@ -14,6 +14,8 @@ import java.util.Map;
  */
 public class ResultInfo extends HashMap<String, Object> {
 
+    private static final long serialVersionUID = -6008563144573948284L;
+
     private static final String RETURN_CODE = "code";
     private static final String RETURN_DATA = "data";
     private static final String RETURN_MESSAGE = "message";
