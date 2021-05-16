@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.kapcb.ccc.mapper.UserMapper;
 import com.kapcb.ccc.model.po.UserPO;
 import com.kapcb.ccc.service.IUserService;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,6 +25,7 @@ public class IUserServiceImpl extends ServiceImpl<UserMapper, UserPO> implements
 
     @Override
     @Transactional(rollbackFor = Exception.class)
+    @Async("userTaskExecutor")
     public void executeSync(List<UserPO> subUserList, CountDownLatch countDownLatch) {
         Long userId = null;
         try {

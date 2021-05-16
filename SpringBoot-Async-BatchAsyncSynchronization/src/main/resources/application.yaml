@@ -1,7 +1,7 @@
 server:
   port: 8080
-#  servlet:
-#    context-path: /task
+  servlet:
+    context-path: /task
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
