@@ -11,9 +11,9 @@
     </parent>
          
     <groupId>com.kapcb</groupId>
-         
     <artifactId>springboot-kapcb-dubbo-consumer</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+         
     <name>springboot-kapcb-dubbo-consumer</name>
     <description>springboot-kapcb-dubbo-consumer</description>
 
