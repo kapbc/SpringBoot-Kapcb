@@ -12,6 +12,7 @@
          
     <groupId>com.kapcb</groupId>
     <artifactId>springboot-kapcb-dubbo-interface</artifactId>
+         
     <version>0.0.1-SNAPSHOT</version>
     <name>springboot-kapcb-dubbo-interface</name>
     <description>springboot-kapcb-dubbo-interface</description>
