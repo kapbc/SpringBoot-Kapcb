@@ -25,13 +25,13 @@ public class TaskConfiguration {
     private int userQueueCapacity = 99999;
 
     @Value("${user.keepAlive.seconds}")
-    private int keywordKeepAliveSeconds = 30;
+    private int userKeepAliveSeconds = 30;
 
     @Value("${user.thread.name.prefix}")
-    private String keywordThreadNamePrefix = "keyword-batch-sync";
+    private String userThreadNamePrefix = "keyword-batch-sync";
 
     @Bean(name = "userTaskExecutor")
-    public ThreadPoolTaskExecutor advertKeywordTaskExecutor() {
+    public ThreadPoolTaskExecutor userTaskExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         executor.setCorePoolSize(keywordCorePoolSize);
         executor.setMaxPoolSize(keywordMaxPoolSize);
