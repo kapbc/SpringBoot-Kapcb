@@ -24,4 +24,5 @@ public class AsyncSelectApplication {
                 .bannerMode(Banner.Mode.OFF)
                 .run(args);
     }
+
 }
