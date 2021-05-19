@@ -33,11 +33,11 @@ public class TaskConfiguration {
     @Bean(name = "userTaskExecutor")
     public ThreadPoolTaskExecutor userTaskExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-        executor.setCorePoolSize(keywordCorePoolSize);
-        executor.setMaxPoolSize(keywordMaxPoolSize);
-        executor.setQueueCapacity(keywordQueueCapacity);
-        executor.setKeepAliveSeconds(keywordKeepAliveSeconds);
-        executor.setThreadNamePrefix(keywordThreadNamePrefix);
+        executor.setCorePoolSize(userCorePoolSize);
+        executor.setMaxPoolSize(userMaxPoolSize);
+        executor.setQueueCapacity(userQueueCapacity);
+        executor.setKeepAliveSeconds(userKeepAliveSeconds);
+        executor.setThreadNamePrefix(userThreadNamePrefix);
         // reject policy
         executor.setRejectedExecutionHandler(new ThreadPoolExecutor.CallerRunsPolicy());
         // wait all task down
