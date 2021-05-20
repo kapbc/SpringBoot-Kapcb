@@ -14,7 +14,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 public class SpringbootKapcbConfigPathApplication {
+    
     public static void main(String[] args) {
         SpringApplication.run(SpringbootKapcbConfigPathApplication.class, args);
     }
+    
 }
