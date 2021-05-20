@@ -616,5 +616,43 @@ public class RedisService {
             return false;
         }
     }
+    
+    
+    /**
+     * set bit
+     *
+     * @param key    String
+     * @param offset long
+     * @param value  boolean
+     * @param index  int
+     * @return Boolean
+     */
+    public Boolean setBit(String key, long offset, boolean value, int index) {
+        try {
+            select(index);
+            return redisTemplate.opsForValue().setBit(key, offset, value);
+        } catch (Exception e) {
+            log.error("set bit fail, the error message is : " + e.getMessage());
+            return false;
+        }
+    }
+
+    /**
+     * get bit
+     *
+     * @param key    String
+     * @param offset long
+     * @param index  int
+     * @return Boolean
+     */
+    public Boolean getBit(String key, long offset, int index) {
+        try {
+            select(index);
+            return redisTemplate.opsForValue().getBit(key, offset);
+        } catch (Exception e) {
+            log.error("get bit fail, the error message is : " + e.getMessage());
+            return false;
+        }
+    }
 
 }
