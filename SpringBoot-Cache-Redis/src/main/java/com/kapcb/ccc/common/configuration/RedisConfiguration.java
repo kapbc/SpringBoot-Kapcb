@@ -75,7 +75,7 @@ public class RedisConfiguration {
         return new RedisService(redisTemplate);
     }
     
-        /**
+    /**
      * init bloomFilter
      *
      * @return BloomFilterHelper {@link BloomFilterHelper}
