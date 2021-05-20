@@ -74,4 +74,15 @@ public class RedisConfiguration {
     public RedisService redisService(@Qualifier("redisTemplate") RedisTemplate<String, Object> redisTemplate) {
         return new RedisService(redisTemplate);
     }
+    
+        /**
+     * init bloomFilter
+     *
+     * @return BloomFilterHelper {@link BloomFilterHelper}
+     */
+    @Bean
+    @ConditionalOnBean(name = "redisTemplate")
+    public BloomFilterHelper<String> initBloomFilter() {
+        return new BloomFilterHelper<>((Funnel<String>) (from, init) -> init.putString(from, Charsets.UTF_8).putString(from, Charsets.UTF_8), 1000000, 0.01);
+    }
 }
