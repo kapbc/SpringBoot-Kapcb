@@ -10,4 +10,5 @@ package com.kapcb.ccc.service;
  * @date 2021/5/18 22:12
  */
 public interface UserMainService {
+
 }
