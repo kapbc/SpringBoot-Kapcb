@@ -1,6 +1,11 @@
 package com.kapcb.ccc.common.config;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+
+import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * <a>Title: SpringBoot-Kapcb </a>
@@ -11,7 +16,6 @@ import org.springframework.context.annotation.Configuration;
  * @version 1.0.0
  * @date 2021/5/18 22:11
  */
-@slf4j
 @Configuration
 public class TaskConfiguration {
   
