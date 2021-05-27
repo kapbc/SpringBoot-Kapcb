@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import javax.annotation.Resource;
 import java.io.IOException;
 
 /**
@@ -27,13 +28,17 @@ import java.io.IOException;
 @Component
 //@ConditionalOnProperty()
 public class HttpClientComponent {
-    
+
     private static final Logger log = LoggerFactory.getLogger(HttpClientComponent.class);
 
     private RestClient restClient;
 
+    @Resource
+    private ElasticsearchProperties elasticsearchProperties;
+
     @PostConstruct
-    public void init(ElasticsearchProperties elasticsearchProperties) {
+    public void init() {
+
         RestClientBuilder builder = RestClient.builder(new HttpHost(elasticsearchProperties.getHost(), elasticsearchProperties.getPort(), elasticsearchProperties.getScheme()));
 
         // 请求头配置方法, 设置每个请求头默认需要发送的请求头配置
