@@ -31,7 +31,7 @@ public class HttpClientComponent {
 
     private static final Logger log = LoggerFactory.getLogger(HttpClientComponent.class);
 
-    private RestClient restClient;
+    public RestClient restClient;
 
     @Resource
     private ElasticsearchProperties elasticsearchProperties;
