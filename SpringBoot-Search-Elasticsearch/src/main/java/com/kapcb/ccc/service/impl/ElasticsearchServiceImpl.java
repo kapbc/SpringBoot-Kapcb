@@ -54,6 +54,7 @@ public class ElasticsearchServiceImpl implements ElasticsearchService {
                 @Override
                 public void onSuccess(Response response) {
                     log.info("preform elasticsearch request async success!");
+                    log.info("the response is : " + response.toString());
                 }
 
                 /**
@@ -65,7 +66,9 @@ public class ElasticsearchServiceImpl implements ElasticsearchService {
                     log.error("perform elasticsearch request async fail!");
                 }
             });
+        } catch (Exception e) {
+            log.error("elasticsearch rest client preform request fail!");
         }
-        return null;
+        return "elasticsearch rest client preform request fail!";
     }
 }
