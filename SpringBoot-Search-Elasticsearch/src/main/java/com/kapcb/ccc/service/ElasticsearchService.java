@@ -12,4 +12,6 @@ package com.kapcb.ccc.service;
 public interface ElasticsearchService {
 
     String executeRequest();
+
+    String executeRequestAsync();
 }
