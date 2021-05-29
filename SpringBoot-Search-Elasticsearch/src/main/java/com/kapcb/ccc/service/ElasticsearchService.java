@@ -14,4 +14,6 @@ public interface ElasticsearchService {
     String executeRequest();
 
     String executeRequestAsync();
+
+    String executeRequestWithRequestOptions();
 }

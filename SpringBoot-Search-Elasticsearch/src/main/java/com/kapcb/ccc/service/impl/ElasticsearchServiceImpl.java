@@ -2,7 +2,9 @@ package com.kapcb.ccc.service.impl;
 
 import com.kapcb.ccc.commons.component.HttpClientComponent;
 import com.kapcb.ccc.service.ElasticsearchService;
+import org.elasticsearch.client.HttpAsyncResponseConsumerFactory;
 import org.elasticsearch.client.Request;
+import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.Response;
 import org.elasticsearch.client.ResponseListener;
 import org.slf4j.Logger;
@@ -25,6 +27,22 @@ public class ElasticsearchServiceImpl implements ElasticsearchService {
 
     private static final Logger log = LoggerFactory.getLogger(ElasticsearchServiceImpl.class);
 
+    private static final RequestOptions REQUEST_OPTIONS;
+
+    private static final int BUFFER_LIMIT_BYTES = 30 * 1024 * 1024 * 1024;
+
+    static {
+        RequestOptions.Builder builder = RequestOptions.DEFAULT.toBuilder();
+        // token表示为所有请求添加所需的请求头
+        // addHeader用于授权或在Elasticsearch前使用代理所需的头信息。在使用时, 不需要Content-Type头,
+        // 因为客户端将自动在请求的HttpEntity中设置Content-Type头
+        // 
+        builder.addHeader("Authorization", "Bearer " + "myToken");
+        builder.setHttpAsyncResponseConsumerFactory(new HttpAsyncResponseConsumerFactory
+                .HeapBufferedResponseConsumerFactory(BUFFER_LIMIT_BYTES));
+        REQUEST_OPTIONS = builder.build();
+    }
+
     @Resource
     private HttpClientComponent httpClientComponent;
 
@@ -38,7 +56,7 @@ public class ElasticsearchServiceImpl implements ElasticsearchService {
 
         // restful 风格的请求
         Request request = new Request("GET", "/");
-        
+
         // 设置Elasticsearch请求返回结果为格式化后的json串
         request.addParameter("pretty", "true");
 
@@ -101,6 +119,18 @@ public class ElasticsearchServiceImpl implements ElasticsearchService {
         }
         httpClientComponent.close();
         return "elasticsearch rest client preform request fail!";
+    }
+
+    /**
+     * Request还有一些可选的请求构建选项, 通过使用RequestOptions实现
+     * 同时RequestOptions类中保存的请求, 可以在同一应用程序的多个请求之间共享,
+     * 因此可以创建一个单例, 然后在所有请求线程之间共享公共配置
+     *
+     * @return String
+     */
+    @Override
+    public String executeRequestWithRequestOptions() {
+        return null;
     }
 
 }
