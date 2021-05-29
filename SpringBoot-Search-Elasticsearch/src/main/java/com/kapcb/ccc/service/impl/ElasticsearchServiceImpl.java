@@ -35,7 +35,7 @@ public class ElasticsearchServiceImpl implements ElasticsearchService {
             Response response = httpClientComponent.restClient.performRequest(request);
             return response.toString();
         } catch (Exception e) {
-            log.error("elasticsearch rest client preform request fail!");
+            log.error("elasticsearch rest client preform request fail! error message is : " + e.getMessage());
         }
         httpClientComponent.close();
         return "elasticsearch rest client preform request fail!";
@@ -67,8 +67,10 @@ public class ElasticsearchServiceImpl implements ElasticsearchService {
                 }
             });
         } catch (Exception e) {
-            log.error("elasticsearch rest client preform request fail!");
+            log.error("elasticsearch rest client preform request fail! error message is : " + e.getMessage());
         }
+        httpClientComponent.close();
         return "elasticsearch rest client preform request fail!";
     }
+
 }
