@@ -28,10 +28,20 @@ public class ElasticsearchServiceImpl implements ElasticsearchService {
     @Resource
     private HttpClientComponent httpClientComponent;
 
+    /**
+     * 构建对Elasticsearch的同步请求
+     *
+     * @return String
+     */
     @Override
     public String executeRequest() {
+
+        /**
+         * restful 风格的请求
+         */
         Request request = new Request("GET", "/");
         try {
+
             Response response = httpClientComponent.restClient.performRequest(request);
             return response.toString();
         } catch (Exception e) {
@@ -41,10 +51,25 @@ public class ElasticsearchServiceImpl implements ElasticsearchService {
         return "elasticsearch rest client preform request fail!";
     }
 
+    /**
+     * 构建对Elasticsearch的异步请求
+     *
+     * @return String
+     */
     @Override
     public String executeRequestAsync() {
+
+        /**
+         * restful 风格的请求
+         */
         Request request = new Request("GET", "/");
         try {
+
+            /**
+             * 在异步请求处理后,
+             * 如果请求处理成功, 则调用ResponseListener类中的onSuccess方法处理相关逻辑
+             * 如果请求处理失败, 则调用ResponseListener类中的onFailure方法处理相关逻辑
+             */
             httpClientComponent.restClient.performRequestAsync(request, new ResponseListener() {
 
                 /**
