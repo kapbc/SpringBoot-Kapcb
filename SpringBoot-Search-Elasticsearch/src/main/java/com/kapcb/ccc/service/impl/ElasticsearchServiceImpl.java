@@ -36,10 +36,17 @@ public class ElasticsearchServiceImpl implements ElasticsearchService {
     @Override
     public String executeRequest() {
 
-        /**
-         * restful 风格的请求
-         */
+        // restful 风格的请求
         Request request = new Request("GET", "/");
+        
+        // 设置Elasticsearch请求返回结果为格式化后的json串
+        request.addParameter("pretty", "true");
+
+        // 将请求的主体设置为任意的HttpEntity
+        //request.setEntity(new NStringEntity("{\"json\":\"text\"}", ContentType.APPLICATION_JSON));
+
+        // 还可以将其设置为一个字符串, 在Elasticsearch中, 默认使用application/json的内容格式, 设置方式如下:
+        request.setJsonEntity("{\"json\":\"text\"}");
         try {
 
             Response response = httpClientComponent.restClient.performRequest(request);
@@ -59,9 +66,7 @@ public class ElasticsearchServiceImpl implements ElasticsearchService {
     @Override
     public String executeRequestAsync() {
 
-        /**
-         * restful 风格的请求
-         */
+        // restful 风格的请求
         Request request = new Request("GET", "/");
         try {
 
