@@ -2,6 +2,7 @@ package com.kapcb.ccc.service.impl;
 
 import com.kapcb.ccc.commons.component.HttpClientComponent;
 import com.kapcb.ccc.service.ElasticsearchService;
+import org.apache.http.HttpEntity;
 import org.elasticsearch.client.HttpAsyncResponseConsumerFactory;
 import org.elasticsearch.client.Request;
 import org.elasticsearch.client.RequestOptions;
@@ -12,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.concurrent.CountDownLatch;
 
 /**
  * <a>Title: SpringBoot-Kapcb </a>
@@ -142,6 +144,40 @@ public class ElasticsearchServiceImpl implements ElasticsearchService {
         }
         httpClientComponent.close();
         return "elasticsearch rest client preform request fail!";
+    }
+
+    /**
+     * Elasticsearch多并行异步处理操作
+     *
+     * @param documents HttpEntity[]
+     */
+    @Override
+    public void multiDocumentProcess(HttpEntity[] documents) {
+        final CountDownLatch countDownLatch = new CountDownLatch(documents.length);
+        for (int i = 0; i < documents.length; i++) {
+            Request request = new Request("GET", "/");
+            // 假设documents存储在HttpEntity数组中
+            request.setEntity(documents[i]);
+            httpClientComponent.restClient.performRequestAsync(request, new ResponseListener() {
+                @Override
+                public void onSuccess(Response response) {
+                    countDownLatch.countDown();
+                }
+
+                @Override
+                public void onFailure(Exception e) {
+                    countDownLatch.countDown();
+
+                }
+            });
+        }
+
+        // 等待搜索异步请求执行完成
+        try {
+            countDownLatch.await();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 }

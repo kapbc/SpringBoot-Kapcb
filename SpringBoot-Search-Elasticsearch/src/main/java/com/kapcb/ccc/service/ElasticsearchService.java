@@ -1,5 +1,7 @@
 package com.kapcb.ccc.service;
 
+import org.apache.http.HttpEntity;
+
 /**
  * <a>Title: SpringBoot-Kapcb </a>
  * <a>Author: Kapcb <a>
@@ -16,4 +18,6 @@ public interface ElasticsearchService {
     String executeRequestAsync();
 
     String executeRequestWithRequestOptions();
+
+    void multiDocumentProcess(HttpEntity[] documents);
 }
