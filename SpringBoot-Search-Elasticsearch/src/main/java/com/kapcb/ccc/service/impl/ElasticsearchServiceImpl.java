@@ -2,7 +2,11 @@ package com.kapcb.ccc.service.impl;
 
 import com.kapcb.ccc.commons.component.HttpClientComponent;
 import com.kapcb.ccc.service.ElasticsearchService;
+import org.apache.http.Header;
 import org.apache.http.HttpEntity;
+import org.apache.http.HttpHost;
+import org.apache.http.RequestLine;
+import org.apache.http.util.EntityUtils;
 import org.elasticsearch.client.HttpAsyncResponseConsumerFactory;
 import org.elasticsearch.client.Request;
 import org.elasticsearch.client.RequestOptions;
@@ -178,6 +182,34 @@ public class ElasticsearchServiceImpl implements ElasticsearchService {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * 对Elasticsearch请求结果的解析
+     *
+     * @return String
+     */
+    @Override
+    public String parseElasticsearchResponse() {
+        try {
+            Response response = httpClientComponent.restClient.performRequest(new Request("GET", "/"));
+            // 以执行请求返回的结果信息
+            RequestLine requestLine = response.getRequestLine();
+            // Host返回信息
+            HttpHost host = response.getHost();
+            // 请求结果相应状态
+            int statusCode = response.getStatusLine().getStatusCode();
+            // 请求响应头, 也可以使用指定的key去获取指定value值
+            // String value = response.getHeader("key");
+            Header[] headers = response.getHeaders();
+
+            String responseBody = EntityUtils.toString(response.getEntity());
+            log.info("parse elasticsearch response success, request's response body is : " + responseBody);
+            return responseBody;
+        } catch (Exception e) {
+            log.error("parse elasticsearch request fail, message is : " + e.getMessage());
+        }
+        return "parse elasticsearch request fail";
     }
 
 }

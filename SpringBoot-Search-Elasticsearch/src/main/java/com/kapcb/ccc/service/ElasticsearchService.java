@@ -20,4 +20,6 @@ public interface ElasticsearchService {
     String executeRequestWithRequestOptions();
 
     void multiDocumentProcess(HttpEntity[] documents);
+
+    String parseElasticsearchResponse();
 }
