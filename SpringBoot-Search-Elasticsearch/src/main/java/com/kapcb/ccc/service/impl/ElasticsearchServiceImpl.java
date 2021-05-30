@@ -36,7 +36,7 @@ public class ElasticsearchServiceImpl implements ElasticsearchService {
         // token表示为所有请求添加所需的请求头
         // addHeader用于授权或在Elasticsearch前使用代理所需的头信息。在使用时, 不需要Content-Type头,
         // 因为客户端将自动在请求的HttpEntity中设置Content-Type头
-        // 
+        // 创建好单实例的COMMON_OPTIONS之后即可在每个请求发出时使用它
         builder.addHeader("Authorization", "Bearer " + "myToken");
         builder.setHttpAsyncResponseConsumerFactory(new HttpAsyncResponseConsumerFactory
                 .HeapBufferedResponseConsumerFactory(BUFFER_LIMIT_BYTES));
@@ -130,7 +130,18 @@ public class ElasticsearchServiceImpl implements ElasticsearchService {
      */
     @Override
     public String executeRequestWithRequestOptions() {
-        return null;
+        Request request = new Request("GET", "/");
+        RequestOptions.Builder builder = REQUEST_OPTIONS.toBuilder();
+        builder.addHeader("title", "you are my dear");
+        request.setOptions(REQUEST_OPTIONS);
+        try {
+            Response response = httpClientComponent.restClient.performRequest(request);
+            return response.toString();
+        } catch (Exception e) {
+            log.error("elasticsearch rest client preform request fail! error message is : " + e.getMessage());
+        }
+        httpClientComponent.close();
+        return "elasticsearch rest client preform request fail!";
     }
 
 }
