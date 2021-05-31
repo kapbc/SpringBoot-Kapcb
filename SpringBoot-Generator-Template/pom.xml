@@ -8,8 +8,6 @@
     <artifactId>SpringBoot-Generator-Template</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <description>Code Generator-Template</description>
-
   <dependencies>
         <!--驱动包-->
         <dependency>
