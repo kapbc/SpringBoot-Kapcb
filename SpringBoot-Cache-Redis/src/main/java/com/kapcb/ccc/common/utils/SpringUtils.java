@@ -15,22 +15,19 @@ import org.springframework.stereotype.Component;
  * @author Kapcb
  */
 @Component
-public final class SpringUtils implements BeanFactoryPostProcessor, ApplicationContextAware 
-{
+public final class SpringUtils implements BeanFactoryPostProcessor, ApplicationContextAware {
     /** Spring应用上下文环境 */
     private static ConfigurableListableBeanFactory beanFactory;
 
     private static ApplicationContext applicationContext;
 
     @Override
-    public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException 
-    {
+    public void postProcessBeanFactory(ConfigurableListableBeanFactory beanFactory) throws BeansException {
         SpringUtils.beanFactory = beanFactory;
     }
 
     @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException 
-    {
+    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         SpringUtils.applicationContext = applicationContext;
     }
 
@@ -43,8 +40,7 @@ public final class SpringUtils implements BeanFactoryPostProcessor, ApplicationC
      *
      */
     @SuppressWarnings("unchecked")
-    public static <T> T getBean(String name) throws BeansException
-    {
+    public static <T> T getBean(String name) throws BeansException {
         return (T) beanFactory.getBean(name);
     }
 
@@ -56,8 +52,7 @@ public final class SpringUtils implements BeanFactoryPostProcessor, ApplicationC
      * @throws BeansException
      *
      */
-    public static <T> T getBean(Class<T> clz) throws BeansException
-    {
+    public static <T> T getBean(Class<T> clz) throws BeansException {
         T result = (T) beanFactory.getBean(clz);
         return result;
     }
@@ -81,8 +76,7 @@ public final class SpringUtils implements BeanFactoryPostProcessor, ApplicationC
      * @throws NoSuchBeanDefinitionException
      *
      */
-    public static boolean isSingleton(String name) throws NoSuchBeanDefinitionException
-    {
+    public static boolean isSingleton(String name) throws NoSuchBeanDefinitionException {
         return beanFactory.isSingleton(name);
     }
 
@@ -92,8 +86,7 @@ public final class SpringUtils implements BeanFactoryPostProcessor, ApplicationC
      * @throws NoSuchBeanDefinitionException
      *
      */
-    public static Class<?> getType(String name) throws NoSuchBeanDefinitionException
-    {
+    public static Class<?> getType(String name) throws NoSuchBeanDefinitionException {
         return beanFactory.getType(name);
     }
 
@@ -105,8 +98,7 @@ public final class SpringUtils implements BeanFactoryPostProcessor, ApplicationC
      * @throws NoSuchBeanDefinitionException
      *
      */
-    public static String[] getAliases(String name) throws NoSuchBeanDefinitionException
-    {
+    public static String[] getAliases(String name) throws NoSuchBeanDefinitionException {
         return beanFactory.getAliases(name);
     }
 
@@ -131,5 +123,4 @@ public final class SpringUtils implements BeanFactoryPostProcessor, ApplicationC
     {
         return applicationContext.getEnvironment().getActiveProfiles();
     }
-
 }

@@ -14,6 +14,7 @@ import java.util.concurrent.ScheduledThreadPoolExecutor;
  **/
 @Configuration
 public class ThreadPoolConfig {
+
     // 核心线程池大小
     private int corePoolSize = 50;
 
@@ -25,7 +26,6 @@ public class ThreadPoolConfig {
 
     // 线程池维护线程所允许的空闲时间
     private int keepAliveSeconds = 300;
-
 
     /**
      * 执行周期性或定时任务
