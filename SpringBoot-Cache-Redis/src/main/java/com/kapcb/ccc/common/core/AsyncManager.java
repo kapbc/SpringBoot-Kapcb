@@ -1,5 +1,6 @@
+package com.kapcb.ccc.common.core;
 
-import com.globalsources.search.utils.SpringUtils;
+import com.kapcb.ccc.common.utils.SpringUtils;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.TimerTask;

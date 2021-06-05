@@ -1,4 +1,4 @@
-
+package com.kapcb.ccc.common.utils;
 
 import com.google.common.base.Preconditions;
 import com.google.common.hash.Funnel;

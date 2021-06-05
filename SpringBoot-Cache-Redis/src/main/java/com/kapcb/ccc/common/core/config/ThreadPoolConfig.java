@@ -1,4 +1,4 @@
-
+package com.kapcb.ccc.common.core.config;
 
 import org.apache.commons.lang3.concurrent.BasicThreadFactory;
 import org.springframework.context.annotation.Bean;
