@@ -15,7 +15,6 @@ import org.springframework.context.annotation.ComponentScan;
  * @version 1.0.0
  * @date 2021/5/27 21:47
  */
-@ComponentScan(value = {"com.kapcb.ccc"})
 @SpringBootApplication
 public class ElasticsearchApplication {
 
