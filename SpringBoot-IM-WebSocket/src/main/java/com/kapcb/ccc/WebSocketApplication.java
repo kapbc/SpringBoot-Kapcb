@@ -6,9 +6,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
 /**
- * <a>Title: SpringBoot-Kapcb </a>
+ * <a>Title: WebSocketApplication </a>
  * <a>Author: Kapcb <a>
- * <a>Description:  <a>
+ * <a>Description: WebSocket Application <a>
  *
  * @author Kapcb
  * @version 1.0.0
