@@ -15,4 +15,10 @@ import org.springframework.context.annotation.Configuration;
 @Slf4j
 @Configuration
 public class WebSocketConfiguration {
+  
+  
+      @Bean
+    public ServerEndpointExporter serverEndpointExporter() {
+        return new ServerEndpointExporter();
+    }
 }
