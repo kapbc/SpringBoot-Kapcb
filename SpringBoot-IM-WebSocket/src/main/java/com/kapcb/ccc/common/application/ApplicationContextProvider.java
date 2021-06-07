@@ -1,4 +1,4 @@
-
+package com.kapcb.ccc.common.application;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -7,10 +7,10 @@ import org.springframework.stereotype.Component;
 
 /**
  * <a>Title: ApplicationContextProvider </a>
- * <a>Author: Mike Chen <a>
+ * <a>Author: Kapcb <a>
  * <a>Description: Application Context Provider <a>
  *
- * @author Mike Chen
+ * @author Kapcb
  * @date 2021/6/2-18:39
  */
 @Component

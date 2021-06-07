@@ -1,3 +1,4 @@
+package com.kapcb.ccc.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -8,10 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * <a>Title: WebSockertController </a>
- * <a>Author: Mike Chen <a>
+ * <a>Author: Kapcb <a>
  * <a>Description:  <a>
  *
- * @author Mike Chen
+ * @author Kapcb
  * @date 2021/6/4-13:30
  */
 @Slf4j
