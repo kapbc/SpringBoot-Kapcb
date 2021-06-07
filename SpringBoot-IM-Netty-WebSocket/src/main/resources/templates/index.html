@@ -37,8 +37,7 @@
     }
     function connect(){
         var roomId = $('#roomId').val();//192.168.123.135
-        // ws = new WebSocket('ws:127.0.0.1:8082/ws-service');
-        ws = new WebSocket('ws:192.168.117.130:30000/ws-service');
+        ws = new WebSocket('ws:127.0.0.1:8082/ws-service');
         ws.onopen = WSonOpen;
         ws.onmessage = WSonMessage;
         ws.onclose = WSonClose;

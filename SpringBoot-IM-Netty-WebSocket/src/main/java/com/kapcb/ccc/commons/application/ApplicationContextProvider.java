@@ -1,3 +1,5 @@
+package com.kapcb.ccc.commons.application;
+
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -6,10 +8,10 @@ import org.springframework.stereotype.Component;
 
 /**
  * <a>Title: ApplicationContextProvider </a>
- * <a>Author: Mike Chen <a>
+ * <a>Author: Kapcb <a>
  * <a>Description:  <a>
  *
- * @author Mike Chen
+ * @author Kapcb
  * @date 2021/6/3-11:38
  */
 @Slf4j

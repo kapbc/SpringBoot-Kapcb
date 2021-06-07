@@ -1,4 +1,4 @@
-
+package com.kapcb.ccc.commons.websocket;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.netty.handler.codec.http.HttpHeaders;
