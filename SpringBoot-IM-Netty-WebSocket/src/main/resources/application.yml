@@ -3,3 +3,19 @@ server:
 spring:
   application:
     name: IM-Netty-WebSocket
+  cloud:
+    nacos:
+      discovery:
+        username: admin
+        password: 123456
+        server-addr: ${server.address}:${server.port}
+        service: ws-service
+        group: DEFAULT_GROUP
+        namespace: d1
+  mvc:
+    static-path-pattern: /static/**
+
+ws-service:
+  host: 0.0.0.0
+  path: /ws-service
+  port: 8082
