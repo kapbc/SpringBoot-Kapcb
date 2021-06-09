@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.kapcb.ccc.mapper.SubjectMapper">
+
+    <sql id="commonsColumns">
+        s.subject_name,
+        s.subject_teacher,
+        s.subject_classroom,
+        s.id,
+        s.start_time,
+        s.end_time
+    </sql>
+
+    <resultMap id="baseResultMap" type="com.kapcb.ccc.model.po.SubjectPO">
+        <id column="id" property="id"/>
+        <result column="subject_name" property="subjectName"/>
+        <result column="subject_teacher" property="subjectTeacher"/>
+        <result column="subject_classroom" property="subjectClassroom"/>
+        <result column="start-time" property="startTime"/>
+        <result column="end_time" property="endTime"/>
+    </resultMap>
+</mapper>
