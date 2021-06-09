@@ -14,11 +14,11 @@ import org.springframework.context.ApplicationContextAware;
  */
 public class MailApplicationContext implements ApplicationContextAware {
 
-    private static ApplicationContext emailApplicationContext;
+    private static ApplicationContext applicationContext;
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        MailApplicationContext.emailApplicationContext = applicationContext;
+        MailApplicationContext.applicationContext = applicationContext;
     }
 
     /**
@@ -28,6 +28,6 @@ public class MailApplicationContext implements ApplicationContextAware {
      * @return
      */
     public static <T> T getBean(String beanName) {
-        return (T) emailApplicationContext.getBean(beanName);
+        return (T) applicationContext.getBean(beanName);
     }
 }
