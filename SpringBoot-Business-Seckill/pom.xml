@@ -159,6 +159,7 @@
           <version>2.3.0</version>
       </dependency>
   </dependencies>
+	
   <build>
         <finalName>spring-boot-seckill</finalName>
 	    <!-- 打包项目 mvn clean package -->
