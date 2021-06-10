@@ -7,9 +7,6 @@
   <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
 	
-<!--  <name>spring-boot-seckill</name>-->
-<!--  <url>http://maven.apache.org</url>-->
-	
    <properties>
      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
      <docker.image.prefix>springboot</docker.image.prefix>
