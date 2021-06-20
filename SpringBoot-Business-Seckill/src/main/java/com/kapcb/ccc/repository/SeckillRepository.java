@@ -1,5 +1,4 @@
-package com.itstyle.seckill.repository;
-
+package com.kapcb.ccc.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

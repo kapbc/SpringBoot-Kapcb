@@ -1,4 +1,4 @@
-package com.itstyle.seckill.service.impl;
+package com.kapcb.ccc.service.impl;
 
 import com.itstyle.seckill.common.dynamicquery.DynamicQuery;
 import com.itstyle.seckill.common.entity.RedPacket;

@@ -1,4 +1,4 @@
-package com.itstyle.seckill.service;
+package com.kapcb.ccc.service;
 
 import com.itstyle.seckill.common.entity.Result;
 
@@ -8,6 +8,6 @@ import com.itstyle.seckill.common.entity.Result;
  */
 public interface ICreateHtmlService {
 
-	Result createAllHtml();
+    Result createAllHtml();
 
 }
