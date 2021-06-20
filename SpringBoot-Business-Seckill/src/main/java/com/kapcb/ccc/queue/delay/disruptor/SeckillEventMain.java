@@ -1,9 +1,9 @@
-package com.itstyle.seckill.queue.disruptor;
-
-import java.util.concurrent.ThreadFactory;
+package com.kapcb.ccc.queue.delay.disruptor;
 
 import com.lmax.disruptor.RingBuffer;
 import com.lmax.disruptor.dsl.Disruptor;
+
+import java.util.concurrent.ThreadFactory;
 /**
  * 測試類
  * 创建者 科帮网

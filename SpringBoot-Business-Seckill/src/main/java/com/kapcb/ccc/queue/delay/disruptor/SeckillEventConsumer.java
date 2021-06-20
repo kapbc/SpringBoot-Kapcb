@@ -1,10 +1,9 @@
-package com.itstyle.seckill.queue.disruptor;
+package com.kapcb.ccc.queue.delay.disruptor;
 
-import com.itstyle.seckill.common.config.SpringUtil;
 import com.itstyle.seckill.common.entity.Result;
 import com.itstyle.seckill.common.enums.SeckillStatEnum;
-import com.itstyle.seckill.queue.jvm.TaskRunner;
 import com.itstyle.seckill.service.ISeckillService;
+import com.kapcb.ccc.common.config.SpringUtil;
 import com.lmax.disruptor.EventHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

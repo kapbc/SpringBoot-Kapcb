@@ -1,4 +1,4 @@
-package com.itstyle.seckill.queue.delay.jvm;
+package com.kapcb.ccc.queue.delay.jvm;
 
 import java.time.Instant;
 import java.time.LocalDateTime;

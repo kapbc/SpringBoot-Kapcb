@@ -1,4 +1,4 @@
-package com.itstyle.seckill.queue.redis;
+package com.kapcb.ccc.queue.redis;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.StringRedisTemplate;

@@ -1,4 +1,4 @@
-package com.itstyle.seckill.queue.delay.jvm;
+package com.kapcb.ccc.queue.delay.jvm;
 
 import com.itstyle.seckill.common.redis.RedisUtil;
 import org.slf4j.Logger;

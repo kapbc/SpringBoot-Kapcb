@@ -1,4 +1,4 @@
-package com.itstyle.seckill.queue.delay.beanstalkd;
+package com.kapcb.ccc.queue.delay.beanstalkd;
 
 import com.dinstone.beanstalkc.*;
 import org.slf4j.Logger;

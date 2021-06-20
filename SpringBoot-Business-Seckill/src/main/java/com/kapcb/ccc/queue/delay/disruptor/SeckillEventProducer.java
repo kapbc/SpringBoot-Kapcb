@@ -1,5 +1,6 @@
-package com.itstyle.seckill.queue.disruptor;
+package com.kapcb.ccc.queue.delay.disruptor;
 
+import com.kapcb.ccc.queue.delay.disruptor.SeckillEvent;
 import com.lmax.disruptor.EventTranslatorVararg;
 import com.lmax.disruptor.RingBuffer;
 
@@ -9,7 +10,7 @@ import com.lmax.disruptor.RingBuffer;
  */
 public class SeckillEventProducer {
 	
-	private final static EventTranslatorVararg<SeckillEvent> translator = (seckillEvent, seq, objs) -> {
+	private final static EventTranslatorVararg<com.itstyle.seckill.queue.disruptor.SeckillEvent> translator = (seckillEvent, seq, objs) -> {
         seckillEvent.setSeckillId((Long) objs[0]);
         seckillEvent.setUserId((Long) objs[1]);
     };

@@ -1,4 +1,4 @@
-package com.itstyle.seckill.queue.disruptor;
+package com.kapcb.ccc.queue.delay.disruptor;
 
 import java.io.Serializable;
 
