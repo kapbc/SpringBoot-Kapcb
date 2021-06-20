@@ -1,4 +1,4 @@
-package com.itstyle.seckill.common.limit;
+package com.kapcb.ccc.common.limit;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,6 +12,7 @@ import java.util.concurrent.CountDownLatch;
  * Nginx 限流压测
  * src/mian/resources/nginx
  * src/mian/resources/openresty
+ * @author chenc
  */
 public class NginxLimit {
 	 //也可以使用AB压测 ab -n1000 -c 10 http://121.42.155.213

@@ -1,4 +1,4 @@
-package com.itstyle.seckill.common.limit;
+package com.kapcb.ccc.common.limit;
 
 import com.alibaba.csp.sentinel.Entry;
 import com.alibaba.csp.sentinel.SphU;

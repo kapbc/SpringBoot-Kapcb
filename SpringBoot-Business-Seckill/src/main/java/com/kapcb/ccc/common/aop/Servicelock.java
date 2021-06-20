@@ -1,5 +1,6 @@
-package com.itstyle.seckill.common.aop;
-import java.lang.annotation.*; 
+package com.kapcb.ccc.common.aop;
+
+import java.lang.annotation.*;
 /**
  * 自定义注解 同步锁
  * 创建者	张志朋

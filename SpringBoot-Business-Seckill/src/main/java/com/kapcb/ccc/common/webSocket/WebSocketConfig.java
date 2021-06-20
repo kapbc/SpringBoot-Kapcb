@@ -1,4 +1,4 @@
-package com.itstyle.seckill.common.webSocket;
+package com.kapcb.ccc.common.webSocket;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -9,7 +9,6 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @Title: AsyncManager
- * @Author: Johann
  * @Description: AsyncManager
  * @date 2021/05/17 - 15:38
  */

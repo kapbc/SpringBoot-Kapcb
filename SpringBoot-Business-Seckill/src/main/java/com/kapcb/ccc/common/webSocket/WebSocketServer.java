@@ -1,7 +1,8 @@
-package com.itstyle.seckill.common.webSocket;
+package com.kapcb.ccc.common.webSocket;
 
-import java.io.IOException;
-import java.util.concurrent.CopyOnWriteArraySet;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
 import javax.websocket.OnClose;
 import javax.websocket.OnError;
@@ -10,10 +11,8 @@ import javax.websocket.OnOpen;
 import javax.websocket.Session;
 import javax.websocket.server.PathParam;
 import javax.websocket.server.ServerEndpoint;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
+import java.io.IOException;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 @ServerEndpoint("/websocket/{userId}")  
 @Component  

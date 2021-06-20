@@ -1,4 +1,4 @@
-package com.itstyle.seckill.common.aop;
+package com.kapcb.ccc.common.aop;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;

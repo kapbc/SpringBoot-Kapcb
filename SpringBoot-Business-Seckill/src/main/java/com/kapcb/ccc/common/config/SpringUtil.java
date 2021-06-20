@@ -1,4 +1,4 @@
-package com.itstyle.seckill.common.config;
+package com.kapcb.ccc.common.config;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
