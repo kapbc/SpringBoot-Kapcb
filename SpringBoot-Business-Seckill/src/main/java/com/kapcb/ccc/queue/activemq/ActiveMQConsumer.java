@@ -1,16 +1,15 @@
-package com.itstyle.seckill.queue.activemq;
+package com.kapcb.ccc.queue.activemq;
 
-import com.itstyle.seckill.common.entity.Result;
-import com.itstyle.seckill.common.enums.SeckillStatEnum;
-import com.itstyle.seckill.common.redis.RedisUtil;
-import com.itstyle.seckill.common.webSocket.WebSocketServer;
-import com.itstyle.seckill.service.ISeckillService;
+import com.kapcb.ccc.common.entity.Result;
+import com.kapcb.ccc.common.enums.SeckillStatEnum;
+import com.kapcb.ccc.common.redis.RedisUtil;
+import com.kapcb.ccc.common.webSocket.WebSocketServer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ActiveMQConsumer {
+public class ActiveMQConsumer<ISeckillService> {
 	
 	@Autowired
 	private ISeckillService seckillService;
