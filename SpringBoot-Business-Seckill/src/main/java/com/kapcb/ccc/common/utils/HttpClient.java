@@ -1,4 +1,4 @@
-package com.itstyle.seckill.common.utils;
+package com.kapcb.ccc.common.utils;
 
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;

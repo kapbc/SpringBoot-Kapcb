@@ -1,4 +1,4 @@
-package com.itstyle.seckill.common.utils;
+package com.kapcb.ccc.common.utils;
 
 import java.sql.Date;
 import java.text.SimpleDateFormat;
@@ -142,11 +142,13 @@ public class Snowflake {
     protected long timeGen() {
         return System.currentTimeMillis();
     }
+
     public static void parseId(long id) {
         long miliSecond = id >>> 22;
         long shardId = (id & (0xFFF << 10)) >> 10;
-        System.err.println("分布式id-"+id+"生成的时间是："+new SimpleDateFormat("yyyy-MM-dd").format(new Date(miliSecond)));
+        System.err.println("分布式id-" + id + "生成的时间是：" + new SimpleDateFormat("yyyy-MM-dd").format(new Date(miliSecond)));
     }
+
     public static void main(String[] args) {
         Snowflake idWorker = new Snowflake(0, 0);
         long id = idWorker.nextId();
