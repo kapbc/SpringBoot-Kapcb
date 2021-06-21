@@ -1,4 +1,4 @@
-package com.itstyle.seckill.common.entity;
+package com.kapcb.ccc.common.entity;
 
 import java.util.HashMap;
 import java.util.Map;

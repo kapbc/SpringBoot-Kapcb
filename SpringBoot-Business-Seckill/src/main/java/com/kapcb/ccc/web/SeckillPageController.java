@@ -1,12 +1,13 @@
 package com.kapcb.ccc.web;
 
+import com.alibaba.fastjson.JSONObject;
+import com.itstyle.seckill.common.entity.Result;
+import com.itstyle.seckill.common.entity.Seckill;
 import com.itstyle.seckill.common.redis.RedisUtil;
-
-import java.util.List;
-
-import javax.jms.Destination;
-import javax.servlet.http.HttpServletRequest;
-
+import com.itstyle.seckill.common.utils.HttpClient;
+import com.itstyle.seckill.queue.activemq.ActiveMQSender;
+import com.kapcb.ccc.common.utils.IPUtils;
+import com.kapcb.ccc.service.ISeckillService;
 import org.apache.activemq.command.ActiveMQQueue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,11 +20,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.alibaba.fastjson.JSONObject;
-import com.itstyle.seckill.common.entity.Result;
-import com.itstyle.seckill.common.entity.Seckill;
-import com.itstyle.seckill.common.utils.HttpClient;
-import com.itstyle.seckill.queue.activemq.ActiveMQSender;
+import javax.jms.Destination;
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Api(tags = "秒杀商品")
 @RestController

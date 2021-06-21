@@ -1,4 +1,4 @@
-package com.itstyle.seckill.common.exception;
+package com.kapcb.ccc.common.exception;
 
 import com.itstyle.seckill.common.entity.Result;
 import org.slf4j.Logger;

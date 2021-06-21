@@ -1,13 +1,12 @@
-package com.itstyle.seckill.common.encrypt;
+package com.kapcb.ccc.common.encrypt;
 
-import java.security.InvalidKeyException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import org.apache.commons.codec.binary.Base64;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
-
-import org.apache.commons.codec.binary.Base64;
+import java.security.InvalidKeyException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 /**
  * =========
  * 适用于数字签名标准（DigitalSignature Standard DSS）

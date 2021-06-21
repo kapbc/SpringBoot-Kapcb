@@ -1,4 +1,4 @@
-package com.itstyle.seckill.common.lock;
+package com.kapcb.ccc.common.lock;
 
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;

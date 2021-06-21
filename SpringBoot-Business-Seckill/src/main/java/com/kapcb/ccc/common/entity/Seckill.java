@@ -1,4 +1,4 @@
-package com.itstyle.seckill.common.entity;
+package com.kapcb.ccc.common.entity;
 
 import java.io.Serializable;
 import java.sql.Timestamp;

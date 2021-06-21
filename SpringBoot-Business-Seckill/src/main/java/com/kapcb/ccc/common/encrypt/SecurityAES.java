@@ -1,4 +1,4 @@
-package com.itstyle.seckill.common.encrypt;
+package com.kapcb.ccc.common.encrypt;
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;

@@ -1,5 +1,4 @@
-package com.itstyle.seckill.common.exception;
-
+package com.kapcb.ccc.common.exception;
 
 /**
  *  自定义异常

@@ -1,12 +1,11 @@
-package com.itstyle.seckill.common.entity;
-
-import java.io.Serializable;
-import java.sql.Timestamp;
+package com.kapcb.ccc.common.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
+import java.sql.Timestamp;
 
 @Entity
 @Table(name = "success_killed")

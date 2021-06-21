@@ -1,4 +1,4 @@
-package com.itstyle.seckill.common.entity;
+package com.kapcb.ccc.common.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;

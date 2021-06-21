@@ -1,4 +1,5 @@
-package com.itstyle.seckill.common.dynamicquery;
+package com.kapcb.ccc.common.dynamicquery;
+
 import java.util.List;
 /**
  * 扩展SpringDataJpa, 支持动态jpql/nativesql查询并支持分页查询

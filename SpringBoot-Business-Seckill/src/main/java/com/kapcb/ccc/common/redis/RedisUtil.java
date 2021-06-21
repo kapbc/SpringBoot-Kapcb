@@ -1,15 +1,14 @@
-package com.itstyle.seckill.common.redis;
-
-import java.io.Serializable;
-import java.util.concurrent.TimeUnit;
-
-import javax.annotation.Resource;
+package com.kapcb.ccc.common.redis;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Component;
+
+import javax.annotation.Resource;
+import java.io.Serializable;
+import java.util.concurrent.TimeUnit;
 
 
 

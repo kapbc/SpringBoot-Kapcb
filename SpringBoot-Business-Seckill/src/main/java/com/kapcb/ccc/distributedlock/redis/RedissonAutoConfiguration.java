@@ -1,140 +1,75 @@
-package com.itstyle.seckill.distributedlock.redis;
+package com.kapcb.ccc.distributedlock.redis;
 
-import org.redisson.api.RLock;
-import org.redisson.api.RMapCache;
+
+import org.apache.commons.lang3.StringUtils;
+import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;
+import org.redisson.config.Config;
+import org.redisson.config.SingleServerConfig;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-import java.util.concurrent.TimeUnit;
+@Configuration
+@ConditionalOnClass(Config.class)
+@EnableConfigurationProperties(RedissonProperties.class)
+public class RedissonAutoConfiguration {
 
-/**
- * redis分布式锁帮助类
- * @author 科帮网 By https://blog.52itstyle.com
- */
-public class RedissLockUtil {
-    private static RedissonClient redissonClient;
-    
-    public void setRedissonClient(RedissonClient locker) {
-    	redissonClient = locker;
-    }
-    
+    @Autowired
+    private RedissonProperties redssionProperties;
+
     /**
-     * 加锁
-     * @param lockKey
+     * 哨兵模式自动装配
      * @return
      */
-    public static RLock lock(String lockKey) {
-    	RLock lock = redissonClient.getLock(lockKey);
-    	lock.lock();
-        return lock;
-    }
+//    @Bean
+//    @ConditionalOnProperty(name="redisson.master-name")
+//    RedissonClient redissonSentinel() {
+//        Config config = new Config();
+//        SentinelServersConfig serverConfig = config.useSentinelServers().addSentinelAddress(redssionProperties.getSentinelAddresses())
+//                .setMasterName(redssionProperties.getMasterName())
+//                .setTimeout(redssionProperties.getTimeout())
+//                .setMasterConnectionPoolSize(redssionProperties.getMasterConnectionPoolSize())
+//                .setSlaveConnectionPoolSize(redssionProperties.getSlaveConnectionPoolSize());
+//
+//        if(StringUtils.isNotBlank(redssionProperties.getPassword())) {
+//            serverConfig.setPassword(redssionProperties.getPassword());
+//        }
+//        return Redisson.create(config);
+//    }
 
     /**
-     * 释放锁
-     * @param lockKey
-     */
-    public static void unlock(String lockKey) {
-    	RLock lock = redissonClient.getLock(lockKey);
-		lock.unlock();
-    }
-    
-    /**
-     * 释放锁
-     * @param lock
-     */
-    public static void unlock(RLock lock) {
-    	lock.unlock();
-    }
-
-    /**
-     * 带超时的锁
-     * @param lockKey
-     * @param timeout 超时时间   单位：秒
-     */
-    public static RLock lock(String lockKey, int timeout) {
-    	RLock lock = redissonClient.getLock(lockKey);
-		lock.lock(timeout, TimeUnit.SECONDS);
-		return lock;
-    }
-    
-    /**
-     * 带超时的锁
-     * @param lockKey
-     * @param unit 时间单位
-     * @param timeout 超时时间
-     */
-    public static RLock lock(String lockKey, TimeUnit unit ,int timeout) {
-    	RLock lock = redissonClient.getLock(lockKey);
-		lock.lock(timeout, unit);
-		return lock;
-    }
-    
-    /**
-     * 尝试获取锁
-     * @param lockKey
-     * @param waitTime 最多等待时间
-     * @param leaseTime 上锁后自动释放锁时间
+     * 单机模式自动装配
      * @return
      */
-    public static boolean tryLock(String lockKey, int waitTime, int leaseTime) {
-        RLock lock = redissonClient.getLock(lockKey);
-		try {
-			return lock.tryLock(waitTime, leaseTime, TimeUnit.SECONDS);
-		} catch (InterruptedException e) {
-			return false;
-		}
-    }
-    
-    /**
-     * 尝试获取锁
-     * @param lockKey
-     * @param unit 时间单位
-     * @param waitTime 最多等待时间
-     * @param leaseTime 上锁后自动释放锁时间
-     * @return
-     */
-    public static boolean tryLock(String lockKey, TimeUnit unit, int waitTime, int leaseTime) {
-    	RLock lock = redissonClient.getLock(lockKey);
-		try {
-			return lock.tryLock(waitTime, leaseTime, unit);
-		} catch (InterruptedException e) {
-			return false;
-		}
-    }
-
-    /**
-     * 初始红包数量
-     * @param key
-     * @param count
-     */
-    public void initCount(String key,int count) {
-        RMapCache<String, Integer> mapCache = redissonClient.getMapCache("skill");
-        mapCache.putIfAbsent(key,count,3,TimeUnit.DAYS);
-    }
-    /**
-     * 递增
-     * @param key
-     * @param delta 要增加几(大于0)
-     * @return
-     */
-    public int incr(String key, int delta) {
-        RMapCache<String, Integer> mapCache = redissonClient.getMapCache("skill");
-        if (delta < 0) {
-            throw new RuntimeException("递增因子必须大于0");
+    @Bean
+    @ConditionalOnProperty(name="redisson.address")
+    RedissonClient redissonSingle() {
+        Config config = new Config();
+        SingleServerConfig serverConfig = config.useSingleServer()
+                .setAddress(redssionProperties.getAddress())
+                .setTimeout(redssionProperties.getTimeout())
+                .setConnectionPoolSize(redssionProperties.getConnectionPoolSize())
+                .setConnectionMinimumIdleSize(redssionProperties.getConnectionMinimumIdleSize());
+        if(StringUtils.isNotBlank(redssionProperties.getPassword())) {
+            serverConfig.setPassword(redssionProperties.getPassword());
         }
-        return  mapCache.addAndGet(key, 1);//加1并获取计算后的值
+
+        return Redisson.create(config);
     }
 
     /**
-     * 递减
-     * @param key 键
-     * @param delta 要减少几(小于0)
+     * 装配locker类，并将实例注入到RedissLockUtil中
      * @return
      */
-    public int decr(String key, int delta) {
-        RMapCache<String, Integer> mapCache = redissonClient.getMapCache("skill");
-        if (delta < 0) {
-            throw new RuntimeException("递减因子必须大于0");
-        }
-        return mapCache.addAndGet(key, -delta);//加1并获取计算后的值
+    @Bean
+    RedissLockUtil redissLockUtil(RedissonClient redissonClient) {
+        RedissLockUtil redissLockUtil = new RedissLockUtil();
+        redissLockUtil.setRedissonClient(redissonClient);
+        return redissLockUtil;
     }
+
 }

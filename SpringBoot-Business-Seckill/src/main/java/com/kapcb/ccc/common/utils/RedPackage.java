@@ -1,4 +1,4 @@
-package com.itstyle.seckill.common.utils;
+package com.kapcb.ccc.common.utils;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;

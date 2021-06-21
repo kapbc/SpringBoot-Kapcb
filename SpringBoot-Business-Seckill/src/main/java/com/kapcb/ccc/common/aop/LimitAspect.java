@@ -4,7 +4,8 @@ import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import com.google.common.util.concurrent.RateLimiter;
-import com.itstyle.seckill.common.exception.RrException;
+import com.kapcb.ccc.common.exception.RrException;
+import com.kapcb.ccc.common.utils.IPUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -37,7 +38,7 @@ public class LimitAspect {
 			});
 	
 	//Service层切点  限流
-	@Pointcut("@annotation(com.itstyle.seckill.common.aop.ServiceLimit)")  
+	@Pointcut("@annotation(com.kapcb.ccc.common.aop.ServiceLimit)")
 	public void ServiceAspect() {
 		
 	}
@@ -46,12 +47,12 @@ public class LimitAspect {
     public  Object around(ProceedingJoinPoint joinPoint) {
 		MethodSignature signature = (MethodSignature) joinPoint.getSignature();
 		Method method = signature.getMethod();
-		com.itstyle.seckill.common.aop.ServiceLimit limitAnnotation = method.getAnnotation(com.itstyle.seckill.common.aop.ServiceLimit.class);
-		com.itstyle.seckill.common.aop.ServiceLimit.LimitType limitType = limitAnnotation.limitType();
+		ServiceLimit limitAnnotation = method.getAnnotation(ServiceLimit.class);
+		ServiceLimit.LimitType limitType = limitAnnotation.limitType();
 		String key = limitAnnotation.key();
 		Object obj;
 		try {
-			if(limitType.equals(com.itstyle.seckill.common.aop.ServiceLimit.LimitType.IP)){
+			if(limitType.equals(ServiceLimit.LimitType.IP)){
 				key = IPUtils.getIpAddr();
 			}
 			RateLimiter rateLimiter = caches.get(key);

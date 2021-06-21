@@ -1,4 +1,4 @@
-package com.itstyle.seckill.common.interceptor;
+package com.kapcb.ccc.common.interceptor;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;

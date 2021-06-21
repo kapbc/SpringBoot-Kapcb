@@ -1,12 +1,12 @@
 package com.kapcb.ccc.service.impl;
 
-import com.itstyle.seckill.common.dynamicquery.DynamicQuery;
-import com.itstyle.seckill.common.entity.RedPacket;
-import com.itstyle.seckill.common.entity.RedPacketRecord;
-import com.itstyle.seckill.common.entity.Result;
-import com.itstyle.seckill.common.redis.RedisUtil;
-import com.itstyle.seckill.distributedlock.redis.RedissLockUtil;
-import com.itstyle.seckill.service.IRedPacketService;
+import com.kapcb.ccc.common.dynamicquery.DynamicQuery;
+import com.kapcb.ccc.common.entity.RedPacket;
+import com.kapcb.ccc.common.entity.RedPacketRecord;
+import com.kapcb.ccc.common.entity.Result;
+import com.kapcb.ccc.common.redis.RedisUtil;
+import com.kapcb.ccc.distributedlock.redis.RedissLockUtil;
+import com.kapcb.ccc.service.IRedPacketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
@@ -31,7 +31,7 @@ public class RedPacketService implements IRedPacketService {
 
     @Override
     @Transactional(rollbackFor = Exception.class)
-    public Result startSeckil(long redPacketId,int userId) {
+    public Result startSeckil(long redPacketId, int userId) {
         Integer money = 0;
         boolean res=false;
         try {
