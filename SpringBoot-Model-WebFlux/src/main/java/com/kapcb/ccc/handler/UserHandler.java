@@ -1,5 +1,6 @@
 package com.kapcb.ccc.handler;
 
+import com.kapcb.ccc.model.po.UserPO;
 import com.kapcb.ccc.model.vo.UserVO;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -17,9 +18,9 @@ import java.util.List;
  */
 public interface UserHandler {
 
-    Mono<UserVO> getUserInfo(Long id);
+    Mono<UserPO> getUserInfo(Long id);
 
-    Flux<UserVO> getUserInfos(List<Long> id);
+    Flux<UserPO> getUserInfos(List<Long> id);
 
     Flux<UserVO> getUserList();
 
