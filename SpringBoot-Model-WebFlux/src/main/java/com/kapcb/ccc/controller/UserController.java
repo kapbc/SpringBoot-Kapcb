@@ -38,6 +38,7 @@ public class UserController {
 
     @GetMapping(value = "info/{id}")
     public Mono<UserPO> info(@PathVariable("id") Long id) {
+//        return Mono.create(monoSink -> monoSink.success(userHandler.getUserInfo(id)));
         return userHandler.getUserInfo(id);
     }
 
