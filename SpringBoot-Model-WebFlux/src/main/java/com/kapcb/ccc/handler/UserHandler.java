@@ -19,7 +19,7 @@ public interface UserHandler {
 
     Mono<UserVO> getUserInfo(Long id);
 
-    Flux<UserVO> getUserInfos(List<Long> id)
+    Flux<UserVO> getUserInfos(List<Long> id);
 
     Flux<UserVO> getUserList();
 

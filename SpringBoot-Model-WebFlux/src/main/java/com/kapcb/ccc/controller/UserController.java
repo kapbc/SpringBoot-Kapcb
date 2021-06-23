@@ -1,8 +1,17 @@
 package com.kapcb.ccc.controller;
 
+import com.kapcb.ccc.handler.UserHandler;
+import com.kapcb.ccc.model.vo.UserVO;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 /**
  * <a>Title: UserController </a>
@@ -25,5 +34,15 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class UserController {
 
+    private final UserHandler userHandler;
 
+    @GetMapping(value = "info/{id}")
+    public Mono<UserVO> info(@PathVariable("id") Long id) {
+        return userHandler.getUserInfo(id);
+    }
+
+    @GetMapping(value = "infos/{ids}")
+    public Flux<UserVO> infos(@PathVariable(value = "ids") String ids) {
+        return userHandler.getUserInfos(Arrays.stream(ids.split(",")).map(Long.class::cast).collect(Collectors.toList()));
+    }
 }
