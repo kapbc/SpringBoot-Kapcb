@@ -1,7 +1,7 @@
 package com.kapcb.ccc.controller;
 
 import com.kapcb.ccc.handler.UserHandler;
-import com.kapcb.ccc.model.po.UserPO;
+import com.kapcb.ccc.model.vo.UserVO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,13 +37,13 @@ public class UserController {
     private final UserHandler userHandler;
 
     @GetMapping(value = "info/{id}")
-    public Mono<UserPO> info(@PathVariable("id") Long id) {
+    public Mono<UserVO> info(@PathVariable("id") Long id) {
 //        return Mono.create(monoSink -> monoSink.success(userHandler.getUserInfo(id)));
         return userHandler.getUserInfo(id);
     }
 
     @GetMapping(value = "infos/{ids}")
-    public Flux<UserPO> infos(@PathVariable(value = "ids") String ids) {
+    public Flux<UserVO> infos(@PathVariable(value = "ids") String ids) {
         return userHandler.getUserInfos(Arrays.stream(ids.split(",")).map(Long::valueOf).collect(Collectors.toList()));
     }
 }
