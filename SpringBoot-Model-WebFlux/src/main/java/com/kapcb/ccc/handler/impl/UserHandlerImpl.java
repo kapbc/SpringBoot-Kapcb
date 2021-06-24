@@ -44,8 +44,6 @@ public class UserHandlerImpl implements UserHandler {
 
     @Override
     public Flux<UserVO> getUserInfos(List<Long> id) {
-        Flux<UserPO> flux = userRepository.getALLByUserIdIn(id);
-
         Flux<UserPO> orElse = Option.of(userRepository.getALLByUserIdIn(id)).getOrElse(Flux.just(new UserPO()));
         return orElse.switchIfEmpty(Flux.just(new UserPO())).map(s -> UserVO.builder()
                 .userId(s.getUserId())
