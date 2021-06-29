@@ -29,8 +29,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .loginProcessingUrl("/login")
                 .defaultSuccessUrl("/index.html")
                 .failureUrl("/login.html")
-                .passwordParameter("username-login")
-                .usernameParameter("password-login")
+                .usernameParameter("username-login")
+                .passwordParameter("password-login")
                 .permitAll()
                 .and()
                 .csrf().disable();
