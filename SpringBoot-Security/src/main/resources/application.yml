@@ -1,0 +1,9 @@
+server:
+  port: 9096
+spring:
+  application:
+    name: security
+  security:
+    user:
+      password: 123456
+      name: kapcb
