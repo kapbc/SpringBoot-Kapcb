@@ -2,6 +2,7 @@ package com.kapcb.ccc.configuration;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
@@ -16,4 +17,16 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Slf4j
 @Configuration
 public class WebMvcConfiguration implements WebMvcConfigurer {
+
+    /**
+     * 路由跳转配置
+     * 请求 socket 会跳转到 templates下的 webSocket.html
+     *
+     * @param registry ViewControllerRegistry
+     */
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        log.info("dispatcher request for webSocket");
+        registry.addViewController("/socket").setViewName("/webSocket");
+    }
 }
