@@ -7,19 +7,50 @@
     <script th:src="@{js/sockjs.min.js}"></script>
     <script th:src="@{js/stomp.js}"></script>
 </head>
-<body onload="">
+<body onload="disConnect()">
 
 </body>
 <script>
-    let stompClient=null;
+    let stompClient = null;
+
+    function setConnect(connect) {
+
+    }
+
+    /**
+     * 建立连接
+     */
+    function connect() {
+        let socket = new SockJS("/endpoint-stomp");
+        stompClient = Stomp.over(socket);
+        stompClient.connect({}, function (frame) {
+            setConnect(true);
+            console.log("Connected : " + frame);
+            stompClient.subscribe("/topic/send", function (message) {
+                console.log("receive from back end : " + message);
+                // showMessage(JSON.parse(message))
+                showMessage(message);
+            })
+        })
+    }
 
     /**
      * 重新连接
      */
-    function disConnect(){
+    function disConnect() {
         if (stompClient == null) {
             // 重新连接
         }
+        ;
+    };
+
+    /**
+     * 在页面显示消息
+     * @param message
+     */
+    function showMessage(message) {
+        $("#message-box").innerHTML(message);
+        // $("#message-box").html(message);
     }
 </script>
 </html>
