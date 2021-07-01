@@ -26,8 +26,11 @@
     let stompClient = null;
 
     function setConnect(connect) {
-
-    }
+        document.getElementById("connect").disabled = connect;
+        document.getElementById("disConnect").disabled = !connect;
+        document.getElementById("conversationDiv").style.visibility = connect ? 'visible' : 'hidden';
+        $("message-box").html();
+    };
 
     /**
      * 建立连接
@@ -42,8 +45,18 @@
                 console.log("receive from back end : " + message);
                 // showMessage(JSON.parse(message))
                 showMessage(message);
-            })
-        })
+            });
+        });
+    };
+
+    /**
+     *  发送消息
+     */
+    function send() {
+        let name = $("#name").val();
+        console.log("send name is : " + name);
+        stompClient.send("/websocket", {}, JSON.stringify({'name': name}))
+
     }
 
     /**
@@ -63,6 +76,6 @@
     function showMessage(message) {
         $("#message-box").innerHTML(message);
         // $("#message-box").html(message);
-    }
+    };
 </script>
 </html>
