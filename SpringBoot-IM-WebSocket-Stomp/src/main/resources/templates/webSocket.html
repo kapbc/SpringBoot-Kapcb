@@ -8,8 +8,20 @@
     <script th:src="@{js/stomp.js}"></script>
 </head>
 <body onload="disConnect()">
-
+<noscript><h2 style="color: #e80b0a;">抱歉，您的浏览器不支持WebSocket</h2></noscript>
 </body>
+<div>
+    <div>
+        <button id="connect" onclick="connect()">连接WebSocket</button>
+        <button id="disConnect" disabled="disabled" onclick="disConnect()">断开连接</button>
+    </div>
+
+    <div id="conversationDiv">
+        <label>请输入您的名字!<input type="text" id="name"></label>
+        <button id="send" onclick="send()">发送</button>
+        <p id="message-box"></p>
+    </div>
+</div>
 <script>
     let stompClient = null;
 
