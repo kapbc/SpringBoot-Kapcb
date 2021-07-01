@@ -23,6 +23,5 @@ public class WebFluxApplication {
                 .bannerMode(Banner.Mode.OFF)
                 .web(WebApplicationType.REACTIVE)
                 .run(args);
-
     }
 }

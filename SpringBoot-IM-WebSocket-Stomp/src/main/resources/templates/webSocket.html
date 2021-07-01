@@ -56,7 +56,6 @@
         let name = $("#name").val();
         console.log("send name is : " + name);
         stompClient.send("/websocket", {}, JSON.stringify({'name': name}))
-
     }
 
     /**
