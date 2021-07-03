@@ -17,6 +17,7 @@
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
+        <main.class>com.kapcb.ccc.SecurityApplication</main.class>
     </properties>
 
     <dependencies>
@@ -37,4 +38,57 @@
             <artifactId>slf4j-api</artifactId>
         </dependency>
     </dependencies>
+
+<!--    <repositories>-->
+<!--        <repository>-->
+<!--            <id>kapcb-public</id>-->
+<!--            <url></url>-->
+<!--        </repository>-->
+<!--    </repositories>-->
+<!--    <pluginRepositories>-->
+<!--        <pluginRepository>-->
+<!--            <id>kapcb-public</id>-->
+<!--            <url></url>-->
+<!--        </pluginRepository>-->
+<!--    </pluginRepositories>-->
+
+<!--    <distributionManagement>-->
+<!--        <repository>-->
+<!--            <id>kapcb-releases</id>-->
+<!--            <url></url>-->
+<!--        </repository>-->
+<!--        <snapshotRepository>-->
+<!--            <id>kapcb-snapshots</id>-->
+<!--            <url></url>-->
+<!--        </snapshotRepository>-->
+<!--    </distributionManagement>-->
+
+    <build>
+        <!-- 构建后文件名字定义 -->
+        <finalName>${project.name}.${project.version}</finalName>
+        <!-- 打包 -->
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-archetype-plugin</artifactId>
+                <version>3.2.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.4.5</version>
+                <configuration>
+                    <mainClass>${main.class}</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>

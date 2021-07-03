@@ -17,10 +17,12 @@ import java.io.Serializable;
  * @date 2021/2/27 12:37
  */
 @Data
-@Builder
+@Builder(toBuilder = true)
 @NoArgsConstructor
 @AllArgsConstructor
 public class User implements Serializable {
+
+    private static final long serialVersionUID = 2392691454382770807L;
 
     private int age;
     private Long userId;

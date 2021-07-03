@@ -94,7 +94,7 @@ public class RabbitController {
     public String sendFanoutMessage(@PathVariable(value = "name") String name) {
         log.info("the path variable name is : " + name);
         log.info("begin to process send message to direct exchange!");
-        User kapcb = new User.Builder().userId(1L).age(12).username("kapcb").build();
+        User kapcb = User.builder().userId(1L).age(12).username("kapcb").build();
         log.info("the user is : " + kapcb);
         rabbitSendService.sendFanoutMessage("businessExchange", null, kapcb);
         return "success";
