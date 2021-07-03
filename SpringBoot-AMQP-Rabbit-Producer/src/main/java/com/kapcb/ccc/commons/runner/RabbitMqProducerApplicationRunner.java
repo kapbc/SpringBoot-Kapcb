@@ -37,13 +37,13 @@ public class RabbitMqProducerApplicationRunner implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
         if (applicationContext.isActive()) {
-            searchServiceBanner(environment);
+            rabbitProducerServiceBanner(environment);
         }
     }
 
-    private static void searchServiceBanner(Environment environment) {
+    private static void rabbitProducerServiceBanner(Environment environment) {
         String banner = "----------------------------------------------------------------------------------\n" +
-                "advert service start up success, current local date time : " + DATE_TIME_FORMATTER.format(LocalDateTime.now()) + "\n" +
+                "rabbit producer service start up success, current local date time : " + DATE_TIME_FORMATTER.format(LocalDateTime.now()) + "\n" +
                 "server name : " + environment.getProperty(SERVER_NAME) + "\n" +
                 "server port : " + environment.getProperty(SERVER_PORT) + "\n" +
                 "----------------------------------------------------------------------------------";
