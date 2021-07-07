@@ -73,7 +73,7 @@ public class MailSendAspect {
          */
         String[] argsName = methodSignature.getParameterNames();
         log.info("the args name is : " + Arrays.toString(argsName));
-        CompletableFuture.runAsync()
+//        CompletableFuture.runAsync()
     }
 
     @AllArgsConstructor
