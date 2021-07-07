@@ -113,6 +113,7 @@ public class MailSendAspect {
                 field.setAccessible(true);
                 String object = Objects.equals(null, column) ? StringToolUtil.asString(args[i]) : StringToolUtil.asString(args[i], column.length());
             }
+
             super.run();
         }
     }
