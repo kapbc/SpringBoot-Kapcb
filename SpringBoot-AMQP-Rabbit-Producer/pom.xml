@@ -15,9 +15,6 @@
     <artifactId>SpringBoot-AMQP-Rabbit-Producer</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <name>SpringBoot-AMQP-Rabbit-Producer</name>
-    <description>SpringBoot-AMQP-RabbitMQ</description>
-
     <properties>
         <java.version>1.8</java.version>
         <main.class>com.kapcb.ccc.RabbitProducerApplication</main.class>
