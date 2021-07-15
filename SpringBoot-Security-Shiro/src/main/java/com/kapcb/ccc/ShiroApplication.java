@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 
 /**
- * <a>Title: SpringBoot-Kapcb </a>
+ * <a>Title: ShiroApplication </a>
  * <a>Author: Kapcb <a>
  * <a>Description: Shiro Application <a>
  *
