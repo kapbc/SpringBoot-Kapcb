@@ -1,3 +1,5 @@
+server:
+  port: 9096
 spring:
   application:
     name: SpringBoot-Transaction-Seata-Order
@@ -5,3 +7,24 @@ spring:
     nacos:
       password: naocs
       username: nacos
+
+seata:
+  enabled: true
+  application-id: ${spring.application.name}
+  tx-service-group: order-seata-service-group
+  registry:
+    type: nacos
+    nacos:
+      server-addr: 111
+      namespace: 1111
+      cluster: default
+  config:
+    file:
+      name: file.conf
+    type: nacos
+    nacos:
+      namespace: 1111
+      server-addr: 111
+      group: seata_group
+  enable-auto-data-source-proxy: true
+  use-jdk-proxy: false
