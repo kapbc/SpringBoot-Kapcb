@@ -1,9 +1,11 @@
 package com.kapcb.ccc;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.Banner;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.client.SpringCloudApplication;
+import org.springframework.cloud.openfeign.EnableFeignClients;
 
 /**
  * <a>Title: OrderApplication </a>
@@ -14,6 +16,8 @@ import org.springframework.cloud.client.SpringCloudApplication;
  * @version 1.0.0
  * @date 2021/9/16 22:39
  */
+@MapperScan(basePackages = {"com.kapcb.ccc.mapper"})
+@EnableFeignClients(basePackages = {"com.kapcb.ccc.feign"})
 @SpringCloudApplication
 public class OrderApplication {
     public static void main(String[] args) {
