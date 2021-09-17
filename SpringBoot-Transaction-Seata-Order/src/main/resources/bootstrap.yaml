@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: SpringBoot-Transaction-Seata-Order
+  cloud:
+    nacos:
+      password: naocs
+      username: nacos
