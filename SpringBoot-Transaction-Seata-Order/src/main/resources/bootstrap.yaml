@@ -7,6 +7,24 @@ spring:
     nacos:
       password: naocs
       username: nacos
+  shardingsphere:
+    datasource:
+      names: order
+      order:
+        type: com.zaxxer.hikari.HikariDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        jdbc-url: jdbc:mysql://127.0.0.1:3306/ds0?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+        username: root
+        password: 123456
+    sharding:
+      tables:
+        kapcb_order:
+          actual-data-nodes: order.kapcb_order$->{0..1}
+          table-strategy:
+            sharding-column: id
+            algorithm-expression: t_account$->{id % 2}
+    props:
+      sql.show: true
 
 seata:
   enabled: true
