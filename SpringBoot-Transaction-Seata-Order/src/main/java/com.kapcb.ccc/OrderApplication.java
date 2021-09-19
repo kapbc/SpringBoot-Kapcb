@@ -22,6 +22,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 public class OrderApplication {
     public static void main(String[] args) {
         new SpringApplicationBuilder()
+                .sources(OrderApplication.class)
                 .web(WebApplicationType.SERVLET)
                 .bannerMode(Banner.Mode.OFF)
                 .run(args);
